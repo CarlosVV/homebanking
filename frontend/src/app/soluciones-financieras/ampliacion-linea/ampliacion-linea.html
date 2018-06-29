@@ -1,0 +1,91 @@
+<!-- MIS DATOS - TAB 1 -->
+<div ng-controller="AmpliacionLinea as ampliacionLineaCtrl" ng-init="ampliacionLineaCtrl.inicio()">
+	<div id="tab-1" class="container_detalle_tabs tab-content current" ng-class="{'ng-hide':!ampliacionLineaCtrl.menuSeleccionado('tab-1')}">
+		<div class="container_detalle_tabs-overflow">
+
+            <div class="container-fluid ">
+
+                <div class="row ">
+                    <div class="col-xs-12 col-md-12 row titulo_tabpage-diners ">
+                        <h2>Solicitud de Incremento de Línea</h2>
+                    </div>
+                </div>
+                <div class="row ">
+                    <div class="col-sm-6 row subtitulo_tabpage-diners ">
+                        <p><b>Paso 1:</b> Selección de tarjeta e incremento de línea de crédito</p>
+                    </div>
+                    <!-- PASOS -->
+                    <div class="col-sm-6 pasos_tabpage-diners ">
+                        <div class="row container_step ">
+                            <div class="container_pasos ">
+                                <span class="active ">1</span>
+                                <span>2</span>
+                                <span class="borrar-margin-right ">3</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- TARJETA TITULAR -->
+                    <section class="mis-datos__section ">
+                        <p class="mis-datos__section-title ">Tarjeta titular</p>
+                        <table class="mis-datos__section-table ">
+                            <tr>
+                                <td>Tarjeta</td>
+                                <td>
+                                    <div class="input-field ">
+                                        <select ng-disabled="ampliacionLineaCtrl.tarjetas.length === 1" ng-options="tarjeta.idTarjeta as tarjeta.numeroTarjeta for tarjeta in ampliacionLineaCtrl.tarjetas" ng-model="ampliacionLineaCtrl.solicitud.idTarjeta "
+                                            ng-change="ampliacionLineaCtrl.seleccionarTarjeta(ampliacionLineaCtrl.solicitud.idTarjeta) ">
+                                        </select>
+                                    </div>
+                                </td>
+                            </tr>
+                        </table>
+                    </section>
+                    <form class="formValido " id="datosTarjeta " method="POST " action="javascript:; ">
+                        <!-- Datos del adicional -->
+                        <section class="mis-datos__section ">
+                            <p class="mis-datos__section-title ">Línea de Crédito</p>
+                            <table class="mis-datos__section-table ">
+                                <tr>
+                                    <td>Línea actual</td>
+                                    <td>
+                                        <label class="radio-mat " for="moneda1 ">{{ampliacionLineaCtrl.solicitud.creditoActual | currency:"S/ ":2}}</label>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>Línea nueva (S/)</td>
+                                    <td>
+                                        <input class="mis-datos__section-input inputits" type="text" ng-readonly="ampliacionLineaCtrl.deshabilitarMonto" name="servicio" decimal-only
+                                            ng-model="ampliacionLineaCtrl.creditoSolicitadoFormateado" maxlength="9 ">
+                                        <span ng-show="!ampliacionLineaCtrl.montoCreditoSolicitadoCorrecto " class="has-error ">{{ampliacionLineaCtrl.mensajeErrorCreditoSolicitado}}</span>
+                                        
+                                    </td>
+                                </tr>
+                            </table>
+                        </section>
+                        <section class="mis-datos__section ">
+                            <div class="footer__verificacion strong ">
+                                <img src="content/images/span-info.png " alt=" "> El monto solicitado debe ser mayor a la línea de crédito actual
+                            </div>
+                            <table class="mis-datos__section-table ">
+                                <tr>
+                                    <td></td>
+                                    <td>
+                                        <button type="submit " class="btn-azul continuar " ng-click="ampliacionLineaCtrl.enviarSolicitud() ">CONTINUAR</button>
+                                        <p class="pasos "><strong>Paso 1</strong> de 3</p>
+                                    </td>
+                                </tr>
+                            </table>
+                        </section>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div id="tab-2 " class="bloquear-paso-2 " ng-class="{ 'ng-hide':!ampliacionLineaCtrl.menuSeleccionado( 'tab-2')} ">
+        <solicitud-confirmacion content="ampliacionLineaCtrl.content "></solicitud-confirmacion>
+    </div>
+    <div id="tab-3 " class="bloquear-paso-3 " ng-class="{ 'ng-hide':!ampliacionLineaCtrl.menuSeleccionado( 'tab-3')} ">
+        <constancia-solicitud content="ampliacionLineaCtrl.content "></constancia-solicitud>
+    </div>
+</div>

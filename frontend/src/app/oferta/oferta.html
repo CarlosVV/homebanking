@@ -1,0 +1,54 @@
+<div header></div>
+<section class="container-fluid" ng-controller="Oferta as ofertaCtrl" ng-init="ofertaCtrl.inicioOfertas()">
+    <div class="row">
+        <!-- inicio cabecera cuerpo-->
+        <header class="{{ ofertaCtrl.bannerByCountry }}">
+            <div class="container">
+                <div class="row">
+                    <div class="col-xs-12 col-md-12">
+                        <div class="titulo__banner-oferta">
+                            <h1>Ofertas especiales para ti</h1>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </header>
+        <!-- fin cabecera cuerpo-->
+        <!-- inicio contenido pagina-->
+        <section class="container">
+            <div class="row">
+                <div class="col-xs-12 col-md-12">
+                    <div class="text-left container__section-body-movimiento">
+                        <section class="container__section--row-arriba">
+                            <div class="row container__section--row-abajo">
+                                <article class="col-xs-12 col-md-3" ng-repeat="ofertaItem in ofertaCtrl.ofertas">
+                                    <div class="container__bloque-oferta2">
+                                        <div class="bloque__oferta-diners">
+                                            <ul>
+                                                <li class="lista__margin-abajo">
+                                                    <label>{{ofertaItem.TextoOferta.titulo}}</label>
+                                                </li>
+                                                <li class="lista__margin-abajo">
+                                                    <div>
+                                                        <strong ng-show="ofertaItem.idTipoOferta == 1">{{ofertaItem.montoLineaNueva | currency:"S/ ":2}}</strong>
+                                                        <strong ng-show="ofertaItem.idTipoOferta != 1">{{ofertaItem.montoOferta | currency:"S/ ":2}}</strong>
+                                                    </div>
+                                                    <div class="margin__top"><span>&nbsp;</span></div>
+                                                    <div class="margin__top"><span  ng-bind-html="ofertaItem.TextoOferta.descripcion">{{ofertaItem.TextoOferta.descripcion}}</span></div>
+                                                </li>
+                                            </ul>
+                                        </div>
+
+                                        <div class="footer__bloque-oferta" ng-click="ofertaCtrl.iraSolicitud(ofertaItem.idTipoOferta)">
+                                            {{ofertaItem.TextoOferta.botonTexto}}
+                                        </div>
+                                    </div>
+                                </article>
+                            </div>
+                        </section>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+</section>

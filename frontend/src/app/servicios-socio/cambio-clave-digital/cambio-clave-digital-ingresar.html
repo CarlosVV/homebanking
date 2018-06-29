@@ -1,0 +1,284 @@
+<div class="cambio-clave-digital container_detalle_tabs-perfil">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-xs-12 col-md-12 row titulo_tabpage-diners">
+                <h2>Cambio de clave digital</h2>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-xs-12 col-md-6 row subtitulo_tabpage-diners">
+                <p><b>Paso 1:</b> Ingresar datos</p>
+            </div>
+            <!-- PASOS -->
+            <div class="col-sm-6 pasos_tabpage-diners">
+                <div class="row container_step">
+                    <div class="container_pasos">
+                        <span class="active">1</span>
+                        <span>2</span>
+                        <span class="borrar-margin-right">3</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <section class="container-fluid container__movimiento-margin contenido__clave-digital">
+        <div class="row">
+
+            <div class="col-xs-12 col-md-3 columna-titulo">
+                <div><strong>Ingresar clave actual</strong></div>
+                <div class="texto-fila2-clavedigital"><small>Alfanumérica</small></div>
+            </div>
+            <div class="col-xs-12 col-md-4 padding__contenido-input">
+                <div class="input-group">
+                    <input type="password" id="claveAntigua" tabindex="1" ng-model="cambioClaveDigitalCtrl.claveAntigua" ng-change="cambioClaveDigitalCtrl.limpiarValidaciones()"
+                        placeholder="" class="mis-datos__section-input write teclado1" minlength="6" maxlength="10" readonly />
+                    <span class="input-group-addon" >
+                        <i class="icon1-clave-ojo on vista1"></i>
+                        <i class="icon1-clave-ojo2 vista2"></i>
+                    </span>
+
+                </div>
+                <div class="input-group has-error" ng-if="cambioClaveDigitalCtrl.claveIncorrecta">
+                    <span class="control-label">Clave digital actual incorrecta. Por favor vuelva a intentarlo</span>
+                </div>
+                <!-- Teclado Digital Inicio -->
+                <div class="teclado-visible-input"></div>
+                <div class="container-teclado">
+                    <ul id="keyboard" class="teclado-numerico">
+                        <li class="symbol" data-number><span class="off">1</span><span class="on">!</span></li>
+                        <li class="symbol" data-number><span class="off">2</span><span class="on">@</span></li>
+                        <li class="symbol" data-number><span class="off">3</span><span class="on">#</span></li>
+                        <li class="symbol" data-number><span class="off">4</span><span class="on">$</span></li>
+                        <li class="symbol" data-number><span class="off">5</span><span class="on">%</span></li>
+                        <li class="symbol" data-number><span class="off">6</span><span class="on">^</span></li>
+                        <li class="symbol" data-number><span class="off">7</span><span class="on">&amp;</span></li>
+                        <li class="symbol" data-number><span class="off">8</span><span class="on">*</span></li>
+                        <li class="symbol" data-number><span class="off">9</span><span class="on">(</span></li>
+                        <li class="symbol" data-number><span class="off">0</span><span class="on">)</span></li>
+                        <li class="letter">q</li>
+                        <li class="letter">w</li>
+                        <li class="letter">e</li>
+                        <li class="letter">r</li>
+                        <li class="letter">t</li>
+                        <li class="letter">y</li>
+                        <li class="letter">u</li>
+                        <li class="letter">i</li>
+                        <li class="letter">o</li>
+                        <li class="letter">p</li>
+                        <li class="letter">a</li>
+                        <li class="letter">s</li>
+                        <li class="letter">d</li>
+                        <li class="letter">f</li>
+                        <li class="letter">g</li>
+                        <li class="letter">h</li>
+                        <li class="letter">j</li>
+                        <li class="letter">k</li>
+                        <li class="letter">l</li>
+                        <li class="letter">z</li>
+                        <li class="letter">x</li>
+                        <li class="letter">c</li>
+                        <li class="letter">v</li>
+                        <li class="letter">b</li>
+                        <li class="letter">n</li>
+                        <li class="letter">m</li>
+                        <li class="delete lastitem border-borrar"><i class="icon1-borrar"></i>
+                            <p>BORRAR</p>
+                        </li>
+                    </ul>
+                    <div class="container-detalle-teclado">
+                        <i class="icon1-pointer"></i>
+                        <p>
+                            Usa este <br />
+                            <a href="javascript:;" data-toggle="tooltip" data-placement="top" data-original-title="texto de prueba">
+                                <span>teclado seguro</span>
+                            </a><br /> para digitar tu clave
+                        </p>
+                        <a href="javascript:;" class="ayuda-teclado">Ayuda</a>
+                    </div>
+                </div>
+                <!-- Teclado Digital Fin -->
+            </div>
+            <div class="col-xs-12 col-md-5">
+                <div class="row">
+                    <span class="chk-validado on" ng-class="{ on: !cambioClaveDigitalCtrl.valido }"><i class="icon1-checked"></i></span>
+                </div>
+            </div>
+        </div>
+        <div class="row bloque__padding-top10">
+
+            <div class="col-xs-12 col-md-3 columna-titulo">
+                <div><strong>Ingresar clave nueva</strong></div>
+                <div class="texto-fila2-clavedigital"><small>Alfanumérica</small></div>
+            </div>
+            <div class="col-xs-12 col-md-4 padding__contenido-input">
+                <div class="input-group">
+                    <input type="password" id="claveNueva" tabindex="2" ng-model="cambioClaveDigitalCtrl.claveNueva" placeholder="" class="mis-datos__section-input write2 teclado2" minlength="6" maxlength="10" readonly>
+                    <span class="input-group-addon">
+                        <i class="icon1-clave-ojo on vista3"></i>
+                        <i class="icon1-clave-ojo2 vista4"></i>
+                    </span>
+                </div>
+
+                <!-- Teclado Digital Inicio -->
+                <div class="teclado-visible-input2"></div>
+                <div class="container-teclado2">
+                    <ul id="keyboard2" class="teclado-numerico">
+                        <li class="symbol" data-number><span class="off">1</span><span class="on">!</span></li>
+                        <li class="symbol" data-number><span class="off">2</span><span class="on">@</span></li>
+                        <li class="symbol" data-number><span class="off">3</span><span class="on">#</span></li>
+                        <li class="symbol" data-number><span class="off">4</span><span class="on">$</span></li>
+                        <li class="symbol" data-number><span class="off">5</span><span class="on">%</span></li>
+                        <li class="symbol" data-number><span class="off">6</span><span class="on">^</span></li>
+                        <li class="symbol" data-number><span class="off">7</span><span class="on">&amp;</span></li>
+                        <li class="symbol" data-number><span class="off">8</span><span class="on">*</span></li>
+                        <li class="symbol" data-number><span class="off">9</span><span class="on">(</span></li>
+                        <li class="symbol" data-number><span class="off">0</span><span class="on">)</span></li>
+                        <li class="letter">q</li>
+                        <li class="letter">w</li>
+                        <li class="letter">e</li>
+                        <li class="letter">r</li>
+                        <li class="letter">t</li>
+                        <li class="letter">y</li>
+                        <li class="letter">u</li>
+                        <li class="letter">i</li>
+                        <li class="letter">o</li>
+                        <li class="letter">p</li>
+                        <li class="letter">a</li>
+                        <li class="letter">s</li>
+                        <li class="letter">d</li>
+                        <li class="letter">f</li>
+                        <li class="letter">g</li>
+                        <li class="letter">h</li>
+                        <li class="letter">j</li>
+                        <li class="letter">ZZZ</li>
+                        <li class="letter">l</li>
+                        <li class="letter">z</li>
+                        <li class="letter">x</li>
+                        <li class="letter">c</li>
+                        <li class="letter">v</li>
+                        <li class="letter">b</li>
+                        <li class="letter">n</li>
+                        <li class="letter">m</li>
+                        <li class="delete lastitem border-borrar"><i class="icon1-borrar"></i>
+                            <p>BORRAR</p>
+                        </li>
+                    </ul>
+                    <div class="container-detalle-teclado">
+                        <i class="icon1-pointer"></i>
+                        <p>
+                            Usa este <br />
+                            <a href="javascript:;" data-toggle="tooltip" data-placement="top" data-original-title="texto de prueba">
+                                <span>teclado seguro</span>
+                            </a><br /> para digitar tu clave
+                        </p>
+                        <a href="javascript:;" class="ayuda-teclado">Ayuda</a>
+                    </div>
+                </div>
+                <!-- Teclado Digital Fin -->
+
+            </div>
+            <div class="col-xs-12 col-md-5">
+                <div class="row">
+                    <span class="chk-validado on" ng-class="{ on: !cambioClaveDigitalCtrl.valido }"><i class="icon1-checked"></i></span>
+                </div>
+            </div>
+
+        </div>
+        <div class="row bloque__padding-top10">
+
+            <div class="col-xs-12 col-md-3 columna-titulo">
+                <div><strong>Confirmar clave nueva</strong></div>
+                <div class="texto-fila2-clavedigital"><small>Alfanumérica</small></div>
+            </div>
+            <div class="col-xs-12 col-md-4 padding__contenido-input">
+                <div class="input-group">
+                    <input type="password" id="claveNuevaConfirmacion" tabindex="3" ng-model="cambioClaveDigitalCtrl.claveNuevaConfirmacion" placeholder="" class="mis-datos__section-input write3 teclado3" minlength="6" maxlength="10" readonly>
+                    <span class="input-group-addon">
+                        <i class="icon1-clave-ojo on vista5"></i>
+                        <i class="icon1-clave-ojo2 vista6"></i>
+                    </span>
+                </div>
+                <div class="input-group has-error" ng-if="!cambioClaveDigitalCtrl.clavesCoinciden">
+                    <span class="control-label">Las claves no coinciden</span>
+                </div>
+                <!-- Teclado Digital Inicio -->
+                <div class="teclado-visible-input3"></div>
+                <div class="container-teclado3">
+                    <ul id="keyboard3" class="teclado-numerico">
+                        <li class="symbol" data-number><span class="off">1</span><span class="on">!</span></li>
+                        <li class="symbol" data-number><span class="off">2</span><span class="on">@</span></li>
+                        <li class="symbol" data-number><span class="off">3</span><span class="on">#</span></li>
+                        <li class="symbol" data-number><span class="off">4</span><span class="on">$</span></li>
+                        <li class="symbol" data-number><span class="off">5</span><span class="on">%</span></li>
+                        <li class="symbol" data-number><span class="off">6</span><span class="on">^</span></li>
+                        <li class="symbol" data-number><span class="off">7</span><span class="on">&amp;</span></li>
+                        <li class="symbol" data-number><span class="off">8</span><span class="on">*</span></li>
+                        <li class="symbol" data-number><span class="off">9</span><span class="on">(</span></li>
+                        <li class="symbol" data-number><span class="off">0</span><span class="on">)</span></li>
+                        <li class="letter">q</li>
+                        <li class="letter">w</li>
+                        <li class="letter">e</li>
+                        <li class="letter">r</li>
+                        <li class="letter">t</li>
+                        <li class="letter">y</li>
+                        <li class="letter">u</li>
+                        <li class="letter">i</li>
+                        <li class="letter">o</li>
+                        <li class="letter">p</li>
+                        <li class="letter">a</li>
+                        <li class="letter">s</li>
+                        <li class="letter">d</li>
+                        <li class="letter">f</li>
+                        <li class="letter">g</li>
+                        <li class="letter">h</li>
+                        <li class="letter">j</li>
+                        <li class="letter">k</li>
+                        <li class="letter">l</li>
+                        <li class="letter">z</li>
+                        <li class="letter">x</li>
+                        <li class="letter">c</li>
+                        <li class="letter">v</li>
+                        <li class="letter">b</li>
+                        <li class="letter">n</li>
+                        <li class="letter">m</li>
+                        <li class="delete lastitem border-borrar"><i class="icon1-borrar"></i>
+                            <p>BORRAR</p>
+                        </li>
+                    </ul>
+                    <div class="container-detalle-teclado">
+                        <i class="icon1-pointer"></i>
+                        <p>
+                            Usa este <br />
+                            <a href="javascript:;" data-toggle="tooltip" data-placement="top" data-original-title="texto de prueba">
+                                <span>teclado seguro</span>
+                            </a><br /> para digitar tu clave
+                        </p>
+                        <a href="javascript:;" class="ayuda-teclado">Ayuda</a>
+                    </div>
+                </div>
+                <!-- Teclado Digital Fin -->
+            </div>
+            <div class="col-xs-12 col-md-5">
+                <div class="row">
+                    <span class="chk-validado on" ng-class="{ on: !cambioClaveDigitalCtrl.valido }"><i class="icon1-checked"></i></span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="container-fluid bloque__padding-top10">
+        <div class="row">
+            <div class="col-xs-12 col-md-3">
+                &nbsp;
+            </div>
+            <div class="col-xs-12 col-md-8 text-left bloque__pasos-tarjeta">
+                <a href="javascript:;" ng-if="!cambioClaveDigitalCtrl.valido"  class="boton_pasos-tabs-disabled continuar-cambio2"">CAMBIAR CLAVE</a>
+                <a href="javascript:;" ng-if="cambioClaveDigitalCtrl.valido" class="boton_pasos-tabs-activo continuar-cambio1" ng-click="cambioClaveDigitalCtrl.cambiarClave()">CAMBIAR CLAVE</a>
+                <br /><br />
+                <p class="pasos"><strong>Paso 1</strong> de 3</p>
+            </div>
+        </div>
+    </section>
+
+</div>

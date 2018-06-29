@@ -1,0 +1,3 @@
+angular.module('appDinersClubOnline.recuperarClaveDigital', ['appDinersClubOnline.api'])
+    .controller('RecuperarClaveDigitalIdentificacion', ['authApi', 'sessionFactory', '$location', RecuperarClaveDigital.IdentificacionController])
+    .controller('RecuperarClaveDigitalNuevaClave', ['tarjetaApi', 'usuarioApi', 'authApi', 'sessionFactory', '$location', '$q', RecuperarClaveDigital.NuevaClaveController]);

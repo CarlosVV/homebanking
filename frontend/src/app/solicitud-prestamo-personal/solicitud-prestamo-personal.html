@@ -1,0 +1,183 @@
+<div header></div>
+<div ng-controller="solicitudPrestamoPersonal as prestamoPersonalCtrl" ng-init="prestamoPersonalCtrl.inicializar()">
+	<section class="container-fluid">
+		<div class="row">
+			<!-- inicio cabecera cuerpo-->
+			<header class="col-xs-12 col-sm-12 col-md-12 col-lg-12 {{ prestamoPersonalCtrl.bannerByCountry }}">
+				<div class="container">
+					<div class="row">
+						<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 titulo__banner-perfil">
+							<h1>Solicitud de Préstamo Personal Diners</h1>
+						</div>
+					</div>
+				</div>
+			</header>
+			<!-- fin cabecera cuerpo-->
+			<section class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+				<div class="container container__section-principal-perfil">
+					<div ng-class="{'ng-hide':!prestamoPersonalCtrl.menuSeleccionado('tab-1')}">
+						<div class="row">
+							<article class="col-xs-12 col-sm-12 col-md-12 col-lg-12 container__section-body-movimiento">
+								<div class="text-left">
+									<!-- MIS DATOS - TAB 1 -->
+									<div id="tab-1" class="container_detalle_tabs tab-content current">
+										<div class="container_detalle_tabs-overflow">
+											<div class="container-fluid">
+												<div class="row">
+													<div class="col-xs-12 col-md-12 row titulo_tabpage-diners">
+														<h2>Solicitud de Préstamo Personal Diners</h2>
+													</div>
+												</div>
+												<div class="row">
+													<div class="col-sm-6 row subtitulo_tabpage-diners">
+														<p><b>Paso 1:</b> Selección de tarjeta y montos</p>
+													</div>
+													<!-- PASOS -->
+													<div class="col-sm-6 pasos_tabpage-diners">
+														<div class="row container_step">
+															<div class="container_pasos">
+																<span class="active">1</span>
+																<span>2</span>
+																<span class="borrar-margin-right">3</span>
+															</div>
+														</div>
+													</div>
+													<!-- TARJETA TITULAR -->
+													<section class="mis-datos__section" ng-if="prestamoPersonalCtrl.socioMultiproducto">
+														<p class="mis-datos__section-title">Tarjeta {{prestamoPersonalCtrl.tarjetaAplicante.esTitular ? 'titular' : 'adicional'}}</p>
+														<table class="mis-datos__section-table">
+															<tr>
+																<td>Tarjeta</td>
+																<td>
+																	<div class="input-field">
+																		<select>
+                                                                    <option value="">                                                                           
+                                                                        {{
+                                                                            prestamoPersonalCtrl.mostrarAlias_o_NombreProducto(prestamoPersonalCtrl.tarjetaAplicante.alias, prestamoPersonalCtrl.tarjetaAplicante.nombreProducto) +
+                                                                            ' ' +
+                                                                            prestamoPersonalCtrl.formatearNumeroTarjeta(prestamoPersonalCtrl.tarjetaAplicante.numeroTarjeta) 
+                                                                        }}
+                                                                    </option>
+                                                                </select>
+																	</div>
+																</td>
+															</tr>
+														</table>
+													</section>
+													<!-- Monto y Cuota -->
+													<section class="mis-datos__section">
+														<p class="mis-datos__section-title">Monto préstamo y cuota</p>
+														<form class="formValido" name="prestamoForm" id="prestamoForm" ng-submit="prestamoForm.$valid && prestamoPersonalCtrl.IrAConfirmacion()"
+															novalidate>
+															<table class="mis-datos__section-table">
+																<tr>
+																	<td>Monto (S/)</td>
+																	<td>
+																		<input class="mis-datos__section-input inputits" id="montoPrestamo" name="montoPrestamo" ng-model="prestamoPersonalCtrl.solicitudPrestamo.montoPrestamo"
+																			numbers-only maxlength="6" required>
+																		<span class="has-error" ng-show="submitted && prestamoForm.montoPrestamo.$invalid">Debe ingresar monto del préstamo</span>
+																		<span class="has-error ng-hide error-monto-menor">Monto debe ser mayor o igual a S/ 3000.00</span>
+																		<span class="has-error ng-hide error-monto-mayor">Monto debe ser menor o igual al ofertado</span>
+																		<input type="hidden" id="montoOferta" value="{{ prestamoPersonalCtrl.solicitudPrestamo.montoOferta }}">
+																	</td>
+																</tr>
+																<tr>
+																	<td>N° Cuotas</td>
+																	<td>
+																		<div class="input-field operator">
+																			<select ng-change="prestamoPersonalCtrl.calcularMontoMensual()" ng-options="plazo.plazo as plazo.plazo for plazo in prestamoPersonalCtrl.listaPlazos"
+																				ng-model="prestamoPersonalCtrl.solicitudPrestamo.cuotas"></select>
+																		</div>
+																	</td>
+																</tr>
+																<tr>
+																	<td>T.C.E.A.
+																		<div style="width:100%">
+																			<p class="datos-obligatorios" style="color:gray; text-align:right;">
+																				Tasa de Costo Efectivo Anual</p>
+																		</div>
+																	</td>
+																	<td><strong>{{ prestamoPersonalCtrl.solicitudPrestamo.tcea | currency:"":2 }}%</strong></td>
+																</tr>
+																<tr>
+																	<td>Monto cuota
+																		<div style="width:100%">
+																			<p class="datos-obligatorios" style="color:gray; text-align:right;">
+																				(referencial)</p>
+																		</div>
+																	</td>
+																	<td><strong>{{ prestamoPersonalCtrl.solicitudPrestamo.montoCuota | currency:"S/ ":2 }}</strong></td>
+																</tr>
+																<tr>
+																	<td>Nombre del banco </td>
+																	<td>
+																		<div class="input-field">
+																			<select required name="banco" ng-model="prestamoPersonalCtrl.solicitudPrestamo.idBanco" ng-options="banco.id as banco.nombre for banco in prestamoPersonalCtrl.listaBancos">
+                                                                                <option value="">Seleccionar</option>
+                                                                            </select>
+																			<span class="has-error" ng-show="submitted && prestamoForm.banco.$invalid">Debe seleccionar un banco</span>
+																		</div>
+																	</td>
+																</tr>
+																<tr>
+																	<td>Tipo de cuenta</td>
+																	<td>
+																		<input class="with-gap" name="tipo" type="radio" id="rbTipoCuentaAhorros" ng-model="prestamoPersonalCtrl.solicitudPrestamo.tipoCuenta"
+																			checked value="ahorros" />
+																		<label class="radio-mat" for="rbTipoCuentaAhorros">Ahorros</label>
+																		<input class="with-gap" name="tipo" type="radio" id="rbTipoCuentaCuentaCorriente" ng-model="prestamoPersonalCtrl.solicitudPrestamo.tipoCuenta"
+																			value="cuentacorriente" />
+																		<label class="radio-mat" for="rbTipoCuentaCuentaCorriente">Cuenta Corriente</label>
+																	</td>
+																</tr>
+																<tr>
+																	<td>Moneda de la cuenta</td>
+																	<td>
+																		<input class="with-gap" name="moneda" type="radio" id="rbSoles" ng-model="prestamoPersonalCtrl.solicitudPrestamo.tipoMoneda"
+																			checked value="soles" />
+																		<label class="radio-mat" for="rbSoles">Soles</label>
+																		<input class="with-gap" name="moneda" type="radio" id="rbDolares" ng-model="prestamoPersonalCtrl.solicitudPrestamo.tipoMoneda"
+																			value="dolares" />
+																		<label class="radio-mat" for="rbDolares">Dólares</label>
+																	</td>
+																</tr>
+																<tr>
+																	<td>Nº Cuenta</td>
+																	<td>
+																		<input class="mis-datos__section-input inputits" name="numerocuenta" ng-model="prestamoPersonalCtrl.solicitudPrestamo.numeroCuentaDestino"
+																			numbers-only maxlength="20" required>
+																		<span class="has-error" ng-show="submitted && prestamoForm.numerocuenta.$invalid">Debe ingresar n° de cuenta</span>
+																	</td>
+																</tr>
+																<tr>
+																	<td></td>
+																	<td>
+																		<button type="submit" class="btn-azul continuar" ng-click="submitted=true">CONTINUAR</button>
+																		<p class="pasos"><strong>Paso 1</strong> de 3</p>
+																		<!--<p class="datos-obligatorios">
+																			<span>(*)</span> Datos obligatorios. Serán tratados de forma confidencial y segura</p>-->
+																	</td>
+																</tr>
+															</table>
+															<input type="button" id="btnCalcularMontoCuota" value="calcular monto cuota" class="ng-hide" ng-click="prestamoPersonalCtrl.calcularMontoMensual()">
+														</form>
+													</section>
+												</div>
+											</div>
+										</div>
+									</div>
+								</div>
+							</article>
+						</div>
+					</div>
+					<div ng-class="{'ng-hide':!prestamoPersonalCtrl.menuSeleccionado('tab-2')}">
+						<solicitud-confirmacion content="prestamoPersonalCtrl.content"></solicitud-confirmacion>
+					</div>
+					<div ng-class="{'ng-hide':!prestamoPersonalCtrl.menuSeleccionado('tab-3')}">
+						<constancia-solicitud content="prestamoPersonalCtrl.content"></constancia-solicitud>
+					</div>
+				</div>
+			</section>
+		</div>
+	</section>
+</div>

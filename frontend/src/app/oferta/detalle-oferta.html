@@ -1,0 +1,70 @@
+<div header></div>
+<section class="container-fluid" ng-controller="Oferta as ofertaCtrl" ng-init="ofertaCtrl.inicializar()">
+    <div class="row">
+        <!-- inicio cabecera cuerpo-->
+        <header class="col-xs-12 col-sm-12 col-md-12 col-lg-12 container__section-cabecera-confirma {{ ofertaCtrl.bannerByCountry }}">
+            <div class="container">
+                <div class="row">
+                    <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 titulo__banner-confirma">
+                        <h1>{{ofertaCtrl.ofertaDetalle.TextoOfertaDetalle.oferta}} {{ofertaCtrl.mostrarNombreSocio()}}</h1>
+                    </div>
+                </div>
+            </div>
+        </header>
+        <!-- fin cabecera cuerpo-->
+        <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 fila__imagentarjeta-titulo">
+            <div>
+                <img ng-src="{{ ofertaCtrl.tarjeta.srcImagenTarjeta }}" class="img-responsive" alt="" />
+            </div>
+        </div>
+        <section class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+            <div class="row">
+                <div class="container">
+                    <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 container__section-body-confirma">
+                        <div ng-bind-html="ofertaCtrl.ofertaDetalle.TextoOfertaDetalle.titulo">
+                            {{ofertaCtrl.ofertaDetalle.TextoOfertaDetalle.titulo}}
+                        </div>
+                        <div>
+                            <label class="label_fila2">
+                                {{ofertaCtrl.ofertaDetalle.montoOferta | currency:'S/ ':2}}&nbsp                             
+                            </label>
+                            <div ng-bind-html="ofertaCtrl.ofertaDetalle.TextoOfertaDetalle.descripcion">
+                                {{ofertaCtrl.ofertaDetalle.TextoOfertaDetalle.descripcion}}&nbsp
+                            </div>                            
+                            <label class="label_fila2" ng-if="false">
+                                {{ofertaCtrl.ofertaDetalle.tcea | number:2}}%<br>
+                            </label>
+                            <div ng-bind-html="ofertaCtrl.ofertaDetalle.TextoOfertaDetalle.descripcion2">
+                                {{ofertaCtrl.ofertaDetalle.TextoOfertaDetalle.descripcion2}}&nbsp
+                            </div>                                                        
+                        </div>
+                        <!--<div>
+                            Aprovecha esta oportunidad <strong>sólo por agosto</strong> y disfruta sin preocupaciones
+                        </div>-->
+                    </div>
+                    <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 container__opciones-body-confirma">
+                        <div>
+                            <ul style="width: 150%;">
+                                <li ng-repeat="detalle in ofertaCtrl.ofertaDetalle.TextoOfertaDetalle.detalles">
+                                    <i class="icon1-checked" ></i>
+                                    <span ng-bind-html="(detalle.indexOf('<tcea>') != -1 ? (detalle + ' ' + (ofertaCtrl.ofertaDetalle.tcea | number:2)) + '%' : detalle)"></span>
+                                </li>                                
+                            </ul>
+                        </div>
+                    </div>
+                    <!--<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 container__section-body-confirma">
+                        <div>
+                            <label>Oferta válida hasta el 31/12/2016</label>
+                        </div>
+                        <div>
+                            (Vence en <strong>90 días</strong>)
+                        </div>
+                    </div>-->
+                    <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 container__section-footer-confirma">
+                        <button class="btn-sgte" ng-click="ofertaCtrl.procesarSolicitud(ofertaCtrl.ofertaDetalle.TextoOfertaDetalle.rutaSolicitud)" >{{ofertaCtrl.ofertaDetalle.TextoOfertaDetalle.botonTexto}}</button>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+</section>

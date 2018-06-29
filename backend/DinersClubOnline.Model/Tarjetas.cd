@@ -1,0 +1,165 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1">
+  <Class Name="DinersClubOnline.Model.Usuario">
+    <Position X="0.5" Y="2.5" Width="1.75" />
+    <TypeIdentifier>
+      <HashCode>IAACAAAAAAICAUCAAAAACAAAAAAAAACAAABAAAIAAAA=</HashCode>
+      <FileName>Usuario.cs</FileName>
+    </TypeIdentifier>
+    <ShowAsAssociation>
+      <Property Name="Socio" />
+      <Property Name="OperadorTelefonico" />
+    </ShowAsAssociation>
+  </Class>
+  <Class Name="DinersClubOnline.Model.Socio">
+    <Position X="3" Y="3.5" Width="1.75" />
+    <TypeIdentifier>
+      <HashCode>EAAgAACAAAAAAAQAAAAQwAAAAAAIAAAAAAAACAAAAAA=</HashCode>
+      <FileName>Socio.cs</FileName>
+    </TypeIdentifier>
+    <ShowAsCollectionAssociation>
+      <Property Name="Tarjetas" />
+      <Property Name="Ofertas" />
+    </ShowAsCollectionAssociation>
+  </Class>
+  <Class Name="DinersClubOnline.Model.Tarjeta">
+    <Position X="7" Y="3.75" Width="2" />
+    <TypeIdentifier>
+      <HashCode>AiAGAAQgAAJAAQAASAQAoAAAAACAAAAAAIAWBAAQAEA=</HashCode>
+      <FileName>Tarjeta.cs</FileName>
+    </TypeIdentifier>
+    <ShowAsAssociation>
+      <Property Name="Socio" />
+      <Property Name="Producto" />
+      <Property Name="EstadoDeCuenta" />
+    </ShowAsAssociation>
+    <ShowAsCollectionAssociation>
+      <Property Name="Adicionales" />
+      <Property Name="Movimientos" />
+      <Property Name="EstadosCuentaDescargaPdf" />
+    </ShowAsCollectionAssociation>
+  </Class>
+  <Class Name="DinersClubOnline.Model.OperadorTelefonico">
+    <Position X="1" Y="6.75" Width="1.75" />
+    <TypeIdentifier>
+      <HashCode>AAACAAAAAAAAAAAAAAAAgAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>OperadorTelefonico.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="DinersClubOnline.Model.EstadoDeCuenta">
+    <Position X="10.5" Y="3.5" Width="2" />
+    <TypeIdentifier>
+      <HashCode>AAAAAIQAAAACAAAAQAIAAKAAAAAhAAAAkSAQAAQAUAg=</HashCode>
+      <FileName>EstadoDeCuenta.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="DinersClubOnline.Model.Movimiento">
+    <Position X="6.5" Y="9.75" Width="2" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAIAACAAEAAAAAAEABAACAUAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Movimiento.cs</FileName>
+    </TypeIdentifier>
+    <ShowAsAssociation>
+      <Property Name="Tarjeta" />
+    </ShowAsAssociation>
+  </Class>
+  <Class Name="DinersClubOnline.Model.Producto">
+    <Position X="4" Y="7" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAACAAAAAAAAAAAAAAAAgAAAAAAAAAAAAAAAAACAAAA=</HashCode>
+      <FileName>Producto.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="DinersClubOnline.Model.Auth.LoginResult">
+    <Position X="13" Y="2.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAACAAQAAAAAAAAAAAAAAAAAAAAAAAQAAAQAAAAAAAA=</HashCode>
+      <FileName>Auth\LoginResult.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="DinersClubOnline.Model.Auth.ValidarTarjetaResult">
+    <Position X="15" Y="2.25" Width="1.75" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAQAAAAAgAAAAAAIAAQAAAAACAAAIAA=</HashCode>
+      <FileName>Auth\ValidarTarjetaResult.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="DinersClubOnline.Model.Periodo">
+    <Position X="13.75" Y="6.25" Width="1.5" />
+    <Members>
+      <Field Name="_anho" Hidden="true" />
+      <Field Name="_mes" Hidden="true" />
+    </Members>
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAgABAAAAAAAAAAAAAAAAAIAAQAAAAAA=</HashCode>
+      <FileName>Periodo.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="DinersClubOnline.Model.EstadoCuentaDescargaPdf">
+    <Position X="9" Y="7.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAQAAAAAAAAAAAAABAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>EstadoCuentaLinksPdf.cs</FileName>
+    </TypeIdentifier>
+    <ShowAsAssociation>
+      <Property Name="Periodo" />
+    </ShowAsAssociation>
+  </Class>
+  <Class Name="DinersClubOnline.Model.Oferta">
+    <Position X="5" Y="1" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAACAAAAAIAAAAAAAAAAgAAAAECAAAAAAAgJAA=</HashCode>
+      <FileName>Oferta.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Interface Name="DinersClubOnline.Model.IUsuarioRepository">
+    <Position X="0.5" Y="0.5" Width="1.75" />
+    <TypeIdentifier>
+      <HashCode>AAAQAAAAAAAACAAAAAAAAAAAAAAAAAABAAAAAAAAAAA=</HashCode>
+      <FileName>IUsuarioRepository.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="DinersClubOnline.Model.IOperadorTelefonicoRepository">
+    <Position X="0.5" Y="8.25" Width="2.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>IOperadorTelefonicoRepository.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="DinersClubOnline.Model.IMovimientoRepository">
+    <Position X="8.75" Y="9.75" Width="2" />
+    <TypeIdentifier>
+      <HashCode>AAABAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAgAAA=</HashCode>
+      <FileName>IMovimientoRepository.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="DinersClubOnline.Model.ITarjetaRepository">
+    <Position X="7" Y="1.5" Width="2" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAABAAAAAAAAAAAAAQAAAAACAEAAAAAAAAAA=</HashCode>
+      <FileName>ITarjetaRepository.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="DinersClubOnline.Model.Auth.ILoginService">
+    <Position X="14.75" Y="0.75" Width="1.75" />
+    <TypeIdentifier>
+      <HashCode>AgAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAEAAAAAAAAAA=</HashCode>
+      <FileName>Auth\ILoginService.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="DinersClubOnline.Model.IEstadoDeCuentaRepository">
+    <Position X="10.25" Y="1.5" Width="2.25" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAACAAAAAAAAAAAAAAAAAAQAAAAAAAAAAAAAA=</HashCode>
+      <FileName>IEstadoDeCuentaRepository.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="DinersClubOnline.Model.IOfertaRepository" Collapsed="true">
+    <Position X="6.75" Y="0.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>QAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>IOfertaRepository.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Font Name="Segoe UI" Size="9" />
+</ClassDiagram>

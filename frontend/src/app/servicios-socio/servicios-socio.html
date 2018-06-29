@@ -1,0 +1,62 @@
+<div header></div>
+<section class="container-fluid" ng-controller="ServiciosSocio as serviciosSocioCtrl" ng-init="serviciosSocioCtrl.inicializar()">
+    <div class="row">
+        <!-- inicio cabecera cuerpo-->
+        <header class="col-xs-12 col-md-12 {{ serviciosSocioCtrl.bannerByCountry }}">
+            <div class="container">
+                <div class="row">
+                    <div class="col-xs-12 col-md-12 titulo__banner-perfil">
+                        <h1>Servicios al Socio</h1>
+                    </div>
+                </div>
+            </div>
+        </header>
+        <!-- fin cabecera cuerpo-->
+        <section class="col-xs-12 col-md-12 ">
+            <div class="container container__section-principal-perfil">
+                <div class="row">
+                    <article class="col-xs-12 col-md-12 container__section-body-movimiento">
+                        <div class="text-left">
+                            <!--Inicio Tabs-->
+                            <!-- CONTAINER TABS QUE CONTIENEN TABS QUE CONTIENE UNA TABLA CON ACCORDION -->
+                            <div class="container_tabs_header">
+                                <ul class="tabs">
+                                    <li class="tab not_width" ng-class="{indicator:serviciosSocioCtrl.menuSeleccionado('tab-1')}" data-tab="tab-1">
+                                        <a ng-click="serviciosSocioCtrl.activarMenu('tab-1')" class="bloqueoTarjeta">Bloqueo de Tarjetas</a>
+                                    </li>
+                                    <li class="tab not_width" ng-class="{indicator:serviciosSocioCtrl.menuSeleccionado('tab-2')}" data-tab="tab-2">
+                                        <a ng-click="serviciosSocioCtrl.activarMenu('tab-2')" class="alertas">Configuración de Alertas</a>
+                                    </li>
+                                    <li class="tab not_width" ng-class="{indicator:serviciosSocioCtrl.menuSeleccionado('tab-3')}" data-tab="tab-3">
+                                        <a ng-click="serviciosSocioCtrl.activarMenu('tab-3')" class="cambioclave">Cambio de Clave</a>
+                                    </li>
+                                    <li class="tab not_width" ng-class="{indicator:serviciosSocioCtrl.menuSeleccionado('tab-4')}" data-tab="tab-4">
+                                        <a ng-click="serviciosSocioCtrl.activarMenu('tab-4')" class="reclamos">Ingreso de Reclamos</a>
+                                    </li>
+                                </ul>
+                            </div>
+
+                            <!-- MIS DATOS - TAB 1 -->
+                            <div id="tab-1" class="container_detalle_tabs tab-content" ng-class="{current:serviciosSocioCtrl.menuSeleccionado('tab-1')}" ng-if="serviciosSocioCtrl.menuSeleccionado('tab-1')">
+                                <bloquear-tarjeta></bloquear-tarjeta>
+                            </div>
+                            <div id="tab-2" class="container_detalle_tabs tab-content" ng-class="{current:serviciosSocioCtrl.menuSeleccionado('tab-2')}" ng-if="serviciosSocioCtrl.menuSeleccionado('tab-2')">
+                                <alerta-notificacion-gestor></alerta-notificacion-gestor>
+                            </div>
+                            <div id="tab-3" class="container_detalle_tabs tab-content" ng-class="{current:serviciosSocioCtrl.menuSeleccionado('tab-3')}" ng-if="serviciosSocioCtrl.menuSeleccionado('tab-3')">
+                                <cambio-clave-digital></cambio-clave-digital>
+                            </div>
+
+                            <div id="tab-4" class="container_detalle_tabs tab-content" ng-class="{current:serviciosSocioCtrl.menuSeleccionado('tab-4')}" ng-if="serviciosSocioCtrl.menuSeleccionado('tab-4')">
+                                <reclamo></reclamo>
+                            </div>
+                            <!-- FIN DE CONTAINER TABS QUE CONTIENEN TABS QUE CONTIENE UNA TABLA CON ACCORDION -->
+                            <!--Fin Tabs-->
+                        </div>
+                    </article>
+
+                </div>
+            </div>
+        </section>
+    </div>
+</section>

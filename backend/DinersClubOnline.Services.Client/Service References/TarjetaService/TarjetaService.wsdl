@@ -1,0 +1,342 @@
+<?xml version="1.0" encoding="utf-8"?>
+<definitions xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:tns="http://ws.online.diners.pe/" name="TarjetaService" targetNamespace="http://ws.online.diners.pe/" xmlns="http://schemas.xmlsoap.org/wsdl/">
+  <types>
+    <xs:schema targetNamespace="http://ws.online.diners.pe/" version="1.0" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+      <xs:element name="cambiarAlias" type="tns:cambiarAlias" />
+      <xs:element name="cambiarAliasResponse" type="tns:cambiarAliasResponse" />
+      <xs:element name="listarTarjeta" type="tns:listarTarjeta" />
+      <xs:element name="listarTarjetaResponse" type="tns:listarTarjetaResponse" />
+      <xs:element name="obtenerDetalleTarjeta" type="tns:obtenerDetalleTarjeta" />
+      <xs:element name="obtenerDetalleTarjetaResponse" type="tns:obtenerDetalleTarjetaResponse" />
+      <xs:element name="obtenerListarUltimosMovimientos" type="tns:obtenerListarUltimosMovimientos" />
+      <xs:element name="obtenerListarUltimosMovimientosResponse" type="tns:obtenerListarUltimosMovimientosResponse" />
+      <xs:element name="obtenerResumenEstadoDeCuenta" type="tns:obtenerResumenEstadoDeCuenta" />
+      <xs:element name="obtenerResumenEstadoDeCuentaResponse" type="tns:obtenerResumenEstadoDeCuentaResponse" />
+      <xs:element name="obtenerUrlEstadoDeCuenta" type="tns:obtenerUrlEstadoDeCuenta" />
+      <xs:element name="obtenerUrlEstadoDeCuentaResponse" type="tns:obtenerUrlEstadoDeCuentaResponse" />
+      <xs:complexType name="listarTarjeta">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="arg0" type="tns:requestListarTarjeta" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="requestListarTarjeta">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="idUsuario" type="xs:string" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="listarTarjetaResponse">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="return" type="tns:responseListarTarjeta" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="responseListarTarjeta">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="codigoMensaje" type="xs:string" />
+          <xs:element minOccurs="0" name="mensaje" type="xs:string" />
+          <xs:element minOccurs="0" maxOccurs="unbounded" name="tarjetas" nillable="true" type="tns:responseListarTarjetaResultSet" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="responseListarTarjetaResultSet">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="activa" type="xs:string" />
+          <xs:element minOccurs="0" name="alias" type="xs:string" />
+          <xs:element minOccurs="0" name="apellidoMaternoTarjetaHabiente" type="xs:string" />
+          <xs:element minOccurs="0" name="apellidoPaternoTarjetaHabiente" type="xs:string" />
+          <xs:element minOccurs="0" name="desdeHabilitadoExterior" type="xs:string" />
+          <xs:element minOccurs="0" name="habilitadoComprasInternet" type="xs:string" />
+          <xs:element minOccurs="0" name="habilitadoExterior" type="xs:string" />
+          <xs:element minOccurs="0" name="hastaHabilitadoExterior" type="xs:string" />
+          <xs:element minOccurs="0" name="idTarjeta" type="xs:string" />
+          <xs:element minOccurs="0" name="idTarjetaTitular" type="xs:string" />
+          <xs:element minOccurs="0" name="nombreProducto" type="xs:string" />
+          <xs:element minOccurs="0" name="nombreTarjetaHabiente" type="xs:string" />
+          <xs:element minOccurs="0" name="segundoNombreTarjetaHabiente" type="xs:string" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="cambiarAlias">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="arg0" type="tns:requestCambiarAlias" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="requestCambiarAlias">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="alias" type="xs:string" />
+          <xs:element minOccurs="0" name="idTarjeta" type="xs:string" />
+          <xs:element minOccurs="0" name="idUsuario" type="xs:string" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="cambiarAliasResponse">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="return" type="tns:responseCambiarAlias" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="responseCambiarAlias">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="codigoMensaje" type="xs:string" />
+          <xs:element minOccurs="0" name="mensaje" type="xs:string" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="obtenerResumenEstadoDeCuenta">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="arg0" type="tns:requestObtenerResumenEstadoDeCuenta" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="requestObtenerResumenEstadoDeCuenta">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="idTarjeta" type="xs:string" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="obtenerResumenEstadoDeCuentaResponse">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="return" type="tns:responseObtenerResumenEstadoDeCuenta" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="responseObtenerResumenEstadoDeCuenta">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="abonosDolares" type="xs:string" />
+          <xs:element minOccurs="0" name="abonosSoles" type="xs:string" />
+          <xs:element minOccurs="0" name="codigoMensaje" type="xs:string" />
+          <xs:element minOccurs="0" name="comisionesInteresesPenalidadesGastosDolares" type="xs:string" />
+          <xs:element minOccurs="0" name="comisionesInteresesPenalidadesGastosSoles" type="xs:string" />
+          <xs:element minOccurs="0" name="consumosDolares" type="xs:string" />
+          <xs:element minOccurs="0" name="consumosSoles" type="xs:string" />
+          <xs:element minOccurs="0" name="deudaAnteriorDolares" type="xs:string" />
+          <xs:element minOccurs="0" name="deudaAnteriorSoles" type="xs:string" />
+          <xs:element minOccurs="0" name="deudaTotalDolares" type="xs:string" />
+          <xs:element minOccurs="0" name="deudaTotalSoles" type="xs:string" />
+          <xs:element minOccurs="0" name="estaVencido" type="xs:string" />
+          <xs:element minOccurs="0" name="fechaFinPeriodo" type="xs:string" />
+          <xs:element minOccurs="0" name="fechaInicioPeriodo" type="xs:string" />
+          <xs:element minOccurs="0" name="fechaVencimiento" type="xs:string" />
+          <xs:element minOccurs="0" name="mensaje" type="xs:string" />
+          <xs:element minOccurs="0" name="millasDisponibles" type="xs:string" />
+          <xs:element minOccurs="0" name="millasGanadas" type="xs:string" />
+          <xs:element minOccurs="0" name="millasSaldoAnterior" type="xs:string" />
+          <xs:element minOccurs="0" name="millasVencidas" type="xs:string" />
+          <xs:element minOccurs="0" name="montoAPagarMinimoDolares" type="xs:string" />
+          <xs:element minOccurs="0" name="montoAPagarMinimoSoles" type="xs:string" />
+          <xs:element minOccurs="0" name="montoAPagarTotalDolares" type="xs:string" />
+          <xs:element minOccurs="0" name="montoAPagarTotalSoles" type="xs:string" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="obtenerListarUltimosMovimientos">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="arg0" type="tns:requestListarUltimosMovimientos" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="requestListarUltimosMovimientos">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="idTarjeta" type="xs:string" />
+          <xs:element minOccurs="0" name="numeroMovimientos" type="xs:string" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="obtenerListarUltimosMovimientosResponse">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="return" type="tns:responseListarUltimosMovimientos" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="responseListarUltimosMovimientos">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="codigoMensaje" type="xs:string" />
+          <xs:element minOccurs="0" name="mensaje" type="xs:string" />
+          <xs:element minOccurs="0" maxOccurs="unbounded" name="movimientos" nillable="true" type="tns:responseListarUltimosMovimientosResultSet" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="responseListarUltimosMovimientosResultSet">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="descripcion" type="xs:string" />
+          <xs:element minOccurs="0" name="fecha" type="xs:string" />
+          <xs:element minOccurs="0" name="importeDolares" type="xs:string" />
+          <xs:element minOccurs="0" name="importeSoles" type="xs:string" />
+          <xs:element minOccurs="0" name="lugar" type="xs:string" />
+          <xs:element minOccurs="0" name="pendienteProcesamiento" type="xs:string" />
+          <xs:element minOccurs="0" name="procesado" type="xs:string" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="obtenerUrlEstadoDeCuenta">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="arg0" type="tns:requestUrlEstadoDeCuenta" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="requestUrlEstadoDeCuenta">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="idTarjeta" type="xs:string" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="obtenerUrlEstadoDeCuentaResponse">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="return" type="tns:responseUrlEstadoDeCuenta" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="responseUrlEstadoDeCuenta">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="codigoMensaje" type="xs:string" />
+          <xs:element minOccurs="0" name="mensaje" type="xs:string" />
+          <xs:element minOccurs="0" name="rutaPdf" type="xs:string" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="obtenerDetalleTarjeta">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="arg0" type="tns:requestObtenerDetalleTarjeta" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="requestObtenerDetalleTarjeta">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="idTarjeta" type="xs:string" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="obtenerDetalleTarjetaResponse">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="return" type="tns:responseObtenerDetalleTarjeta" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="responseObtenerDetalleTarjeta">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="alias" type="xs:string" />
+          <xs:element minOccurs="0" name="apellidoMaternoSocio" type="xs:string" />
+          <xs:element minOccurs="0" name="apellidoPaternoSocio" type="xs:string" />
+          <xs:element minOccurs="0" name="codigoMensaje" type="xs:string" />
+          <xs:element minOccurs="0" name="fechaVencimiento" type="xs:string" />
+          <xs:element minOccurs="0" name="lineaDisponibleDolares" type="xs:string" />
+          <xs:element minOccurs="0" name="lineaDisponibleSoles" type="xs:string" />
+          <xs:element minOccurs="0" name="lineaTotalDolares" type="xs:string" />
+          <xs:element minOccurs="0" name="lineaTotalSoles" type="xs:string" />
+          <xs:element minOccurs="0" name="mensaje" type="xs:string" />
+          <xs:element minOccurs="0" name="millas" type="xs:string" />
+          <xs:element minOccurs="0" name="minimoDolares" type="xs:string" />
+          <xs:element minOccurs="0" name="minimoSoles" type="xs:string" />
+          <xs:element minOccurs="0" name="moneda" type="xs:string" />
+          <xs:element minOccurs="0" name="montoTotalDolares" type="xs:string" />
+          <xs:element minOccurs="0" name="montoTotalSoles" type="xs:string" />
+          <xs:element minOccurs="0" name="nombreProducto" type="xs:string" />
+          <xs:element minOccurs="0" name="nombreSocio" type="xs:string" />
+          <xs:element minOccurs="0" name="segundoNombreSocio" type="xs:string" />
+        </xs:sequence>
+      </xs:complexType>
+    </xs:schema>
+  </types>
+  <message name="Tarjeta_obtenerDetalleTarjetaResponse">
+    <part name="obtenerDetalleTarjetaResponse" element="tns:obtenerDetalleTarjetaResponse" />
+  </message>
+  <message name="Tarjeta_obtenerUrlEstadoDeCuentaResponse">
+    <part name="obtenerUrlEstadoDeCuentaResponse" element="tns:obtenerUrlEstadoDeCuentaResponse" />
+  </message>
+  <message name="Tarjeta_obtenerDetalleTarjeta">
+    <part name="obtenerDetalleTarjeta" element="tns:obtenerDetalleTarjeta" />
+  </message>
+  <message name="Tarjeta_cambiarAliasResponse">
+    <part name="cambiarAliasResponse" element="tns:cambiarAliasResponse" />
+  </message>
+  <message name="Tarjeta_obtenerResumenEstadoDeCuenta">
+    <part name="obtenerResumenEstadoDeCuenta" element="tns:obtenerResumenEstadoDeCuenta" />
+  </message>
+  <message name="Tarjeta_obtenerResumenEstadoDeCuentaResponse">
+    <part name="obtenerResumenEstadoDeCuentaResponse" element="tns:obtenerResumenEstadoDeCuentaResponse" />
+  </message>
+  <message name="Tarjeta_cambiarAlias">
+    <part name="cambiarAlias" element="tns:cambiarAlias" />
+  </message>
+  <message name="Tarjeta_obtenerListarUltimosMovimientosResponse">
+    <part name="obtenerListarUltimosMovimientosResponse" element="tns:obtenerListarUltimosMovimientosResponse" />
+  </message>
+  <message name="Tarjeta_listarTarjeta">
+    <part name="listarTarjeta" element="tns:listarTarjeta" />
+  </message>
+  <message name="Tarjeta_obtenerUrlEstadoDeCuenta">
+    <part name="obtenerUrlEstadoDeCuenta" element="tns:obtenerUrlEstadoDeCuenta" />
+  </message>
+  <message name="Tarjeta_listarTarjetaResponse">
+    <part name="listarTarjetaResponse" element="tns:listarTarjetaResponse" />
+  </message>
+  <message name="Tarjeta_obtenerListarUltimosMovimientos">
+    <part name="obtenerListarUltimosMovimientos" element="tns:obtenerListarUltimosMovimientos" />
+  </message>
+  <portType name="Tarjeta">
+    <operation name="cambiarAlias" parameterOrder="cambiarAlias">
+      <input message="tns:Tarjeta_cambiarAlias" />
+      <output message="tns:Tarjeta_cambiarAliasResponse" />
+    </operation>
+    <operation name="listarTarjeta" parameterOrder="listarTarjeta">
+      <input message="tns:Tarjeta_listarTarjeta" />
+      <output message="tns:Tarjeta_listarTarjetaResponse" />
+    </operation>
+    <operation name="obtenerDetalleTarjeta" parameterOrder="obtenerDetalleTarjeta">
+      <input message="tns:Tarjeta_obtenerDetalleTarjeta" />
+      <output message="tns:Tarjeta_obtenerDetalleTarjetaResponse" />
+    </operation>
+    <operation name="obtenerListarUltimosMovimientos" parameterOrder="obtenerListarUltimosMovimientos">
+      <input message="tns:Tarjeta_obtenerListarUltimosMovimientos" />
+      <output message="tns:Tarjeta_obtenerListarUltimosMovimientosResponse" />
+    </operation>
+    <operation name="obtenerResumenEstadoDeCuenta" parameterOrder="obtenerResumenEstadoDeCuenta">
+      <input message="tns:Tarjeta_obtenerResumenEstadoDeCuenta" />
+      <output message="tns:Tarjeta_obtenerResumenEstadoDeCuentaResponse" />
+    </operation>
+    <operation name="obtenerUrlEstadoDeCuenta" parameterOrder="obtenerUrlEstadoDeCuenta">
+      <input message="tns:Tarjeta_obtenerUrlEstadoDeCuenta" />
+      <output message="tns:Tarjeta_obtenerUrlEstadoDeCuentaResponse" />
+    </operation>
+  </portType>
+  <binding name="TarjetaBinding" type="tns:Tarjeta">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <operation name="cambiarAlias">
+      <soap:operation soapAction="" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+    </operation>
+    <operation name="listarTarjeta">
+      <soap:operation soapAction="" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+    </operation>
+    <operation name="obtenerDetalleTarjeta">
+      <soap:operation soapAction="" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+    </operation>
+    <operation name="obtenerListarUltimosMovimientos">
+      <soap:operation soapAction="" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+    </operation>
+    <operation name="obtenerResumenEstadoDeCuenta">
+      <soap:operation soapAction="" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+    </operation>
+    <operation name="obtenerUrlEstadoDeCuenta">
+      <soap:operation soapAction="" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+    </operation>
+  </binding>
+  <service name="TarjetaService">
+    <port name="TarjetaPort" binding="tns:TarjetaBinding">
+      <soap:address location="http://200.62.220.246:8080/DinersClubOnlineWS/Tarjeta" />
+    </port>
+  </service>
+</definitions>

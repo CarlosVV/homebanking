@@ -1,0 +1,124 @@
+<div class="container_detalle_tabs-overflow">
+	<div class="container-fluid">
+		<div class="row">
+			<div class="col-xs-12 col-md-12 row titulo_tabpage-diners">
+				<h2>Ingreso de Reclamos y atención al Cliente</h2>
+			</div>
+		</div>
+		<div class="row">
+			<div class="col-sm-6 row subtitulo_tabpage-diners">
+				<p><b>Paso 1:</b> Tipo de Solicitud</p>
+			</div>
+
+			<!-- PASOS -->
+			<div class="col-sm-6 pasos_tabpage-diners">
+				<div class="row container_step">
+					<div class="container_pasos">
+						<span class="active">1</span>
+						<span>2</span>
+						<span class="borrar-margin-right">3</span>
+					</div>
+				</div>
+			</div>
+
+			<!-- TARJETA TITULAR -->
+			<section class="mis-datos__section">
+				<p class="mis-datos__section-title">Tarjeta titular</p>
+				<table class="mis-datos__section-table">
+					<tr>
+						<td>Tarjeta</td>
+						<td>
+							<div class="input-field">
+								<select ng-disabled="ReclamoIngresarCtrl.tarjetas.length === 1" ng-options="tarjeta as  tarjeta.numeroTarjeta for tarjeta in ReclamoIngresarCtrl.tarjetas track by tarjeta.idTarjeta"
+									ng-model="ReclamoIngresarCtrl.tarjetaActual"></select>
+							</div>
+						</td>
+					</tr>
+				</table>
+			</section>
+
+			<!-- Monto y Cuota -->
+			<form class="formReclamos" id="datosReclamos" name="datosReclamos" method="POST" action="javascript:;">
+				<section class="mis-datos__section">
+					<p class="mis-datos__section-title">Tipo de solicitud</p>
+					<table class="mis-datos__section-table">
+
+						<tr>
+							<td>¿Cuál es el motivo?<span>*</span></td>
+							<td>
+								<div ng-repeat="tipo in ReclamoIngresarCtrl.motivos">
+									<input class="with-gap" name="tipo" type="radio" id="{{tipo.id}}" ng-model="ReclamoIngresarCtrl.motivo" ng-value="tipo" />
+									<label class="radio-mat" for="{{tipo.id}}">{{tipo.value}}</label>
+								</div>
+							</td>
+						</tr>
+					</table>
+				</section>
+				<section class="mis-datos__section">
+					<p class="mis-datos__section-title">Medio de respuesta</p>
+					<table class="mis-datos__section-table">
+						<tr>
+							<td>¿Cómo deseas recibir tu respuesta?<span>*</span></td>
+							<td>
+								<div ng-repeat="medio in ReclamoIngresarCtrl.mediosRespuesta">
+									<input class="with-gap" name="medio" type="radio" id="{{medio.id}}" ng-model="ReclamoIngresarCtrl.medioRespuesta" ng-value="medio"
+										ng-change="ReclamoIngresarCtrl.limpiarDireccion()" />
+									<label class="radio-mat" for="{{medio.id}}">{{medio.value}}</label>
+								</div>
+
+								<div class="input-absolute" ng-if="ReclamoIngresarCtrl.medioRespuesta.type === 'email'">
+									<label class="radio-mat">Será enviado a </label>
+									<input class="mis-datos__section-input" placeholder="{{ReclamoIngresarCtrl.medioRespuesta.placeholder}}" type="email" name="direccion"
+										required ng-model="ReclamoIngresarCtrl.direccionEnvio">
+								</div>
+								<div class="input-absolute" ng-if="ReclamoIngresarCtrl.medioRespuesta.type === 'text'">
+									<label class="radio-mat">Será enviado a </label>
+									<input class="mis-datos__section-input" placeholder="{{ReclamoIngresarCtrl.medioRespuesta.placeholder}}" type="text" name="direccion"
+										required ng-model="ReclamoIngresarCtrl.direccionEnvio">
+								</div>
+								<span ng-if="ReclamoIngresarCtrl.medioRespuesta.type === 'text'" ng-show="!datosReclamos.direccion.$valid">Debe ingresar dirección.</span>
+								<span ng-if="ReclamoIngresarCtrl.medioRespuesta.type === 'email'" ng-show="!datosReclamos.direccion.$valid">Debe ingresar correo valido.</span>
+								<td></td>
+							</td>
+						</tr>
+					</table>
+				</section>
+				<section class="mis-datos__section">
+					<p class="mis-datos__section-title">Comentarios</p>
+					<table class="mis-datos__section-table">
+						<tr>
+							<td>Descripción de la solicitud<span>*</span></td>
+							<td>
+								<textarea rows="4" cols="38" name="descripcion" ng-trim="false" required ng-model="ReclamoIngresarCtrl.descripcion" maxlength="{{ReclamoIngresarCtrl.descripcionSolicitudMaxLength}}"></textarea><br>
+								<label class="datos-obligatorios">Te quedan <strong>{{ReclamoIngresarCtrl.descripcionSolicitudMaxLength - ReclamoIngresarCtrl.descripcionSolicitud.length}}</strong> de <strong>{{ReclamoIngresarCtrl.descripcionSolicitudMaxLength}}</strong> caracteres </label>
+								<br>
+								<span ng-show="!datosReclamos.descripcion.$valid" class="warning">Debe ingresar descripción.</span>
+							</td>
+						</tr>
+						<tr>
+							<td>Solución esperada<span>*</span></td>
+							<td>
+								<textarea rows="4" cols="38" name="solucion" ng-trim="false" required ng-model="ReclamoIngresarCtrl.solucion" maxlength="{{ReclamoIngresarCtrl.solocionEsperadaMaxLength}}"></textarea><br>
+								<label class="datos-obligatorios">Te quedan <strong>{{ReclamoIngresarCtrl.solocionEsperadaMaxLength - ReclamoIngresarCtrl.solucionEsperada.length}}</strong> de <strong>{{ReclamoIngresarCtrl.solocionEsperadaMaxLength}}</strong> caracteres </label>
+								<br>
+								<span ng-show="!datosReclamos.solucion.$valid" class="warning">Debe ingresar solución esperada.</span>
+							</td>
+						</tr>
+					</table>
+				</section>
+
+				<table class="mis-datos__section-table">
+					<tr>
+						<td></td>
+						<td>
+							<button type="button" class="btn-azul continuar" ng-disabled="!datosReclamos.$valid" ng-click="ReclamoIngresarCtrl.enviarReclamo()">CONTINUAR</button>
+							<p class="pasos"><strong>Paso 1</strong> de 3</p>
+							<p class="datos-obligatorios">
+								<!-- <i class="icon1-tick"></i> --><span>(*)</span> Datos obligatorios. Serán tratados de forma confidencial y segura</p>
+						</td>
+					</tr>
+				</table>
+			</form>
+		</div>
+	</div>
+</div>

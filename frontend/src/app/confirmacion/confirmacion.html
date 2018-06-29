@@ -1,0 +1,74 @@
+<!-- MIS DATOS - TAB 1 -->
+<div class="container_detalle_tabs-overflow">
+    <div class="container-fluid" ng-init="ConfirmacionCtrl.init()">
+        <div class="row">
+            <div class="col-xs-12 col-md-12 row titulo_tabpage-diners">
+                <h2>{{ConfirmacionCtrl.content.titulo}}</h2>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-sm-6 row subtitulo_tabpage-diners">
+                <p><b>Paso 2:</b> Verificación</p>
+            </div>
+
+            <!-- PASOS -->
+            <div class="col-sm-6 pasos_tabpage-diners">
+                <div class="row container_step">
+                    <div class="container_pasos">
+                        <span class="span-chk"><i class="icon1-tick"></i></span>
+                        <span class="active">2</span>
+                        <span class="borrar-margin-right">3</span>
+                    </div>
+                </div>
+            </div>
+
+
+
+            <!-- Datos de contacto -->
+            <section class="mis-datos__section">
+                <p class="mis-datos__section-title">{{ConfirmacionCtrl.content.subTituloInformacion}}</p>
+
+                <table class="mis-datos__section-table">
+                    <tr ng-repeat="value in ConfirmacionCtrl.content.valores">
+                        <td ng-bind-html="ConfirmacionCtrl.trustedValue(value.key)">{{value.key}}</td>
+                        <td ng-bind-html="ConfirmacionCtrl.trustedValue(value.value)">{{value.value}}</td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <a class="volver" href="javascript:;" ng-click="ConfirmacionCtrl.volverClick()"><i class="icon1-flecha-left"></i> Volver</a>
+                        </td>
+                        <td>
+                            <button class="btn-azul btn-azul-terminos" type="button" data-toggle="modal" data-target="#{{ConfirmacionCtrl.content.idModal}}" ng-show="!ConfirmacionCtrl.hasAccepted">VER TÉRMINOS Y CONDICIONES</button>
+                            <button type="button" class="btn-celeste" ng-click="ConfirmacionCtrl.sendRequest()" ng-show="ConfirmacionCtrl.hasAccepted" >{{ConfirmacionCtrl.content.botonTexto}}</button>
+                            <p class="pasos"><strong>Paso 2</strong> de 3</p>
+                            <!-- <p class="datos-obligatorios"><i class="icon1-tick"></i> <span>(*)</span> Datos obligatorios. Serán tratados de  forma confidencial y segura</p>-->
+                        </td>
+                    </tr>
+
+                </table>
+            </section>
+
+        </div>
+    </div>
+</div>
+
+<!--terminos y condiciones-->
+<!-- Modal id="myModal"-->
+<div class="modal fade" id="{{ConfirmacionCtrl.content.idModal}}" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                <h4 class="modal-title" id="myModalLabel">Términos y condiciones</h4>
+            </div>
+            <div class="modal-body">
+                <div class="modal-contenedor-txt" ng-bind-html="ConfirmacionCtrl.terminosCondiciones">
+                </div>
+
+            </div>
+            <div class="modal-footer">
+                <button class="btn-azul btn-azul-modal" type="button" data-toggle="modal" data-target="#{{ConfirmacionCtrl.content.idModal}}" ng-click="ConfirmacionCtrl.acceptAgreements()">ESTOY DE ACUERDO</button>
+            </div>
+        </div>
+    </div>
+</div>

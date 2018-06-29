@@ -1,0 +1,11 @@
+<div ng-controller="ReclamoIngresar as ReclamoIngresarCtrl">
+    <div ng-class="{'ng-hide':!ReclamoIngresarCtrl.menuSeleccionado('tab-1')}">
+        <reclamo-ingresar></reclamo-ingresar>
+    </div>
+    <div ng-class="{'ng-hide':!ReclamoIngresarCtrl.menuSeleccionado('tab-2')}">
+        <solicitud-confirmacion content="ReclamoIngresarCtrl.content"></solicitud-confirmacion>
+    </div>
+    <div ng-class="{'ng-hide':!ReclamoIngresarCtrl.menuSeleccionado('tab-3')}">
+        <constancia-solicitud content="ReclamoIngresarCtrl.content"></constancia-solicitud>
+    </div>
+</div>

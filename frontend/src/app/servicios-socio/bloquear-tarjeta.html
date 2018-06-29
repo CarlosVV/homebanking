@@ -1,0 +1,11 @@
+<div ng-controller="tarjeta as tarjetaCtrl">    
+    <div id="tab-1" class="bloquear-paso-1" ng-class="{'ng-hide':!tarjetaCtrl.menuSeleccionado('tab-1')}">
+        <bloquear-tarjeta-seleccion></bloquear-tarjeta-seleccion>
+    </div>
+    <div id="tab-2" class="bloquear-paso-2" ng-class="{'ng-hide':!tarjetaCtrl.menuSeleccionado('tab-2')}">
+        <bloquear-tarjeta-confirmacion content="tarjetaCtrl.content"></bloquear-tarjeta-confirmacion>
+    </div>
+    <div id="tab-3" class="bloquear-paso-3" ng-class="{'ng-hide':!tarjetaCtrl.menuSeleccionado('tab-3')}">
+         <constancia-solicitud content="tarjetaCtrl.content"></constancia-solicitud>
+    </div>
+</div>

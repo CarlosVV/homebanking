@@ -1,0 +1,51 @@
+<div header></div>
+<section class="container-fluid" ng-controller="formasPago as formasPagoCtrl" ng-init="formasPagoCtrl.inicializar()">
+    <div class="row">
+        <!-- inicio cabecera cuerpo-->
+        <header class="col-xs-12 col-sm-12 col-md-12 col-lg-12 {{ formasPagoCtrl.bannerByCountry }}">
+            <div class="container">
+                <div class="row">
+                    <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 titulo__banner-perfil">
+                        <h1>Formas de pago</h1>
+                    </div>
+                </div>
+            </div>
+        </header>
+        <!-- fin cabecera cuerpo-->
+        <!-- Inicio cuerpo-->
+        <section class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+            <div class="container container__section-principal">
+                <div class="row">
+                    <article class="col-xs-12 col-sm-9 col-md-9">
+                        <div class="container-fluid">
+                            <div class="row" ng-repeat="banco in formasPagoCtrl.listaBancosAfiliados">
+                                <div class="col-xs-12 col-sm-6">
+                                    <h5><strong>&bull; {{banco.nombreBanco}}</strong></h5>
+                                    <span ng-if="banco.pagoVentanilla">Ventanilla</span>
+                                    <span ng-if="banco.pagoInternet"><a href="javascript:;" ng-href="{{banco.urlArchivo}}" target="_blank">Internet</a></span>   
+                                    <span ng-if="banco.pagoCargoEnCuenta">Cargo en cuenta</span>
+                                    <br>             
+                                </div>
+                            </div>
+                            <div class="row">
+                                <a ng-href="#/soluciones-financieras?tab=tab-3">
+                                <div class="container__movimiento-avisos-debito">
+                                    <span><i class="icon1-card"></i></span>
+                                    <p>
+                                        <b>AFILIATE AQUÍ AL DEBITO AUTOMATICO</b><br />
+                                        <small>Y PODRÁS PROGAMAR EL PAGO DE TU TARJETA</small>
+                                    </p>
+                                </div>
+                                </a>
+                            </div>
+                        </div>
+                    </article>
+                    <p><br></p>
+                    <article class="col-xs-12 col-sm-3 col-md-3 col-lg-3">
+                        <menu-lateral></menu-lateral>
+                    </article>
+                </div>
+            </div>
+        </section>
+    </div>
+</section>

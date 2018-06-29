@@ -1,0 +1,42 @@
+<div class="cambiar-imagen-perfil" ng-controller="CambiarImagen as cambiarImagenCtrl" ng-init="cambiarImagenCtrl.inicializar()">
+    <div class="resp-tab-content hor_1 resp-tab-content-active" aria-labelledby="hor_1_tab_item-1" style="display:block">
+        <div id="tab-2" class="container_detalle_tabs">
+            <div class="container-fluid container-seleccionImganes">
+                <div class="row">
+                    <div class="col-xs-12">
+                        <h2 class="container-seleccionImganes--titulo">Imagen de Perfil</h2>
+                    </div>
+                    <div class="col-xs-12 subtitulo_tabpage-diners">
+                        <p>Elegir imagen de perfil</p>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-3" ng-if="!cambiarImagenCtrl.mostrarImagenFb">
+                        <img ng-src="{{cambiarImagenCtrl.imagenesSeguridad[cambiarImagenCtrl.idImagenSeguridadActual - 1].src}}" class="imgPerfeil-Select"/>
+                    </div>
+                    <div class="col-md-3" ng-if="cambiarImagenCtrl.mostrarImagenFb">
+                        <img ng-src="{{cambiarImagenCtrl.urlImagenFb}}" class="imgPerfeil-Select"/>
+                    </div>
+                    <div class="col-md-5">
+                        <ul class="listFotoperfil">
+                            <li id="{{'li' + $index}}" ng-repeat="item in cambiarImagenCtrl.imagenesSeguridad" >
+                                <img ng-src="{{item.src}}" ng-click="cambiarImagenCtrl.seleccionarImagen(item.id)" ng-class="{ 'activeImg': item.id == cambiarImagenCtrl.idImagenSeleccionada }"/>
+                            </li>
+                        </ul>
+                        <ul class="facebookContainer">
+                            <li>
+                                <img src="content/images/perfilFacebook.png" alt="">
+                            </li>
+                            <li>
+                                <a href="javascript:;" class="facebookBton">CONECTAR FACEBOOK</a>
+                            </li>
+                            <li>
+                                <button type="submit" class="btn-azul guardarPerfil" ng-disabled="!cambiarImagenCtrl.habilitado" ng-click="cambiarImagenCtrl.grabarCambioImagen()">GUARDAR</button>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

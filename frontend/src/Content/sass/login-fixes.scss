@@ -1,0 +1,86 @@
+.estilos-login {
+    font-family: $font-family-base;
+    font-size: $font-size-base;
+    line-height: 1.42857143;
+    color: $text-color;
+    background-color: $body-bg;
+
+    strong {
+        font-family: "Roboto", sans-serif;
+    }
+
+    .ingresar-login-publico {
+        outline: 0;
+        float: left;
+        width: 59%;
+        padding: 10px 10px;
+        border: 0px;
+        border-radius: 50px;
+        background-color: #016DD9;
+        display: block;
+        text-align: center;
+        font-family: "Lato", sans-serif;
+        font-size: 19px;
+        color: #FFF;
+        transition: 0.4s;
+        line-height: 21px;
+        padding-bottom: 14px;
+
+        &:hover, &:focus {
+            text-decoration: none;
+            color: #FFF;
+            background-color: #0379EF;
+        }
+    }
+
+    .loginEtiquetas {
+        text-align: right;
+    }
+
+    .linkGenerarClave {
+        margin-left: 40px;
+    }
+
+    .container {
+        @include container-fixed;
+
+        @media (min-width: $screen-sm-min) {
+            width: $container-sm;
+        }
+
+        @media (min-width: $screen-md-min) {
+            width: $container-md;
+        }
+
+        @media (min-width: $screen-lg-min) {
+            width: $container-lg;
+        }
+    }
+
+    .pasos {
+        margin: 0;
+    }
+
+    form {
+        .container-campos {
+            .container-text {
+                p {
+                    text-align: right;
+                }
+            }
+        }
+    }
+
+    .modal-tarjeta-numero {
+        overflow: hidden;
+        width: 800px;
+
+        .modal-body {
+            overflow: hidden;
+        }
+    }
+    .modal-tarjetaNumero {
+        margin-left: 20px;
+        font-size: 12px;
+    }
+}

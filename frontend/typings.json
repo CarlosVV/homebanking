@@ -1,0 +1,14 @@
+{
+  "name": "diners club online web",
+  "globalDependencies": {
+    "angular": "registry:dt/angular#1.5.0+20160829152510",
+    "angular-route": "registry:dt/angular-route#1.3.0+20160317120654",
+    "bootstrap": "registry:dt/bootstrap#3.3.5+20160619023404",
+    "fbsdk": "registry:dt/fbsdk#0.0.0+20160809204505",
+    "filesaver": "registry:dt/filesaver#0.0.0+20160622185141",
+    "google.maps": "registry:dt/google.maps#3.20.0+20160914131659",
+    "jquery": "registry:dt/jquery#1.10.0+20160704162008",
+    "moment": "registry:dt/moment#2.11.1+20160829143156",
+    "ngstorage": "registry:dt/ngstorage#0.3.10+20160711132043"
+  }
+}

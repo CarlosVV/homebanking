@@ -1,0 +1,190 @@
+<!-- MIS DATOS - TAB 1 -->
+<div class="container_detalle_tabs-perfil">
+	<div class="container">
+		<div class="row">
+			<div class="col-xs-12 col-md-12 row titulo_tabpage-diners">
+				<h2>Alertas y notificaciones</h2>
+			</div>
+		</div>
+
+		<div class="row">
+			<div class="col-sm-6 row subtitulo_tabpage-diners">
+				<p> <b>Paso 1:</b> Selección de tarjeta y Configuración</p>
+			</div>
+			<!-- PASOS -->
+			<div class="col-sm-6 pasos_tabpage-diners">
+				<div class="row container_step">
+					<div class="container_pasos">
+						<span class="active">1</span>
+						<span>2</span>
+						<span class="borrar-margin-right">3</span>
+					</div>
+				</div>
+			</div>
+			<section class="mis-datos__section">
+				<p class="mis-datos__section-title">Tarjeta titular</p>
+				<table class="mis-datos__section-table">
+					<tr>
+						<td>Tarjeta</td>
+						<td>
+							<div class="input-field">
+								<select ng-disabled="AlertaNotificacionCtrl.tarjetas.length === 1" ng-options="tarjeta as  tarjeta.numeroTarjeta for tarjeta in AlertaNotificacionCtrl.tarjetas track by tarjeta.idTarjeta"
+									ng-model="AlertaNotificacionCtrl.tarjetaActual" ng-change="AlertaNotificacionCtrl.obtenerAlertasTarjeta()"></select>
+							</div>
+						</td>
+					</tr>
+				</table>
+			</section>
+		</div>
+
+		<!-- Configuración de alertas -->
+		<div class="row">
+
+			<!-- Datos de contacto -->
+			<section class="mis-datos__section">
+				<form name="frmAlertaNotificacion" class="formValido" id="datosContacto" method="POST" action="javascript:;">
+					<div class="alertas-fechas-container">
+						<p class="mis-datos__section-title">Configuración de mis alertas</p>
+
+
+						<div class="row">
+							<section class="alertas-email__container col-md-6">
+								<table class="alertas-table">
+									<tr>
+										<td>Email(s)</td>
+										<td></td>
+									</tr>
+									<tr ng-repeat="email in AlertaNotificacionCtrl.emails">
+										<td>{{email.descripcion}}:</td>
+										<td>
+											<input class="with-gap" name="tipo" type="radio" id="{{email.id}}" ng-model="AlertaNotificacionCtrl.alertasTarjetaUsuarioMatch.emailSeleccionado"
+												ng-value="AlertaNotificacionCtrl.alertasTarjetaUsuarioMatch.emailSeleccionado" />
+											<label class="radio-mat" for="{{email.id}}">{{email.value}}</label>
+										</td>
+									</tr>
+									<tr class="alertas-table__adicional" ng-class="{'bloque':!AlertaNotificacionCtrl.tieneEmailAdicional}">
+										<td>Adicional:</td>
+										<td>
+											<p class="alertas-table__adicional-email">{{AlertaNotificacionCtrl.alertasTarjetaUsuarioMatch.emailAdicional}}</p>
+											<a class="alertas-table__edit icon1-pencil" ng-click="AlertaNotificacionCtrl.editarEmailAdicional()" />
+											<a class="alertas__agregar-email-anular" href="javascript:;" ng-click="AlertaNotificacionCtrl.anularEmailAdicional()">ANULAR</a>
+										</td>
+									</tr>
+								</table>
+								<div class="alertas__agregar-email-container">
+									<a class="alertas__agregar-email" href="javascript:;" ng-show="!AlertaNotificacionCtrl.tieneEmailAdicional">+ Agregar email</a>
+
+									<div class="alertas__agregar-email-modal">
+										<form class="formValido" id="datosContacto1" method="POST" action="javascript:;">
+											<p class="alertas__agregar-email-title">Agregar email adicional</p>
+											<input class="alertas__agregar-email-input" type="email" name="email-adicional" required ng-model="AlertaNotificacionCtrl.tmpEmailAdicional">
+											<button type="submit" class="btn-azul-modal guardar-email" ng-click="AlertaNotificacionCtrl.modificarEmailAdicional()">GUARDAR</button>
+											<!--<span class="color-rojo" ng-show="!frmAlertaNotificacion.email-adicional.$valid">Ingrese un Email Válido</span>-->
+										</form>
+									</div>
+
+								</div>
+							</section>
+
+							<section class="col-md-6">
+								<table class="alertas-table">
+									<tr>
+										<td>Teléfono</td>
+									</tr>
+									<tr ng-repeat="telefono in AlertaNotificacionCtrl.telefonos">
+										<td>{{telefono.descripcion}}:</td>
+										<td>
+											{{telefono.value}}
+										</td>
+									</tr>
+									<tr class="alertas-table__adicionalTelefono" ng-class="{'bloque':!AlertaNotificacionCtrl.tieneTelefonoAdicional}">
+										<td>Adicional:</td>
+										<td>
+											<p class="alertas-table__adicional-telefono">{{AlertaNotificacionCtrl.alertasTarjetaUsuarioMatch.telefonoAdicional}}</p>
+											<a class="alertas-table__edit-telefono icon1-pencil" ng-click="AlertaNotificacionCtrl.editarTelefonoAdicional()" />
+											<a class="alertas__agregar-telefono-anular" href="javascript:;" ng-click="AlertaNotificacionCtrl.anularTelefonoAdicional()" >ANULAR</a>
+										</td>
+									</tr>
+								</table>
+								<div class="alertas__agregar-telefono-container">
+									<a class="alertas__agregar-telefono" href="javascript:;" ng-show="!AlertaNotificacionCtrl.tieneTelefonoAdicional">+ Agregar contacto</a>
+
+									<div class="alertas__agregar-telefono-modal">
+										<form class="formValido2" id="datosContacto2" method="POST" action="javascript:;">
+											<p class="alertas__agregar-telefono-title">Agregar contacto adicional</p>
+											<input class="alertas__agregar-telefono-input" type="number" name="telefono-adicional" required ng-model="AlertaNotificacionCtrl.tmpTelefonoAdicional">
+											<button type="submit" class="btn-azul-modal guardar-telefono" ng-click="AlertaNotificacionCtrl.modificarTelefonoAdicional()">GUARDAR</button>
+										</form>
+									</div>
+
+								</div>
+							</section>
+						</div>
+
+
+
+						<div class="alertas-tables-contenedor">
+							<table class="alertas-tables">
+								<thead>
+									<tr>
+										<th>Evento</th>
+										<th>Detalle</th>
+										<th>Email Principal</th>
+										<th ng-show="AlertaNotificacionCtrl.tieneEmailAdicional">Email Adicional</th>
+										<th>Celular Principal</th>
+										<th ng-show="AlertaNotificacionCtrl.tieneTelefonoAdicional">Celular Adicional</th>
+									</tr>
+								</thead>
+								<tbody>
+									<tr ng-repeat="alertaNotificacion in AlertaNotificacionCtrl.alertasTarjetaUsuarioMatch.alertasActivas">
+										<td title="{{alertaNotificacion.alertaSeleccionada.descripcion}}">{{alertaNotificacion.alertaSeleccionada.nombre}}</td>
+										<td>
+											<div class="input-field detalle" ng-if="alertaNotificacion.alertaSeleccionada.condicionesAdicionales != null && alertaNotificacion.alertaSeleccionada.condicionesAdicionales.length">
+												<p>{{alertaNotificacion.alertaSeleccionada.tituloCondicionAdicional}}</p>
+												<select ng-options="condicion as condicion.nombre for condicion in alertaNotificacion.alertaSeleccionada.condicionesAdicionales track by condicion.idCondicionAdicional"
+													ng-model="alertaNotificacion.condicioneAdicionalSeleccionada">
+                                            		</select>
+											</div>
+										</td>
+										<td>
+											<input type="checkbox" class="filled-in" id="{{alertaNotificacion.idAlerta}}-email-consumos" ng-model="alertaNotificacion.email1Activo"
+											/>
+											<label for="{{alertaNotificacion.idAlerta}}-email-consumos"></label>
+										</td>
+										<td ng-show="AlertaNotificacionCtrl.tieneEmailAdicional">
+											<input type="checkbox" class="filled-in" id="{{alertaNotificacion.idAlerta}}-email-consumos2" ng-model="alertaNotificacion.email2Activo"
+											/>
+											<label for="{{alertaNotificacion.idAlerta}}-email-consumos2"></label>
+										</td>
+										<td>
+											<input type="checkbox" class="filled-in" id="{{alertaNotificacion.idAlerta}}-telefono-consumos" ng-model="alertaNotificacion.celular1Activo"
+											/>
+											<label for="{{alertaNotificacion.idAlerta}}-telefono-consumos"></label>
+										</td>
+
+										<td ng-show="AlertaNotificacionCtrl.tieneTelefonoAdicional">
+											<input type="checkbox" class="filled-in" id="{{alertaNotificacion.idAlerta}}-telefono-consumos2" ng-model="alertaNotificacion.celular2Activo"
+											/>
+											<label for="{{alertaNotificacion.idAlerta}}-telefono-consumos2"></label>
+										</td>
+									</tr>
+								</tbody>
+							</table>
+						</div>
+
+						<button type="button" class="btn-azul continuar" ng-click="AlertaNotificacionCtrl.guardarAlertas()">CONTINUAR</button>
+
+						<p class="pasos">
+							<strong>Paso 1</strong> de 3</p>
+						<p class="datos-obligatorios">
+							<span>(*)</span> Datos obligatorios. Serán tratados de forma confidencial y segura</p>
+					</div>
+				</form>
+
+			</section>
+
+		</div>
+	</div>
+</div>
+
+<div class="overlay-diners"></div>

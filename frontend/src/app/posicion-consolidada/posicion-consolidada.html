@@ -1,0 +1,342 @@
+<div header></div>
+<section class="container-fluid" ng-controller="PosicionConsolidada as posicionConsolidadaCtrl" ng-init="posicionConsolidadaCtrl.inicioConsolidada()">
+    <div class="row">
+        <div>
+            <!-- inicio cabecera cuerpo-->
+            <header class="{{ posicionConsolidadaCtrl.bannerByCountry }}">
+                 <div class="container">
+                    <div class="row">
+                        <article class="col-xs-12 col-sm-4 col-md-4 col-lg-4 container__section-banner">
+                            <div class="imagen__usuario">
+                                <img ng-src="{{posicionConsolidadaCtrl.imagenSeguridad}}" style="border-radius: 50%;" width="50%" height="50%">
+                            </div>
+                            <div class="section__banner-estilo1">
+                                <i class="{{ posicionConsolidadaCtrl.iconoSaludo }} icono-derecha"></i>{{ posicionConsolidadaCtrl.saludo
+                                }}
+                            </div>
+                            <div class="section__banner-estilo1">
+                                <small>{{ posicionConsolidadaCtrl.aliasUsuario }}</small><a ng-click="posicionConsolidadaCtrl.seleccionarAliasUsuario(posicionConsolidadaCtrl.aliasUsuario)"><i class="section-usuario-editar section__banner-estilo1-editar icon1-pencil icono-izquierda"></i></a>
+                            </div>
+                            <div class="editar-nombre-container">
+                                <div class="editar-nombre-modal">
+                                    <form class="formValido" id="datosUsuario" method="POST" action="javascript:;">
+                                    <div class="editar-nombre-title">EDITAR ALIAS</div>
+                                    <input id="editar_nombre" class="editar-nombre-input" type="text" maxlength="20" alfanumericocon-especiales name="edit_nombre" ng-model="posicionConsolidadaCtrl.nuevoAlias" required>
+                                    <a class="editar-nombre-btn" ng-click="posicionConsolidadaCtrl.cambiarAliasUsuario()">GUARDAR</a>
+                                    <br />
+                                    <div class="editar-nombre-mensaje">Máximo 20 caracteres</div>
+                                    <a class="editar-nombre-anular" href="javascript:;"></a>
+                                    </form>
+                                </div>
+                            </div>
+                        </article>
+                        <!--Ofertaas-->
+                        <div ng-controller="Oferta as ofertaCtrl" ng-init="ofertaCtrl.obtenerOfertas()">
+                            <article  class="col-xs-12 col-md-4 container__section-banner section_banner-desplazar" ng-repeat="ofertaItem in ofertaCtrl.ofertasPrincipales">
+                                <div class="section__banner-estilo1">
+                                    {{ofertaItem.TextoOferta.titulo}}
+                                </div>
+                                <div class="section__banner-estilo1">
+                                    <small ng-show="ofertaItem.idTipoOferta == 1"><strong>{{ofertaItem.montoLineaNueva | currency:"S/ ":2}}</strong></small>
+                                    <small ng-show="ofertaItem.idTipoOferta != 1"><strong>{{ofertaItem.montoOferta | currency:"S/ ":2}}</strong></small>
+                                </div>
+                                <div class="section__banner-estilo1" ng-bind-html="ofertaItem.TextoOferta.descripcion">
+                                    {{ofertaItem.TextoOferta.descripcion}}
+                                </div>
+                                <div class="section_info-banner">
+                                    <div>
+                                        <a ng-show="$index == 0" ng-href="#/{{ofertaItem.TextoOferta.rutaSolicitud}}{{ofertaItem.idTipoOferta}}">{{ofertaItem.TextoOferta.TextoBotonInformacion}}</a>
+                                        <a ng-show="$index != 0" ng-href="#/{{ofertaItem.TextoOferta.rutaSolicitud}}{{ofertaItem.idTipoOferta}}">{{ofertaItem.TextoOferta.TextoBotonInformacion}}</a>
+                                    </div>
+                                </div>
+                            </article>
+                            <!-- <article class="col-xs-12 col-md-4 container__section-banner section_banner-desplazar" ng-show="ofertaCtrl.ofertas.length > 2">
+                                <a  ng-href="#/ofertas">MAS OFERTAS</a>
+                            </article> -->
+                        </div>
+                        <!--Fin Ofertas-->
+                    </div>
+                 </div>
+            </header>
+            <!-- fin cabecera cuerpo-->
+             <!-- seccion Multiples Productos  -->
+            <section class="col-xs-12 col-md-12" ng-show="!posicionConsolidadaCtrl.esMonoproducto">
+                <div class="container container__section-principal">
+                    <div class="row">
+                        <article class="col-xs-12 col-sm-8 col-md-8 col-lg-8 container__section-body-tarde section__body-border">
+                            <div class="row text-left">
+                                <section class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                                    <!-- Cabecera Posicion Consolidada Multiples Productos  -->
+                                    <div class="row container__section--row-abajo">
+                                        <div class="col-xs-12 col-sm-3 col-md-3 col-lg-3">
+                                            &nbsp;
+                                        </div>
+                                        <div class="col-xs-12 col-sm-3 col-md-3 col-lg-3">
+                                            <div class="row color__texto-azul">
+                                                <strong>Disponibles</strong>
+                                            </div>
+                                        </div>
+                                        <div class="col-xs-12 col-sm-6 col-md-6 col-lg-6">
+                                            <div class="row color__texto-azul">
+                                                <strong>Estado de Cuenta</strong>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <!-- Filas de la Posicion Consolidada  -->
+                                    <div class="row container__section--row-abajo" ng-repeat="model in posicionConsolidadaCtrl.tarjetas">
+                                        <div class="col-xs-12 col-sm-3 col-md-3 col-lg-3">
+                                            <img ng-src="{{model.srcImagenTarjeta}}" alt="{{model.nombreProducto}}" class="img-responsive">
+                                        </div>
+                                        <div class="col-xs-12 col-sm-3 col-md-3 col-lg-3">
+                                            <div class="row section__columna2">
+                                                <ul>
+                                                    <li>
+                                                        <label>{{model.alias}}</label>
+                                                    </li>
+                                                    <li>
+                                                        <small ng-show="posicionConsolidadaCtrl.isLocal"><b>{{model.lineaDisponibleSoles | currency:"S/ ":2}}</b><br> ({{model.lineaDisponibleDolares | currency:"US$ ":2}})</small>
+                                                        <small ng-show="!posicionConsolidadaCtrl.isLocal"><b>{{model.lineaDisponibleDolares | currency:"US$ ":2}}</b><br> ({{model.lineaDisponibleSoles | currency:"S/ ":2}})</small>
+                                                    </li>
+                                                    <li>
+                                                        <small ng-show="model.millasDisponibles > 0"><b>{{model.millasDisponibles | number:0}}</b> Millas</small>
+                                                    </li>
+                                                </ul>
+                                            </div>
+                                        </div>
+                                        <div class="col-xs-12 col-sm-6 col-md-6 col-lg-6">
+                                            <div class="row section__columna3">
+                                                <table>
+                                                    <tbody>
+                                                        <tr>
+                                                            <td class="">
+                                                                Pago del mes <small><b>{{model.montoTotalMesSoles | currency:"S/ ":2}} y {{model.montoTotalMesDolares | currency:"US$ ":2}}</b></small>
+                                                            </td>
+                                                            <td rowspan="3">
+                                                                <a class="ampliar-puntero" ng-href="#/movimientos/{{model.idTarjeta}}?tieneAdicionales={{model.tieneAdicionales}}">
+                                                                    <span><i class="icon1-flecha-right"></i></span>
+                                                                </a>
+                                                            </td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td>
+                                                                Pago mínimo <small><b> {{model.montoMinimoMesSoles | currency:"S/ ":2}} y {{model.montoMinimoMesDolares | currency:"US$ ":2}}</b></small>
+                                                            </td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td colspan="1">
+                                                                <label class="label-{{posicionConsolidadaCtrl.obtenerColorFechaVencimiento(model.fechaVencimiento)}}"><b>{{posicionConsolidadaCtrl.obtenerFormatoFechaVencimiento(model.fechaVencimiento)}}</b></label><br>
+                                                                <div ng-hide="!model.pagado">
+                                                                    <label class="label-verde">Pagado</label><br>
+                                                                </div>
+                                                                <div>
+                                                                    <span style="font-size: 15px;"><a ng-href="#/formas-pago">Opciones de pago</a></span>
+                                                                </div>
+                                                            </td>
+                                                        </tr>
+                                                    </tbody>
+                                                </table>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </section>
+                            </div>
+                        </article>
+                        <article class="col-xs-12 col-sm-4 col-md-4 col-lg-4 container__section-body-tarde">
+                            <!--ng-hide="posicionConsolidadaCtrl.isLocal"-->
+                            <div class="city-info" ng-hide="posicionConsolidadaCtrl.isLocal">
+                                <div class="articule__body">
+                                    <span><i class="icon1-maps"></i></span>
+                                    <div>
+                                        <div class="section__body-estilo1">
+                                            <ul>
+                                                <li class="list_first"><small>Disfruta tu estadía</small></li>
+                                                <li><div class="label__titulo1"><small><b>{{posicionConsolidadaCtrl.datosCiudad.ciudad}}</b></small></div></li>
+                                                <li><small>{{posicionConsolidadaCtrl.datosCiudad.hora}} {{posicionConsolidadaCtrl.datosCiudad.temperatura}}&nbsp;°C</small></li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <privilegios-small ng-if="posicionConsolidadaCtrl.isLocal"></privilegios-small>
+
+                            <campanas-slider></campanas-slider>
+
+                        </article>
+                    </div>
+                </div>
+            </section>
+
+            <!-- seccion monoproducto -->
+            <section class="col-xs-12 col-sm-12 col-md-12 col-lg-12" ng-show="posicionConsolidadaCtrl.esMonoproducto">
+                <div class="container container__section-principal">
+                    <div class="row">
+                        <article class="col-xs-12 col-sm-4 col-md-4 col-lg-4 container__section-body section__body-border">
+                            <!--ng-hide="posicionConsolidadaCtrl.isLocal"-->
+                            <div class="city-info" ng-hide="posicionConsolidadaCtrl.isLocal">
+                                <div class="articule__body">
+                                    <span><i class="icon1-maps"></i></span>
+                                    <div>
+                                        <div class="section__body-estilo1">
+                                            <ul>
+                                                <li class="list_first"><small>Disfruta tu estadía</small></li>
+                                                <li><div class="label__titulo1"><small><b>{{posicionConsolidadaCtrl.datosCiudad.ciudad}}</b></small></div></li>
+                                                <li><small>{{posicionConsolidadaCtrl.datosCiudad.hora}} {{posicionConsolidadaCtrl.datosCiudad.temperatura}}&nbsp;°C</small></li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <privilegios-full ng-if="posicionConsolidadaCtrl.isLocal"></privilegios-full>
+                        </article>
+                        <article class="col-xs-12 col-sm-4 col-md-4 col-lg-4 container__section-body section__body-border">
+                            <span><i class="icon1-card"></i></span>
+                            <div class="section__body-estilo3">
+                                <div class="label__titulo2"><a ng-href="#/movimientos/{{posicionConsolidadaCtrl.tarjeta.idTarjeta}}"><b>Disponibles</b><span><i class="icon1-flecha-right"></i></span></a></div>
+                                <div class="label__titulo1" ng-show="posicionConsolidadaCtrl.isLocal">
+                                    <small><b>{{ posicionConsolidadaCtrl.tarjeta.lineaDisponibleSoles | currency:"S/ ":2 }}</b></small><br>
+                                    <small>({{ posicionConsolidadaCtrl.tarjeta.lineaDisponibleDolares | currency:"US$ ":2 }})</small>
+                                </div>
+                                <div class="label__titulo1" ng-show="!posicionConsolidadaCtrl.isLocal">
+                                    <small><b>{{ posicionConsolidadaCtrl.tarjeta.lineaDisponibleDolares | currency:"US$ ":2 }}</b></small><br>
+                                    <small>({{ posicionConsolidadaCtrl.tarjeta.lineaDisponibleSoles | currency:"S/ ":2 }})</small>
+                                </div>
+                                <div class="label__titulo1"><small ng-show="posicionConsolidadaCtrl.tarjeta.millasDisponibles > 0"><b>{{ posicionConsolidadaCtrl.tarjeta.millasDisponibles | number:0 }}</b> Millas</small></div>
+                            </div>
+                            <div class="section__body-estilo3">
+                                <div class="label__titulo2"><a ng-href="#/estado-cuenta/{{posicionConsolidadaCtrl.tarjeta.idTarjeta}}/tab-3"><b>Estado de Cuenta</b><span><i class="icon1-flecha-right"></i></span></a></div>
+                                <div class="container-fluid container-texto">
+                                    <div class="contenido__container-texto">
+                                        Pago del mes <small>{{ posicionConsolidadaCtrl.tarjeta.montoTotalMesSoles | currency:"S/ ":2 }} y {{ posicionConsolidadaCtrl.tarjeta.montoTotalMesDolares | currency:"US$ ":2 }}</small>
+                                    </div>
+                                </div>
+                                <div class="container-fluid container-texto">
+                                    <div class="contenido__container-texto">
+                                        Pago mínimo <small><strong>{{ posicionConsolidadaCtrl.tarjeta.montoMinimoMesSoles | currency:"S/ ":2 }} y {{ posicionConsolidadaCtrl.tarjeta.montoMinimoMesDolares | currency:"US$ ":2 }}</strong></small>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="section__body-estilo4">
+                                <label class="label-{{posicionConsolidadaCtrl.obtenerColorFechaVencimiento(posicionConsolidadaCtrl.tarjeta.fechaVencimiento)}}">
+                                    <strong>{{ posicionConsolidadaCtrl.obtenerFormatoFechaVencimiento(posicionConsolidadaCtrl.tarjeta.fechaVencimiento) }}</strong>
+                                </label>
+                            </div>
+                        </article>
+                        <article class="col-xs-12 col-sm-4 col-md-4 col-lg-4 container__section-body">
+                            <campanas-slider></campanas-slider>
+                        </article>
+                    </div>
+                </div>
+            </section>
+        </div>
+    </div>
+
+    <div class="modal fade estilos-login" tabindex="-1" role="dialog" id="modal-prehome">
+        <div class="modal-dialog modal-terminos-contenidos modal-inicio">
+            <div class="modal-content">
+                <div class="modal-body modal-ingreso">
+                    <p class="titulo">Felicidades {{posicionConsolidadaCtrl.nombreUsuario}}, bienvenido a tu Nueva Diners Online</p>
+                    <span class="subtitulo">La banca por internet más moderna del Perú, que te ayudará con tus finanzas personales</span>
+                    <div class="col-md-6 campos-detalles">
+                        <ul>
+                            <li>
+                                <i class="icon-check"></i>
+                                <p>Transacciones más fáciles, rápidas y seguras</p>
+                            </li>
+                            <li>
+                                <i class="icon-check"></i>
+                                <p>Paga tus cuentas donde quieras</p>
+                            </li>
+                            <li>
+                                <i class="icon-check"></i>
+                                <p>Controla tus gastos de manera simple y clara</p>
+                            </li>
+                            <li>
+                                <i class="icon-check"></i>
+                                <p>Consigue tus objetivos de ahorro y disfruta</p>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="col-md-6 container-video-mobile">
+                        <div class="videoWrapper">
+                            <!-- Copy & Pasted from YouTube -->
+                            <!--<iframe width="349" height="218" src="https://www.youtube.com/embed/It8ewYUbVAo" frameborder="0" allowfullscreen></iframe>-->
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer download-terminos">
+                    <br>
+                    <div class="col-md-12 col-sm-12 col-xs-12 boton-ayuda-entendido">
+                        <a href="javascript:;" class="btn-sgt boton-entendido-action inicion-modal-action" data-dismiss="modal">Continuar</a>
+                    </div>
+                </div>
+            </div>
+            <!-- /.modal-content -->
+        </div>
+        <!-- /.modal-dialog -->
+    </div>
+    <!-- /.modal -->
+    <div class="modal fade modal estilos-login" tabindex="-1" role="dialog" id="ElegirNuevaImagenSeguridadModal">
+        <div class="modal-dialog modal-terminos-contenidos modal-inicio">
+            <div class="modal-content">
+                <div class="modal-header header-asignar">
+                    <h4 class="modal-title">La aplicación Diners Club Online ha sido desconectada de su facebook</h4>
+                </div>
+                <form class="formValido" id="formImagenPerfil" name="formImagenPerfil" ng-submit="formImagenPerfil.$valid && posicionConsolidadaCtrl.actualizarImagenPerfil()">
+                    <div class="modal-body contenido-formulario">
+                        <div class="">
+                            <p>Seleccione su imagen de seguridad <small>*</small></p>
+                            <i class="preguntas tooltip_pregunta2" data-toggle="tooltip" data-placement="right" title="lorem ipsum texto de prueba">?</i>
+                        </div>
+                        <div class="select-img">
+                            <select class="image-picker show-html" id="imgPerfil" name="imgPerfil" ng-model="posicionConsolidadaCtrl.usuario.idImagen">
+                                <option value=""></option>
+                                <option data-img-src="content/images/img_profile-2.jpg" value="1"> </option>
+                                <option data-img-src="content/images/img_profile-3.jpg" value="2"> Page 2 </option>
+                                <option data-img-src="content/images/img_profile-4.jpg" value="3"> Page 3 </option>
+                                <option data-img-src="content/images/img_profile-5.jpg" value="4"> Page 4 </option>
+                                <option data-img-src="content/images/img_profile-6.jpg" value="5"> Page 5 </option>
+                                <option data-img-src="content/images/img_profile-7.jpg" value="6"> Page 6 </option>
+                                <option data-img-src="content/images/img_profile-8.jpg" value="7"> Page 7 </option>
+                                <option data-img-src="content/images/img_profile-9.jpg" value="8"> Page 8 </option>
+                            </select>
+                        </div>
+                        <div class="modal-footer download-terminos">
+                            <button type="submit" class="btn-azul continuar" ng-click="submitted=true">CONTINUAR</button>
+                        </div>
+                        <div class="modal-footer download-terminos" style="margin: 0 auto;">
+                            <div class="label-rojo" style="margin: 0 auto;" ng-show="submitted && posicionConsolidadaCtrl.usuario.idImagen == 0 ">Debe seleccionar una imagen</div>
+                        </div>
+                    </div>
+                </form>
+            </div><!-- /.modal-content -->
+        </div><!-- /.modal-dialog -->
+    </div><!-- /.modal -->
+</section>
+
+<script type="text/javascript">
+    $(document).ready(function(){
+        $(document).on("click", ".section-usuario-editar", function ()
+        {
+            $(".editar-nombre-modal-title").html("Modificar Nombre")
+            $(".editar-nombre-modal, .overlay-diners").fadeIn("fast")
+        });
+        $(document).on("click", ".editar-nombre-btn", function () {
+            //$('#id_tarjeta1 h2').text($('#editar_tarjeta').val());
+            $('#editar_nombre').removeClass('error');
+            if ($('#editar_nombre').val() =='') {
+                $('#editar_nombre').addClass('error');
+                return false;
+            }
+            $(".overlay-diners, .editar-nombre-modal").fadeOut("fast");
+        });
+         $(document).on("click", ".overlay-diners", function () {
+            $(this).fadeOut("fast");
+            $(".editar-nombre-modal").fadeOut("fast")
+        })
+        jQuery('select.image-picker').imagepicker({
+            hide_select: false
+        });
+    });
+</script>

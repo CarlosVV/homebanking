@@ -1,0 +1,11 @@
+<div ng-controller="AlertaNotificacion as AlertaNotificacionCtrl">
+    <div ng-class="{'ng-hide':!AlertaNotificacionCtrl.menuSeleccionado('tab-1')}">
+        <alerta-notificacion></alerta-notificacion>
+    </div>
+    <div ng-class="{'ng-hide':!AlertaNotificacionCtrl.menuSeleccionado('tab-2')}">
+        <solicitud-confirmacion content="AlertaNotificacionCtrl.content"></solicitud-confirmacion>
+    </div>
+    <div ng-class="{'ng-hide':!AlertaNotificacionCtrl.menuSeleccionado('tab-3')}">
+        <constancia-solicitud content="AlertaNotificacionCtrl.content"></constancia-solicitud>
+    </div>
+</div>

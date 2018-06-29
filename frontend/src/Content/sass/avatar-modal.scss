@@ -1,0 +1,57 @@
+.select-img {
+  float: left;
+  margin-left: 20px;
+  margin-bottom: 16px;
+  margin-top: 20px;
+  ul, li {
+    float: left;
+  }
+  .thumbnail {
+    img {
+      width: 50px;
+      opacity: 0.5;
+      border-radius: 50%;
+    }
+    &.selected img {
+      width: 50px;
+      opacity: 1;
+      position: relative;
+    }
+    margin-right: 14px;
+    padding: 0;
+    border: 1px solid #dddddd;
+    position: relative;
+    border-radius: 50%;
+    // overflow: hidden;
+  }
+}
+
+
+@media(min-width: 768px){
+    .select-img {
+        margin-top: 0;
+    }
+}
+
+.check {
+  display: none;
+}
+
+.selected .check {
+  background-image: url(../Content/Images/check.png);
+  z-index: 1;
+  position: absolute;
+  width: 21px;
+  height: 21px;
+  right: -7px;
+  top: -3px;
+  display: block;
+}
+
+.select-img select {
+  display: none;
+}
+
+.m-r-11 {
+  margin-left: 11px;
+}

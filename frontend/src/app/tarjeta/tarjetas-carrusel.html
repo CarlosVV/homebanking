@@ -1,0 +1,121 @@
+<div id="Carousel-Diners" class="carousel slide" data-ride="carousel" ng-controller="Carrusel as carruselCtrl">
+	<ol class="carousel-indicators" ng-init="$index = -1">
+		<li data-target="#Carousel-Diners" ng-if="movimientosCtrl.tarjetasTitular.length > 1" ng-click="carruselCtrl.mostrarDatosTarjeta(model.idTarjeta, model.tieneAdicionales)"
+			data-slide-to="{{$index}}" ng-class="{'active': movimientosCtrl.esTarjetaASeleccionar(model.idTarjeta)}" ng-repeat="model in movimientosCtrl.tarjetasTitular">
+			<span class="ng-hide">{{ $index + 1}}</span>
+		</li>
+	</ol>
+	<div class="carousel-inner" role="listbox" ng-init="$index = -1" ng-controller="tarjeta as tarjetaCtrl">
+		<!--ng-class="{'active': $index == 0}"-->
+		<div class="item" data-idTarjeta="{{ model.idTarjeta}}" ng-repeat="model in movimientosCtrl.tarjetasTitular" ng-class="{'active': movimientosCtrl.esTarjetaASeleccionar(model.idTarjeta)}">
+			<div class="">
+				<div class="container container__movimiento-margin">
+					<div class="row">
+						<div class="col-xs-12 col-md-4 section__banner-estilo1-mov">
+							<h1>{{ model.alias }} <a ng-click="movimientosCtrl.seleccionarAliasTarjeta(model.alias,model.idTarjeta)"><i class="section-tarjeta-editar icon1-pencil icono-izquierda"></i></a></h1>
+						</div>
+					</div>
+					<div class="row">
+						<article class="col-xs-12 col-sm-4 col-md-4 col-lg-4 container__section-banner-movimiento">
+							<div>
+								<img class="img-responsive" ng-src="{{ model.urlTarjeta }}" alt="" />
+							</div>
+						</article>
+						<article class="col-xs-12 col-sm-3 col-md-3 col-lg-3 container__section-banner-movimiento">
+							<div class="row">
+								<div>
+									<small>Disponibles</small><br />
+									<label ng-show="movimientosCtrl.isLocal">{{ model.lineaDisponibleSoles | currency:"S/ ":2 }}</label><br/>
+									<small ng-show="movimientosCtrl.isLocal">({{ model.lineaDisponibleDolares | currency:"US$ ":2 }})</small>
+									<label ng-show="!movimientosCtrl.isLocal">{{ model.lineaDisponibleDolares | currency:"US$ ":2 }}</label><br/>
+									<small ng-show="!movimientosCtrl.isLocal">({{ model.lineaDisponibleSoles | currency:"S/ ":2 }})</small>
+									<label ng-show="model.millasDisponibles > 0">{{ model.millasDisponibles | number }} Millas</label>
+									<label ng-show="model.millasDisponibles <= 0">&nbsp;</label>
+								</div>
+								<div>
+									<small>Pago del mes</small><br />
+									<label>{{ model.montoTotalMesSoles | currency:"S/ "}}</label><br />
+									<small>{{ model.montoTotalMesDolares | currency:"US$ "}}</small>
+								</div>
+								<div>
+									<small class="">{{ movimientosCtrl.obtenerFormatoFechaVencimiento(model.fechaVencimiento) }}</small>
+								</div>
+							</div>
+						</article>
+						<article class="col-xs-12 col-sm-3 col-md-3 col-lg-3 container__section-banner-movimiento">
+							<div class="row">
+								<div>
+									<small>Línea de crédito</small><br />
+									<label ng-show="movimientosCtrl.isLocal">{{ model.lineaCreditoSoles | currency:"S/ ":2 }}</label><br/>
+									<small ng-show="movimientosCtrl.isLocal">({{ model.lineaCreditoDolares | currency:"US$ ":2 }})</small>
+									<label ng-show="!movimientosCtrl.isLocal">{{ model.lineaCreditoDolares | currency:"US$ ":2 }}</label><br/>
+									<small ng-show="!movimientosCtrl.isLocal">({{ model.lineaCreditoSoles | currency:"S/ ":2 }})</small>
+									<label>&nbsp;</label>
+									<!--<a><i class="icon1-flecha-right"></i></a><br />
+                                    <label>&nbsp;</label>-->
+								</div>
+								<div>
+									<small>Pago mínimo</small><br />
+									<label>{{ model.montoMinimoMesSoles | currency:"S/ "}}</label><br />
+									<!--<a><i class="icon1-flecha-right"></i></a><br />-->
+									<small>{{ model.montoMinimoMesDolares | currency:"US$ "}}</small>
+								</div>
+								<div>
+									<small><strong></strong></small>
+								</div>
+							</div>
+						</article>
+					</div>
+				</div>
+			</div>
+		</div>
+
+		<div class="editar-tarjeta-container">
+			<div class="editar-tarjeta-modal">
+				<form class="formValido" id="datosTarjeta" method="POST" action="javascript:;">
+					<div class="editar-tarjeta-title">EDITAR ALIAS</div>
+					<input id="editar_tarjeta" class="editar-tarjeta-input" type="text" maxlength="40" name="edit_nombre" alfanumericocon-especiales
+						ng-model="movimientosCtrl.nuevoAlias" required>
+					<a class="editar-tarjeta-btn" ng-click="movimientosCtrl.cambiarAlias()">GUARDAR</a>
+					<br />
+					<div class="editar-tarjeta-mensaje">Máximo 40 caracteres</div>
+					<a class="editar-tarjeta-anular" href="javascript:;"></a>
+				</form>
+			</div>
+		</div>
+
+	</div>
+	<div ng-if="movimientosCtrl.tarjetasTitular.length > 1">
+		<a class="left carousel-control carousel-control-slider" data-target="#Carousel-Diners" data-position="{{$index}}" role="button"
+			data-slide="prev"><span class="sr-only">Previous</span></a>
+		<a class="right carousel-control carousel-control-slider" data-target="#Carousel-Diners" data-position="{{$index}}" role="button"
+			data-slide="next"><span class="sr-only">Next</span></a>
+	</div>
+</div>
+
+
+<script type="text/javascript">
+    $(document).ready(function(){
+        $('.carousel').carousel({
+            interval: false
+        }); 
+        $(document).on("click", ".section-tarjeta-editar", function ()
+        {
+            $(".editar-nombre-modal-title").html("Modificar Nombre")
+            $(".editar-tarjeta-modal, .overlay-diners").fadeIn("fast")
+        });
+        $(document).on("click", ".editar-tarjeta-btn", function () {
+            //$('#id_tarjeta1 h2').text($('#editar_tarjeta').val());
+			$('#editar_tarjeta').removeClass('error');
+			if ($('#editar_tarjeta').val() =='') {
+				$('#editar_tarjeta').addClass('error');
+				return false;
+			}
+            $(".overlay-diners, .editar-tarjeta-modal").fadeOut("fast");
+        });
+         $(document).on("click", ".overlay-diners", function () {
+            $(this).fadeOut("fast");
+            $(".editar-tarjeta-modal").fadeOut("fast")
+        })
+    });
+</script>

@@ -1,0 +1,104 @@
+<!-- MIS DATOS - TAB 1 -->
+<div class="container-fluid" ng-init="misdatosCtrl.init()">
+            <div class="row">
+                <div class="col-xs-12 col-md-12 row titulo_tabpage-diners">
+                    <h2>Mis Datos</h2>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-sm-6 row subtitulo_tabpage-diners">
+                    <p><b>Paso 1:</b> Actualizar datos de contacto</p>
+                </div>
+
+                <!-- PASOS -->
+                <div class="col-sm-6 pasos_tabpage-diners">
+                    <div class="row container_step">
+                        <div class="container_pasos">
+                            <span class="active">1</span>
+                            <span>2</span>
+                            <span class="borrar-margin-right">3</span>
+                        </div>
+                    </div>
+                </div>
+                <!-- Datos Personales -->
+                <section class="mis-datos__section">
+                    <p class="mis-datos__section-title">Datos personales</p>
+                    <table class="mis-datos__section-table">
+                        <tr>
+                            <td>Nombre</td>
+                            <td>{{misdatosCtrl.usuario.nombre + ' '+ misdatosCtrl.usuario.apellidoPaterno + ' ' + misdatosCtrl.usuario.apellidoMaterno}}</td>
+                        </tr>
+                        <tr>
+                            <td>Tipo de documento</td>
+                            <td>{{misdatosCtrl.usuario.tipoDocumentoIdentidad}}</td>
+                        </tr>
+                        <tr>
+                            <td>Nº de documento</td>
+                            <td>{{misdatosCtrl.usuario.numeroDocumentoIdentidad}}</td>
+                        </tr>
+                        <tr>
+                            <td>Fecha de nacimiento</td>
+                            <td>{{misdatosCtrl.usuario.fechaNacimiento | date:"dd/MM/yyyy"}}</td>
+                        </tr>
+                        <tr>
+                            <td>Sexo</td>
+                            <td>{{misdatosCtrl.usuario.sexo}}</td>
+                        </tr>
+                        <tr>
+                            <td>Estado Civil</td>
+                            <td>{{misdatosCtrl.usuario.estadoCivil}}</td>
+                        </tr>
+                        <tr>
+                            <td>Procedencia</td>
+                            <td>{{misdatosCtrl.usuario.procedencia}}</td>
+                        </tr>
+                    </table>
+                </section>
+
+
+                <!-- Datos de contacto -->
+                <section class="mis-datos__section">
+                    <p class="mis-datos__section-title">Datos de contacto</p>
+                    <form class="formValido" id="datosContacto" method="POST" action="javascript:;">
+                        <table class="mis-datos__section-table">
+                            <tr>
+                                <td>Email personal<span>*</span></td>
+                                <td>
+                                    <input class="mis-datos__section-input inputits" ng-model="misdatosCtrl.usuario.emailPrincipal" type="email" name="emailPersonal" required>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>Email secundario<span>*</span></td>
+                                <td><input class="mis-datos__section-input inputits" ng-model="misdatosCtrl.usuario.emailAlternativo" type="email" name="emailSecundario"
+                                        required></td>
+                            </tr>
+                            <tr>
+                                <td>Celular<span>*</span></td>
+                                <td>
+                                    <div class="input-field operator">
+                                        <select ng-model="misdatosCtrl.operadorTelefonicoActual.id" value="misdatosCtrl.operadorTelefonicoActual.id"
+                                                ng-options="op.id as op.nombre for op in misdatosCtrl.operadoresTelefonicos">
+                                                    </select>
+                                    </div>
+                                    <input class="mis-datos__section-input-number inputits" ng-model="misdatosCtrl.usuario.numeroCelular" type="string" name="numero" maxlength="10" required>
+                                </td>
+                            </tr>
+
+                            <tr>
+                                <td></td>
+                                <td>
+                                        <p class="has-error" ng-show="misdatosCtrl.muestraErrores">Debe ingresar todos los datos obligatorios</p>
+                                    <button type="submit" class="btn-azul continuar" ng-click="misdatosCtrl.actualizarUsuario()">CONTINUAR</button>
+                                    <p class="pasos"><strong>Paso 1</strong> de 3</p>
+                                    <p class="datos-obligatorios">
+                                        <!-- <i class="icon1-tick"></i> --><span>(*)</span> Datos obligatorios. Serán tratados de forma
+                                        confidencial y segura</p>
+                                </td>
+                            </tr>
+
+                        </table>
+                    </form>
+                </section>
+
+            </div>
+        </div>

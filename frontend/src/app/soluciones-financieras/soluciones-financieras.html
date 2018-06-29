@@ -1,0 +1,65 @@
+<div header></div>
+<section class="container-fluid" ng-controller="solucionesFinancieras as solucionesFinancierasCtrl" ng-init="solucionesFinancierasCtrl.inicializar()">
+    <div class="row">
+        <!-- inicio cabecera cuerpo-->
+        <header class="col-xs-12 col-md-12 {{ solucionesFinancierasCtrl.bannerByCountry }}">
+            <div class="container">
+                <div class="row">
+                    <div class="col-xs-12 col-md-12 titulo__banner-perfil">
+                        <h1>Soluciones Financieras</h1>
+                    </div>
+                </div>
+            </div>
+        </header>
+        <!-- fin cabecera cuerpo-->
+        <section class="col-xs-12 col-md-12 ">
+            <div class="container container__section-principal-perfil">
+                <div class="row">
+                    <article class="col-xs-12 col-md-12 container__section-body-movimiento">
+                        <div class="text-left">
+                            <!--Inicio Tabs-->
+                            <!-- CONTAINER TABS QUE CONTIENEN TABS QUE CONTIENE UNA TABLA CON ACCORDION -->
+                            <div class="container_tabs_header">
+                                <ul class="tabs">
+                                    <li class="tab not_width" data-tab="tab-1" ng-class="{indicator:solucionesFinancierasCtrl.menuSeleccionado('tab-1')}">
+                                        <a class="ampliacion" ng-click="solucionesFinancierasCtrl.activarMenu('tab-1')">Incremento de Línea</a></li>
+                                    <li class="tab not_width" data-tab="tab-2" ng-class="{indicator:solucionesFinancierasCtrl.menuSeleccionado('tab-2')}">
+                                        <a class="cargoautomatico" ng-click="solucionesFinancierasCtrl.activarMenu('tab-2')">Cargo Automático</a></li>
+                                    <li class="tab not_width" data-tab="tab-3" ng-class="{indicator:solucionesFinancierasCtrl.menuSeleccionado('tab-3')}">
+                                        <a class="debitoautomatico" ng-click="solucionesFinancierasCtrl.activarMenu('tab-3')">Débito Automático</a></li>
+                                    <li class="tab not_width" data-tab="tab-4" ng-class="{indicator:solucionesFinancierasCtrl.menuSeleccionado('tab-4')}">
+                                        <a class="tarjetasadicionales" ng-click="solucionesFinancierasCtrl.activarMenu('tab-4')">Tarjetas Adicionales</a></li>
+                                </ul>
+                            </div>
+
+                            <!-- MIS DATOS - TAB 1 -->
+                            <div id="tab-1" class="container_detalle_tabs tab-content" ng-class="{current:solucionesFinancierasCtrl.menuSeleccionado('tab-1')}" ng-if="solucionesFinancierasCtrl.menuSeleccionado('tab-1')">
+                                <ampliacion-linea></ampliacion-linea>
+                            </div>
+
+                            <div id="tab-2" class="container_detalle_tabs tab-content" ng-class="{current:solucionesFinancierasCtrl.menuSeleccionado('tab-2')}" ng-if="solucionesFinancierasCtrl.menuSeleccionado('tab-2')">
+                                <!--<div class="container_detalle_tabs-overflow">-->
+                                    <solicitud-cargo-automatico-gestor></solicitud-cargo-automatico-gestor>
+                                
+                                <!--</div>-->
+                            </div>
+                            <div id="tab-3" class="container_detalle_tabs tab-content" ng-class="{current:solucionesFinancierasCtrl.menuSeleccionado('tab-3')}" ng-if="solucionesFinancierasCtrl.menuSeleccionado('tab-3')">
+                                <solicitud-debitoautomatico></solicitud-debitoautomatico>
+                            </div>
+
+
+                            <div id="tab-4" class="container_detalle_tabs tab-content" ng-class="{current:solucionesFinancierasCtrl.menuSeleccionado('tab-4')}" ng-if="solucionesFinancierasCtrl.menuSeleccionado('tab-4')">
+                                <tarjeta-adicional></tarjeta-adicional>
+                            </div>
+
+                            <div id="tab-5" class="container_detalle_tabs tab-content "></div>
+                            <!-- FIN DE CONTAINER TABS QUE CONTIENEN TABS QUE CONTIENE UNA TABLA CON ACCORDION -->
+                            <!--Fin Tabs-->
+                        </div>
+                    </article>
+
+                </div>
+            </div>
+        </section>
+    </div>
+</section>

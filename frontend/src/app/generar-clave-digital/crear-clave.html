@@ -1,0 +1,369 @@
+<header-externo></header-externo>
+<div id="generarClaveDigital" class="ingresoOnline estilos-login" ng-controller="GenerarClaveDigitalCrearClave as crearClaveCtrl"
+	data-ng-init="crearClaveCtrl.init()">
+	<div class="container container__menu">
+		<div class="row">
+			<div class="col-md-6 frace__ingreso">
+				<p>Primer Ingreso a Diners Online</p>
+				<span>Confirme su identidad completando <strong>sus datos y cree su clave digital</strong></span>
+			</div>
+			<div class="col-md-6 pasos">
+				<div class="container__pasos">
+
+					<div class="container__segundo-paso check-pasos">
+						<div class="container__icon-paso check--pasos">
+							<i class="icon-check"></i>
+							<span>1</span>
+						</div>
+					</div>
+					<div class="container__primer-paso">
+						<div class="container__icon-paso">
+							<small>PASO</small>
+							<span>2</span>
+						</div>
+						<p>Crear Mi Clave Digital</p>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<div class="container">
+		<div class="row">
+			<div class="col-md-12 titulo-bienvenida">
+				<p><span>¡Bienvenido, {{crearClaveCtrl.nombreSocio}}!</span> Está a un paso de ingresar a su Diners Online</p>
+			</div>
+			<div class="col-md-12">
+				<div class="container-formulario clear-flow formulario-mobile">
+
+					<div class="container-campos margen-campos">
+						<div class="container-text">
+							<p>Cree su Clave Digital<small>*</small></p>
+							<span>Entre 6 a 10 dígitos alfanuméricos con el teclado seguro</span>
+						</div>
+						<div class="container-campos-ingreso">
+							<div class="container-ver-clave">
+								<div class="input-campo">
+									<input type="password" id="txtClaveDigital" tabindex="1" placeholder="······" minlength="6" maxlength="10" class="write teclado"
+										readonly ng-model="crearClaveCtrl.usuario.claveDigital" ng-paste="$event.preventDefault();" ondrop="return false;">
+									<i class="icon-clave-ojo ojo-action2 eye1"></i>
+									<i class="icon-clave-ojo2 eye2"></i>
+								</div>
+							</div>
+							<div class="teclado-visible-input"></div>
+							<a href="javascript:;" data-toggle="tooltip" data-placement="bottom" title="lorem ipsum texto de prueba" class="tooltip_nelace">¿Qué es y para que sirve esta clave?</a>
+							<div class="container-teclado">
+								<ul id="keyboard" class="teclado-numerico">
+									<li class="symbol" data-number><span class="off">1</span><span class="on">!</span></li>
+									<li class="symbol" data-number><span class="off">2</span><span class="on">@</span></li>
+									<li class="symbol" data-number><span class="off">3</span><span class="on">#</span></li>
+									<li class="symbol" data-number><span class="off">4</span><span class="on">$</span></li>
+									<li class="symbol" data-number><span class="off">5</span><span class="on">%</span></li>
+									<li class="symbol" data-number><span class="off">6</span><span class="on">^</span></li>
+									<li class="symbol" data-number><span class="off">7</span><span class="on">&amp;</span></li>
+									<li class="symbol" data-number><span class="off">8</span><span class="on">*</span></li>
+									<li class="symbol" data-number><span class="off">9</span><span class="on">(</span></li>
+									<li class="symbol" data-number><span class="off">0</span><span class="on">)</span></li>
+									<li class="letter">q</li>
+									<li class="letter">w</li>
+									<li class="letter">e</li>
+									<li class="letter">r</li>
+									<li class="letter">t</li>
+									<li class="letter">y</li>
+									<li class="letter">u</li>
+									<li class="letter">i</li>
+									<li class="letter">o</li>
+									<li class="letter">p</li>
+									<li class="letter">a</li>
+									<li class="letter">s</li>
+									<li class="letter">d</li>
+									<li class="letter">f</li>
+									<li class="letter">g</li>
+									<li class="letter">h</li>
+									<li class="letter">j</li>
+									<li class="letter">k</li>
+									<li class="letter">l</li>
+									<li class="letter">z</li>
+									<li class="letter">x</li>
+									<li class="letter">c</li>
+									<li class="letter">v</li>
+									<li class="letter">b</li>
+									<li class="letter">n</li>
+									<li class="letter">m</li>
+									<li class="delete lastitem border-borrar"><i class="icon-borrar"></i>
+										<p>LIMPIAR</p>
+									</li>
+								</ul>
+								<div class="container-detalle-teclado">
+									<!-- <i class="icon-cruz cerrar-teclado"></i> -->
+									<a href="javascript:;" class="ayuda-teclado modal-ayuda" tabindex="-1">Ayuda</a>
+									<i class="icon-teclado"></i>
+									<p>Usa este <br> <a href="javascript:;" tabindex="-1" class="teclado_seguro" data-toggle="tooltip" data-placement="bottom"
+											data-original-title="lorem ipsum texto de prueba"><span>teclado seguro </span></a><br>para digitar tu clave</p>
+								</div>
+							</div>
+							<i class="icon-check campo_valido campo-check-pass"></i>
+						</div>
+					</div>
+
+					<div class="container-campos clear-flow">
+						<div class="container-text">
+							<p>Reingrese su Clave Digital<small>*</small></p>
+							<span></span>
+						</div>
+						<div class="container-campos-ingreso clave-input">
+							<div class="teclado-visible-input2"></div>
+							<div class="container-ver-clave">
+								<div class="input-campo">
+									<input type="password" id="txtClaveDigitalReingreso" tabindex="2" placeholder="······" minlength="6" maxlength="10" class="write teclado"
+										readonly ng-paste="$event.preventDefault();" ondrop="return false;">
+									<i class="icon-clave-ojo eye3 ojo-action"></i>
+									<i class="icon-clave-ojo2 eye4"></i>
+								</div>
+							</div>
+							<span class="clave-incorrecta"></span>
+
+							<div class="container-teclado2">
+								<ul id="keyboard2" class="teclado-numerico">
+									<li class="symbol" data-number><span class="off">1</span><span class="on">!</span></li>
+									<li class="symbol" data-number><span class="off">2</span><span class="on">@</span></li>
+									<li class="symbol" data-number><span class="off">3</span><span class="on">#</span></li>
+									<li class="symbol" data-number><span class="off">4</span><span class="on">$</span></li>
+									<li class="symbol" data-number><span class="off">5</span><span class="on">%</span></li>
+									<li class="symbol" data-number><span class="off">6</span><span class="on">^</span></li>
+									<li class="symbol" data-number><span class="off">7</span><span class="on">&amp;</span></li>
+									<li class="symbol" data-number><span class="off">8</span><span class="on">*</span></li>
+									<li class="symbol" data-number><span class="off">9</span><span class="on">(</span></li>
+									<li class="symbol" data-number><span class="off">0</span><span class="on">)</span></li>
+									<li class="letter">q</li>
+									<li class="letter">w</li>
+									<li class="letter">e</li>
+									<li class="letter">r</li>
+									<li class="letter">t</li>
+									<li class="letter">y</li>
+									<li class="letter">u</li>
+									<li class="letter">i</li>
+									<li class="letter">o</li>
+									<li class="letter">p</li>
+									<li class="letter">a</li>
+									<li class="letter">s</li>
+									<li class="letter">d</li>
+									<li class="letter">f</li>
+									<li class="letter">g</li>
+									<li class="letter">h</li>
+									<li class="letter">j</li>
+									<li class="letter">k</li>
+									<li class="letter">l</li>
+									<li class="letter">z</li>
+									<li class="letter">x</li>
+									<li class="letter">c</li>
+									<li class="letter">v</li>
+									<li class="letter">b</li>
+									<li class="letter">n</li>
+									<li class="letter">m</li>
+									<li class="delete lastitem border-borrar"><i class="icon-borrar"></i>
+										<p>LIMPIAR</p>
+									</li>
+								</ul>
+								<div class="container-detalle-teclado">
+									<!-- <i class="icon-cruz cerrar-teclado2"></i> -->
+									<a href="javascript:;" tabindex="-1" class="ayuda-teclado modal-ayuda">Ayuda</a>
+									<i class="icon-teclado"></i>
+									<p>Usa este <br> <a href="javascript:;" tabindex="-1" class="teclado_seguro tooltip_nelace" data-toggle="tooltip" data-placement="bottom"
+											data-original-title="lorem ipsum texto de prueba"><span>teclado seguro </span></a><br>para digitar tu clave</p>
+								</div>
+							</div>
+							<i class="icon-check campo_valido campo-check-pass"></i>
+						</div>
+					</div>
+
+
+					<div class="container-campos campos-afiliacion">
+						<div class="container-text">
+							<p>Contrato de afiliación<br> al servicio de Diners Online</p>
+							<span>Lee las condiciones del contrato para crear tu clave</span>
+						</div>
+						<div class="container-campos-ingreso container__terminos">
+							<p>Al ingresar a su Diners Online está declarando haber leído y aceptado los <a href="javascript:;" tabindex="-1" class="terminos-modal">términos y condiciones del contrato </a><strong> de afiliación al servicio de operaciones en línea, a través de la Clave Anterior Digital.</strong></p>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="col-md-12">
+				<div class="container-boton-siguiente">
+					<a href="javascript:;" class="btn-sgt disabled-btn btn-aceptar-terminos">aceptar las condiciones e ingresar</a>
+					<a href="javascript:;" tabindex="3" class="btn-sgt disabled-btn paso-siguiente">aceptar las condiciones e ingresar</a>
+					<span>Paso <strong>2</strong> de 2</span>
+				</div>
+			</div>
+			<div class="col-md-12 col-sm-12 datos-includ">
+				<div class="container-datos-seguros">
+					<i class="icon-login"></i>
+					<p>(<span>*</span>) Datos obligatorios. Serán tratados de forma confidencial y segura</p>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<div class="modal fade modal antes-de-ingresar" tabindex="-1" role="dialog" id="myModal">
+		<div class="modal-dialog">
+			<div class="modal-content">
+				<div class="modal-header header-asignar">
+					<h4 class="modal-title">Antes de ingresar a su Diners Online</h4>
+				</div>
+				<div class="modal-body contenido-formulario">
+					<div class="container-form-modal">
+						<div class="container-text-form-modal">
+							<p>Seleccione su imagen de seguridad <small>*</small></p>
+							<i class="preguntas tooltip_pregunta2" data-toggle="tooltip" data-placement="right" title="lorem ipsum texto de prueba">?</i>
+						</div>
+						<div class="select-img"><input type="hidden" id="hdImagenId" ng-model="crearClaveCtrl.usuario.imagenId" />
+							<select class="image-picker show-html" id="imgPerfil" ng-model="crearClaveCtrl.usuario.imagenId" ng-hide="true">
+                                <option value=""></option>
+                                <option data-img-src="Content/Images/thumb-flor.jpg" value="1"> </option>
+                                <option data-img-src="Content/Images/thumb-cascada.jpg" value="2"> Page 2 </option>
+                                <option data-img-src="Content/Images/thumb-perro.jpg" value="3"> Page 3 </option>
+                                <option data-img-src="Content/Images/thumb-mar.jpg" value="4"> Page 4 </option>
+                                <option data-img-src="Content/Images/thumb-valle.jpg" value="5"> Page 5 </option>
+                                <option data-img-src="Content/Images/thumb-atardecer.jpg" value="6"> Page 6 </option>
+                                <option data-img-src="Content/Images/thumb-lago.jpg" value="7"> Page 7 </option>
+                                <option data-img-src="Content/Images/thumb-estrella.jpg" value="8"> Page 8 </option>
+                            </select>
+							<p class="errorInputs"></p>
+						</div>
+					</div>
+
+					<div class="container-form-modal">
+						<div class="container-text-form-modal">
+							<p>O si desea utilice su perfil de facebook</p>
+						</div>
+						<div class="container-campos-form-modal">
+							<input type="hidden" name="facebookId" class="facebookId" value="{{crearClaveCtrl.usuario.FacebookId}}" />
+							<img ng-src="http://graph.facebook.com/{{crearClaveCtrl.usuario.facebookId}}/picture?type=large" class="b-facebook" alt=""
+								ng-show="crearClaveCtrl.conectadoAFacebook" />
+							<br />
+							<a id="hrefFacebook" href="javascript:;" ng-click="crearClaveCtrl.getFacebookPicture()">{{crearClaveCtrl.facebookButtonName}}</a>
+						</div>
+					</div>
+					<div class="container-form-modal">
+						<div class="container-text-form-modal">
+							<p>Email <small>*</small></p>
+						</div>
+						<div class="container-campos-form-modal">
+							<input type="text" id="emailUsuario" placeholder="Ej: juan@gmail.com" data-validate="email" data-required="email" class="emailModal"
+								ng-model="crearClaveCtrl.usuario.email" ng-paste="$event.preventDefault();" maxlength="50" email-validacion ondrop="return false;">
+							<span>Recibirá notificaciones de sus movimientos, transacciones y alertas</span>
+						</div>
+					</div>
+					<div class="container-form-modal">
+						<div class="container-text-form-modal">
+							<p>Nº Celular <small>*</small></p>
+							<span>Necesario sólo<br> si reside en Perú</span>
+						</div>
+						<div class="container-campos-form-modal">
+							<div class="select">
+								<select data-required="operator" id="operadorTelefonico" ng-model="crearClaveCtrl.usuario.operadorTelefonico" ng-options="option.nombre for option in crearClaveCtrl.operadoresTelefonicos track by option.id">
+                                    <option value="">Seleccionar operador ...</option>
+                                </select>
+							</div>
+							<div class="container-campos-telefono">
+								<input type="text" type="telefono" id="numeroTelefonoClaveDigital" class="telefono numeros" placeholder="X XXXX XXXX" maxlength="9"
+									size="9" data-required="phone" ng-model="crearClaveCtrl.usuario.numeroCelular" ng-paste="$event.preventDefault();"
+									ondrop="return false;">
+								<i class="icon-telefono"></i>
+							</div>
+							<span>Recibirá <a href="javascript:;" data-toggle="tooltip" data-placement="bottom" title="lorem ipsum texto de prueba" class="tooltip_nelace">alertas </a>de sus transacciones.</span>
+						</div>
+
+						<a class="btn-aceptar-ingresar btn-sgt disabled-btn" data-submit="modal">AHORA SI, IR A MI DINERS ONLINE</a>
+
+						<a class="btn-aceptar-ingresar btn-sgt exito-pass" ng-click="crearClaveCtrl.crearClave()" id="btnCrearClave" data-dismiss="modal">AHORA SI, IR A MI DINERS ONLINE</a>
+
+						<div class="col-md-12 datos-obligatorios-ingreso">
+							<div class="container-datos-seguros">
+								<i class="icon-login"></i>
+								<p>(<span>*</span>) Datos obligatorios. Serán tratados de forma confidencial y segura</p>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+			<!-- /.modal-content -->
+		</div>
+		<!-- /.modal-dialog -->
+	</div>
+	<!-- /.modal -->
+
+	<div class="modal fade" tabindex="-1" role="dialog" id="modal-terminos">
+		<div class="modal-dialog modal-terminos-contenidos">
+			<div class="modal-content">
+				<div class="modal-body">
+					<p>Términos y condiciones del contrato de afiliación de la tarjeta a la clave de seis dígitos</p>
+					<span>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</span>
+
+					<span>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</span>
+				</div>
+				<div class="modal-footer download-terminos">
+					<div class="col-md-5 col-sm-5 col-xs-12">
+						<i class="icon-exportar"></i>
+						<a href="javascript:;">Descargar términos y condiciones</a>
+						<span>Formato PDF, 150 Kb</span>
+					</div>
+					<div class="col-md-7 col-sm-5 col-xs-12">
+						<a href="javascript:;" class="btn-sgt boton-entendido-action" data-dismiss="modal">entendido</a>
+					</div>
+				</div>
+			</div>
+			<!-- /.modal-content -->
+		</div>
+		<!-- /.modal-dialog -->
+	</div>
+	<!-- /.modal -->
+
+	<div class="modal fade" tabindex="-1" role="dialog" id="modal-ayuda">
+		<div class="modal-dialog modal-terminos-contenidos">
+			<div class="modal-content">
+				<div class="modal-body">
+					<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit.</p>
+					<span>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</span>
+
+					<span>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</span>
+				</div>
+				<div class="modal-footer download-terminos">
+					<div class="col-md-12 col-sm-5 col-xs-12 boton-ayuda-entendido">
+						<a href="javascript:;" class="btn-sgt boton-entendido-action" data-dismiss="modal">entendido</a>
+					</div>
+				</div>
+			</div>
+			<!-- /.modal-content -->
+		</div>
+		<!-- /.modal-dialog -->
+	</div>
+	<!-- /.modal -->
+
+	<div class="modal fade" tabindex="-1" role="dialog" id="modal-teclado-seguro">
+		<div class="modal-dialog modal-terminos-contenidos">
+			<div class="modal-content">
+				<div class="modal-body">
+					<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit.</p>
+					<span>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</span>
+
+					<span>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</span>
+				</div>
+				<div class="modal-footer download-terminos">
+					<div class="col-md-12 col-sm-5 col-xs-12 boton-ayuda-entendido">
+						<a href="javascript:;" class="btn-sgt boton-entendido-action" data-dismiss="modal">entendido</a>
+					</div>
+				</div>
+			</div>
+			<!-- /.modal-content -->
+		</div>
+		<!-- /.modal-dialog -->
+	</div>
+	<!-- /.modal -->
+</div>
+<script type="text/javascript">
+    jQuery('select.image-picker').imagepicker({
+        hide_select: false
+    });
+</script>

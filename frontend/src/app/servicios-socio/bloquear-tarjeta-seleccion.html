@@ -1,0 +1,80 @@
+
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-xs-12 col-md-12 row titulo_tabpage-diners">
+                <h2>Bloqueo de tarjeta</h2>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-xs-12 col-md-6 row subtitulo_tabpage-diners">
+                <p><b>Paso 1:</b> Seleccionar tarjeta</p>
+            </div>
+            <div class="col-xs-12 col-md-6 pasos_tabpage-diners">
+                <div class="row container_step">
+                    <div class="container_pasos">
+                        <span class="active">1</span>
+                        <span>2</span>
+                        <span class="borrar-margin-right">3</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <section class="container-fluid bloque__padding-top10" ng-init="tarjetaCtrl.obtenerTarjetas()">
+        <div class="row container__section--row-abajo">
+            <article class="col-xs-12 col-sm-3 col-md-3 col-lg-3" style="padding: 3px 3px 3px 3px;" ng-repeat="tarjeta in tarjetaCtrl.listaTarjetas">
+                <div class="container__bloque-tarjeta">
+                    <div class="bloque__tarjeta-diners">
+                        <img ng-src="{{ tarjeta.urlTarjeta }}" class="img-responsive" alt="" />
+                        <ul>
+                            <li><label>{{ tarjeta.nombreProducto }}</label></li>
+                            <li><strong>{{ tarjeta.esTitular ? 'Titular' : 'Adicional' }}</strong></li>
+                            <li>{{ tarjeta.socioTarjeta.nombre + (tarjeta.socioTarjeta.segundoNombre != '' ? ' ' + tarjeta.socioTarjeta.segundoNombre
+                                : '') + ' ' + tarjeta.socioTarjeta.apellidoPaterno }}</li>
+                            <li>{{ tarjetaCtrl.mostrarNumeroTarjetaParaBloqueo(tarjeta.numeroTarjeta) }}</li>
+                        </ul>
+                    </div>
+                    <div class="footer__bloque-tarjeta" style="height: 80px;">
+                        <div ng-if="tarjeta.estadoTarjeta === 1">
+                            <select ng-options="opcion.id as opcion.description for opcion in tarjeta.opcionesTarjeta"
+                                ng-model="tarjeta.opcionActual" ng-change="tarjetaCtrl.evaluarSeleccion(tarjeta.idTarjeta)">
+                            </select>
+                        </div>
+                        <div ng-if="tarjeta.estadoTarjeta === 0" style="margin-top: -5%">
+                            {{ tarjeta.estadoTarjeta === 0 ? 'Bloqueado' : 'Activo' }}<br>
+                            <span>N° Operación {{ tarjeta.numeroOperacion }}</span><br>
+                            <span>Fecha {{ tarjetaCtrl.formatearFecha(tarjeta.fechaOperacion)}}</span>
+                        </div>
+                    </div>
+                </div>
+            </article>
+        </div>
+        <div ng-class="{'ng-hide': !tarjetaCtrl.mostrarOptionMotivo}">
+            <div class="row container__section--row-abajo">
+                <div class="bloque__continuar-tarjeta">
+                    <div class="col-xs-12 col-sm-3 col-md-3 col-lg-3">
+                        <strong>Indicar motivo</strong>
+                    </div>
+                    <div class="col-xs-12 col-sm-3 col-md-3 col-lg-3">
+                        <input name="rbPerdida" id="rbPerdida" class="with-gap" type="radio" ng-model="tarjetaCtrl.motivoBloqueo.motivo" value="perdida"
+                        ng-checked="true" checked="checked"/>
+                        <label class="radio-mat" for="rbPerdida">Pérdida</label>
+
+
+                        <input name="rbRobo" id="rbRobo" class="with-gap" type="radio" ng-model="tarjetaCtrl.motivoBloqueo.motivo" value="robo" />
+                        <label class="radio-mat" for="rbRobo">Robo</label>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-xs-12 col-sm-3 col-md-3 col-lg-3">
+                    &nbsp;
+                </div>
+                <div class="col-xs-12 col-sm-3 col-md-3 col-lg-3 text-left bloque__pasos-tarjeta">
+                    <button class="btn-sgte-paso continuar-bloqueo1" ng-click="tarjetaCtrl.irAConfirmacion()">CONTINUAR</button>
+                    <p class="pasos"><strong>Paso 1</strong> de 3</p>
+                </div>
+            </div>
+        </div>
+    </section>

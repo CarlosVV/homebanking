@@ -1,0 +1,355 @@
+strong {
+    font-family: "GothamMedium";
+}
+
+.mis-datos__section {
+    padding: 25px 0;
+    border-bottom: solid 1px #CCC;
+}
+
+.mis-datos__section-title {
+    color: #333;
+    font-size: 20px;
+    margin-bottom: 35px;
+    display: inline-block;
+}
+
+@media(min-width: 768px) {
+    .mis-datos__section-title {
+        margin-top: 0;
+    }
+}
+
+
+
+
+.mis-datos__section-table {
+    width: 100%;
+
+    tr {
+        margin-bottom: 15px;
+        display: block;
+
+        td {
+            color: #666;
+            font-size: 14px;
+            display: block;
+
+            &:first-child {
+                color: #002552;
+                // text-align: right;
+                font-family: "GothamMedium";
+            }
+
+            span {
+                color: red;
+            }
+        }
+    }
+}
+
+@media(min-width: 768px) {
+    .mis-datos__section-table {
+        width: 550px;
+        margin-left: 120px;
+
+        tr {
+            display: table-row;
+
+            td {
+                display: table-cell;
+                padding-bottom: 7px;
+                font-size: 16px;
+
+                &:first-child {
+                    width: 200px;
+                    text-align: right;
+                    padding-right: 30px;
+                }
+            }
+        }
+    }
+}
+
+
+
+
+.mis-datos__section-input {
+    width: 100%;
+    border-radius: 3px;
+    border: solid 1px #646473;
+    height: 40px;
+    padding-left: 7px;
+    outline: 0;
+}
+
+// @media(min-width: 768px){
+//  .mis-datos__section-input{
+//      width: 320px;
+//  }
+// }
+
+
+
+
+.mis-datos__section-input-number {
+    width: 100%;
+    border-radius: 3px;
+    border: solid 1px #646473;
+    height: 40px;
+    padding-left: 7px;
+    outline: 0;
+}
+
+@media(min-width: 768px) {
+    .mis-datos__section-input-number {
+        width: 150px;
+        display: inline-block;
+        float: right;
+    }
+}
+
+
+.pasos {
+    color: $azul_oscuro;
+    margin: 20px 0;
+
+    strong {
+        font-family: "GothamMedium";
+    }
+}
+
+.btn-azul {
+    font-size: 14px;
+    padding: 15px 30px;
+    text-align: center;
+    border: 1px solid $azul_oscuro;
+    background-color: $azul_oscuro;
+    color: white;
+    margin-top: 40px;
+    outline: none;
+}
+
+
+.btn-azul.disabled {
+    background-color: #DDD;
+    color: #AAA;
+    border: 1px solid #DDD;
+}
+
+
+.btn-celeste {
+    font-size: 14px;
+    padding: 15px 30px;
+    text-align: center;
+    border: 1px solid #00AEEF;
+    background-color: #00AEEF;
+    color: white;
+    margin-top: 40px;
+    outline: none;
+}
+
+.datos-obligatorios {
+    font-size: 13px;
+
+    span {
+        color: #FF4C4C;
+        font-family: "GothamMedium";
+    }
+}
+
+input.error {
+    border: solid 2px red;
+}
+
+input.error + label {
+    display: none !important;
+}
+
+
+.modal-contenedor-txt {
+    overflow: auto;
+    height: 330px;
+    padding: 30px;
+    border-radius: 5px;
+    border: solid 1px #e5e5e5;
+    margin: -15px 0;
+}
+
+.modal-header, .modal-footer {
+    border: none;
+}
+
+.modal-footer {
+    text-align: center;
+
+    .btn-azul {
+        margin-top: 0;
+    }
+}
+
+.container__bloque_verificacion {
+    .mis-datos__section-table {
+        td {
+            font-size: 14px;
+        }
+    }
+}
+
+
+
+.volver {
+    font-size: 15px;
+    color: $textblue;
+    font-weight: bold;
+    position: relative;
+
+    i {
+        font-size: 11px;
+        margin-right: 6px;
+    }
+}
+
+@media(min-width: 768px) {
+    .volver {
+        top: -10px;
+    }
+}
+
+
+.input-field {
+    display: inline-block;
+    margin: 0px 0 10px 0;
+    width: 100%;
+}
+
+@media(min-width: 768px) {
+    .input-field {
+        &.operator {
+            width: 47%;
+            margin-top: 0;
+        }
+    }
+}
+
+
+
+.select-wrapper input.select-dropdown {
+    border-bottom: none;
+    padding-left: 15px;
+    font-size: 16px;
+    color: #31313F;
+    height: 40px;
+    margin-bottom: 0;
+    width: 100%;
+    border: solid 1px #666666;
+    border-radius: 3px;
+    box-sizing: border-box;
+    padding-right: 40px;
+}
+
+
+.select-wrapper {
+    background: white;
+}
+
+.select-wrapper span.caret {
+    font-size: 0;
+    z-index: 0;
+    border-top: 10px dashed #005EAC;
+    border-right: 7px solid transparent;
+    border-left: 7px solid transparent;
+    right: 15px;
+}
+
+.dropdown-content {
+    li {
+        span {
+            color: $azul_oscuro !important;
+        }
+    }
+}
+
+
+.switch, .switch * {
+    display: inline-block;
+    top: -3px;
+}
+
+.radio-mat {
+    font-size: 16px !important;
+    height: 17px !important;
+    margin-bottom: 0 !important;
+    display: block !important;
+    margin-bottom: 15px !important;
+}
+
+[type="radio"]:checked + label:after, [type="radio"].with-gap:checked + label:before, [type="radio"].with-gap:checked + label:after {
+    border: 1px solid #666;
+}
+
+
+[type="radio"].with-gap:checked + label:after {
+    transform: scale(0.4);
+}
+
+[type="radio"]:checked + label:after, [type="radio"].with-gap:checked + label:after {
+    background-color: #006DD9;
+}
+
+[type="radio"]:not(:checked) + label:before, [type="radio"]:not(:checked) + label:after {
+    border: 1px solid #CCC;
+}
+
+.switch label input[type=checkbox]:checked + .lever {
+    background-color: #31AEF0;
+}
+
+.switch label input[type=checkbox]:checked + .lever:after {
+    background-color: white;
+}
+
+.frecuente-exito {
+    background: url(../content/images/check-comprobante.png) left top no-repeat;
+    background-size: 22px 22px;
+    padding-left: 30px;
+    color: #85B200;
+    font-size: 16px;
+    display: none;
+}
+
+
+input[type=number]::-webkit-outer-spin-button,
+input[type=number]::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
+
+button:focus {
+    background-color: #08326C;
+}
+
+.mis-datos__section-input-buscar {
+    background: url(../content/images/lupa.png) 320px center no-repeat;
+    padding-right: 40px;
+}
+
+[type="checkbox"].filled-in:checked + label:after {
+    border: 2px solid $azul_oscuro;
+    background-color: $azul_oscuro;
+}
+
+
+[type="checkbox"] + label{
+    font-size: 16px;
+    color: $azul_oscuro;
+    padding-left: 30px
+}
+.material-tooltip{
+    span{
+        font-size: 14px;
+    }
+}
+.backdrop{
+    background-color: $azul_oscuro !important
+}

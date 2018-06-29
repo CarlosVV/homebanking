@@ -1,0 +1,69 @@
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-xs-12 col-md-12 row titulo_tabpage-diners">
+            <h2>Bloqueo de tarjeta</h2>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-xs-12 col-md-6 row subtitulo_tabpage-diners">
+            <p><b>Paso 2:</b> Verificación</p>
+        </div>
+        <div class="col-xs-12 col-md-6 pasos_tabpage-diners">
+            <div class="row container_step">
+                <div class="container_pasos">
+                    <span class="span-chk"><i class="icon1-tick"></i></span>
+                    <span class="active">2</span>
+                    <span class="borrar-margin-right">3</span>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<section class="container-fluid bloque__padding-top10">
+    <div class="row container__bloque_verificacion container__movimiento-margin">
+        <div class="col-xs-12 col-sm-4 col-md-4 col-lg-4 section__body-border">
+            <div class="col-xs-12 col-sm-8 col-md-8 col-lg-8 float__derecha">
+                <div class="container__bloque-verificacion">
+                    <div class="bloque__tarjeta-verificacion">
+                        <img ng-src="{{ tarjetaCtrl.tarjetaABloquear.urlTarjeta }}" class="img-responsive" alt="" />
+                        <ul>
+                            <li><label>{{ tarjetaCtrl.tarjetaABloquear.nombreProducto}}</label></li>
+                            <li><strong>{{ tarjetaCtrl.tarjetaABloquear.esTitular ? 'Titular' : 'Adicional'}}</strong></li>
+                            <li>{{ tarjetaCtrl.tarjetaABloquear.socioTarjeta.nombre + ' ' +  tarjetaCtrl.tarjetaABloquear.socioTarjeta.apellidoPaterno}}</li>
+                            <li>{{ tarjetaCtrl.tarjetaABloquear.numeroTarjeta.lenngth > 0 ? tarjetaCtrl.mostrarNumeroTarjetaParaBloqueo(tarjetaCtrl.tarjetaABloquear.numeroTarjeta) : '' }}</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-xs-12 col-sm-8 col-md-8 col-lg-8">
+            <div class="col-xs-12 col-sm-8 col-md-8 col-lg-8 contenido__verificacion">
+                <h3>Bloquear tarjeta por perdida</h3>
+                <p>
+                    Recuerda que si la bloqueas no podrás deshacer la acción Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse
+                    non efficitur ex, eget suscipit lorem.
+                </p>
+                <p>
+                    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse non efficitur ex, eget suscipit lorem.
+                </p>
+            </div>
+        </div>
+    </div>
+
+    <div class="row footer__verificacion">
+        <strong>Estas seguro que deseas bloquear la tarjeta por perdida?</strong> Una vez realizado el proceso no se podrá
+        deshacer
+    </div>
+
+    <div class="row container__section--row-arriba">
+        <div class="col-xs-12 col-sm-3 col-md-3 col-lg-3">
+            <p class="section__bloqueo-volver">
+                <a href="javascript:;" ng-click="tarjetaCtrl.activarMenu('tab-1')"><span class="icon1-flecha-left"></span> Volver</a>
+            </p>
+        </div>
+        <div class="col-xs-12 col-sm-4 col-md-4 col-lg-4 text-left bloque__pasos-tarjeta margin__derecha-btn">
+            <button class="btn-bloqueo continuar-bloqueo2" ng-click="tarjetaCtrl.bloquearTarjeta();">CONFIRMAR</button>
+            <p class="pasos"><strong>Paso 2</strong> de 3</p>
+        </div>
+    </div>
+</section>

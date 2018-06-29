@@ -1,0 +1,11 @@
+<div ng-controller="CargoAutomatico as model">
+    <div id="tab-1" class="bloquear-paso-1" ng-class="{'ng-hide':!model.menuSeleccionado('tab-1')}">
+        <solicitud-cargo-automatico></solicitud-cargo-automatico>
+    </div>
+    <div id="tab-2" class="bloquear-paso-2" ng-class="{'ng-hide':!model.menuSeleccionado('tab-2')}">
+        <solicitud-confirmacion content="model.content"></solicitud-confirmacion>
+    </div>
+    <div id="tab-3" class="bloquear-paso-3" ng-class="{'ng-hide':!model.menuSeleccionado('tab-3')}">
+        <constancia-solicitud content="model.content"></constancia-solicitud>
+    </div>
+</div>

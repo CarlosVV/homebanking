@@ -1,0 +1,194 @@
+    /**Estilos Teclado Digital**/
+
+    .on {
+        display: none;
+    }
+
+
+    #keyboard li, #keyboard2 li, #keyboard3 li {
+        background-color: $blanco;
+        color: $blanco;
+        float: left;
+        padding-top: 6px;
+        padding-bottom: 6px;
+        color: $azul_teclado;
+        /*font-family: "Lato", sans-serif;*/
+        font-size: 13px;
+        cursor: pointer;
+        transition: 0.3s;
+        text-transform: uppercase;
+        width: 45px;
+        text-align: center;
+
+        &:hover {
+            background-color: $plomo_teclado;
+        }
+    }
+
+    .uppercase {
+        text-transform: uppercase !important;
+    }
+
+    .container-teclado, .container-teclado2, .container-teclado3 {
+        position: absolute;
+        background-color: $celeste;
+        width: 456px;
+        padding: 7px;
+        border-radius: 4px;
+        opacity: 0;
+        z-index: -1;
+        transition: 0.7s;
+        top: -5px;
+        right: -445px;
+
+        .teclado-numerico {
+            float: left;
+            width: 443px;
+            padding-left: 1px;
+            padding-top: 1px;
+            border-radius: 4px;
+            border: 1px solid $celeste_oscuro;
+
+            li {
+                float: left;
+                border: 1px solid $plomo_oscuro_teclado;
+                margin-left: -1px;
+                margin-top: -1px;
+
+                span {
+                    color: $blanco;
+                    color: $celeste_oscuro;
+                    /*font-family: 'Gotham-Light';*/
+                    font-size: 13px;
+                    cursor: pointer;
+                    transition: 0.3s;
+
+                    &:hover {
+                        background-color: $plomo_teclado;
+                    }
+                }
+
+                .border-left {
+                    border-left: 0px;
+                }
+
+                .border-right {
+                    border-left: 0px;
+                }
+            }
+
+            .lastitem {
+                background-color: $blanco;
+                padding: 3px 5px 4px 10px !important;
+                font-size: 11px;
+                transition: 0.3s;
+                cursor: pointer;
+                width: 176px !important;
+
+                i {
+                    font-size: 20px;
+                    margin-right: 6px;
+                    color: $rojo;
+                    float: left;
+                    margin-top: 2px;
+                    margin-left: -4px;
+                }
+
+                p {
+                    color: $celeste_oscuro;
+                    /*font-family: 'Gotham-Light';*/
+                    font-weight: 700;
+                    float: left;
+                    line-height: 21px;
+                    margin-bottom: 0px;
+                    padding-top: 2px;
+                }
+
+                &:hover {
+                    background-color: $plomo_teclado;
+                }
+            }
+
+            .border-borrar {
+                border-right: 0;
+            }
+        }
+
+        .container-detalle-teclado {
+            float: left;
+            display: block;
+            width: 100%;
+            padding: 10px;
+
+            a {
+                /*text-decoration: none;*/
+                font-size: 13px;
+            }
+
+            i {
+                float: left;
+                font-size: 24px;
+                color: $celeste_oscuro;
+                margin-right: 5px;
+            }
+
+            p {
+                float: left;
+                font-size: 13px;
+                /*font-family: 'Gotham-Light';*/
+                color: $gris_oscuro_teclado;
+                padding-top: 5px;
+                margin-bottom: 0px;
+
+                span {
+                    color: $celeste_oscuro;
+                }
+            }
+        }
+    }
+
+    .ayuda-teclado {
+        float: right;
+        color: $celeste_oscuro !important;
+    }
+
+    .teclado-visible-input, .teclado-visible-input2, .teclado-visible-input3 {
+        background-color: $celeste;
+        position: absolute;
+        top: -5px;
+        width: 95%;
+        height: 60px;
+        border-radius: 4px;
+        opacity: 0;
+        z-index: -1;
+        transition: 1.5s;
+    }
+
+    .teclado_seguro {
+        float: right !important;
+        width: auto !important;
+        padding: 0px !important;
+        display: initial !important;
+        font-size: 12px !important;
+    }
+
+
+    .contenido-teclado-visible {
+        z-index: 1;
+        opacity: 1;
+    }
+
+    .fondo__clave {
+        opacity: 1;
+    }
+
+
+    @media(max-width: 1023px) {
+        .container-teclado, .container-teclado2, .container-teclado3 {
+            display: none;
+        }
+
+        .teclado-visible-input, .teclado-visible-input2, .teclado-visible-input3 {
+            display: none;
+        }
+    }

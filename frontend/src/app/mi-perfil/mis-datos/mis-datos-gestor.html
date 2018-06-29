@@ -1,0 +1,11 @@
+<div ng-controller="MisDatos as misdatosCtrl">
+    <div id="tab-1" class="bloquear-paso-1" ng-class="{'ng-hide':!misdatosCtrl.menuSeleccionado('tab-1')}">
+        <mis-datos></mis-datos>
+    </div>
+    <div id="tab-2" class="bloquear-paso-2" ng-class="{'ng-hide':!misdatosCtrl.menuSeleccionado('tab-2')}">
+        <solicitud-confirmacion content="misdatosCtrl.content"></solicitud-confirmacion>
+    </div>
+    <div id="tab-3" class="bloquear-paso-3" ng-class="{'ng-hide':!misdatosCtrl.menuSeleccionado('tab-3')}">
+        <constancia-solicitud content="misdatosCtrl.content"></constancia-solicitud>
+    </div>
+</div>

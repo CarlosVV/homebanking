@@ -1,0 +1,938 @@
+﻿
+/** -- TAB DE SIDEBAR DETALLE DE PRODUCTOS -- **/
+.container_tabs_header {
+    position: relative;
+    float: left;
+    width: 100%;
+    border-bottom: 2px solid $gris;
+
+    .tabs {
+        display: inline-flex;
+        height: 48px;
+        background-color: transparent;
+        position: relative;
+        overflow-x: auto;
+        overflow-y: hidden;
+        width: 100%;
+        white-space: nowrap;
+
+        li {
+            text-transform: none;
+            height: 62px;
+            position: relative;
+            z-index: 1;
+
+            a {
+                color: $textblue;
+                font-size: 12px;
+            }
+        }
+
+        .tab {
+            -webkit-box-flex: 1;
+            -webkit-flex-grow: 1;
+            -ms-flex-positive: 1;
+            flex-grow: 1;
+            display: block;
+            float: left;
+            text-align: center;
+            line-height: 48px;
+            height: 48px;
+            padding: 0;
+            margin: 0;
+            text-overflow: ellipsis;
+            overflow: hidden;
+            letter-spacing: .8px;
+            width: 15%;
+            min-width: 80px;
+
+            a {
+                display: block;
+                width: 100%;
+                height: 100%;
+                text-overflow: ellipsis;
+                overflow: hidden;
+                transition: color .28s ease;
+                cursor: pointer;
+
+                &:hover {
+                    color: $negro;
+                }
+            }
+        }
+
+        .indicator {
+            background-color: #FFF;
+            border-bottom: 2px solid $darkblue;
+
+            a {
+                color: $negro !important;
+            }
+        }
+    }
+}
+
+.not_width {
+    width: initial !important;
+}
+
+.tab-content {
+    display: none;
+}
+
+.current {
+    display: inherit;
+}
+
+.container_detalle_tabs-top {
+    padding-top: 20px;
+}
+
+.container_detalle_tabs-overflow {
+    overflow-y: hidden;
+    overflow-x: auto;
+}
+
+.container_detalle_tabs {
+    width: 100%;
+    float: left;
+
+    .head_tabla {
+        width: 100%;
+        float: left;
+        padding: 10px 0px;
+        background-color: $blanco;
+    }
+    /**Titulo Estado Cuentas**/
+    .head_table-cuentas {
+        width: 100%;
+        padding: 10px 0px 5px 0px;
+
+        strong {
+            font-size: 18px;
+            font-weight: bold;
+            color: $darkblue;
+            font-family: $gothammedium;
+        }
+
+        small {
+            font-size: 13px;
+            margin-left: 10px;
+        }
+    }
+}
+
+.container_detalle_tabs-perfil {
+    width: 100%;
+    float: left;
+}
+
+.container_filtros {
+    float: left;
+    width: 100%;
+
+    ul {
+        float: left;
+        width: 100%;
+        padding-top: 5px;
+
+        li {
+            float: left;
+            color: $textblue;
+
+            a {
+                color: $textblue;
+                font-size: 14px;
+                float: left;
+                padding: 0px 10px;
+
+                &:hover {
+                    font-weight: bold;
+                }
+            }
+        }
+    }
+}
+
+.container_filtros_tabs_tabs {
+    background-color: $blanco;
+    float: left;
+    width: 100%;
+    border-top: 1px solid $gris;
+    position: relative;
+    padding: 20px 80px;
+    display: none;
+    margin-bottom: 10px;
+}
+
+.tarjetaCreditoSelect {
+    padding: 20px 0px;
+}
+
+.container_container_select {
+    width: 200px;
+    height: 40px;
+    float: left;
+    color: #31313F;
+    border: 1px solid #666666;
+    border-radius: 3px;
+    position: relative;
+    cursor: pointer;
+    z-index: 999;
+    margin-bottom: 5px;
+
+    p {
+        float: left;
+        color: #31313F;
+        font-size: 16px;
+        width: 100%;
+        padding-top: 7px;
+        padding-left: 13px;
+    }
+
+    img {
+        position: absolute;
+        top: 0px;
+        right: 0px;
+        float: right;
+        margin-top: 15px;
+        margin-right: 15px;
+    }
+}
+
+.container_listado_dropdown {
+    width: 200px;
+    height: auto;
+    position: absolute;
+    border: 1px solid #B3B3AE;
+    border-top: 0px solid #B3B3AE;
+    background-color: #FFF;
+    top: 54px;
+    z-index: 3;
+    display: none;
+
+    ul {
+        float: left;
+        width: 100%;
+        background-color: #FFF;
+        padding: 7px;
+
+        li {
+            text-align: left;
+            display: block;
+            padding: 5px 28px;
+            transition: 0.3s;
+
+            a {
+                color: #006CD8;
+                font-family: "latoregular";
+                font-size: 14px;
+            }
+
+            &:hover {
+                background-color: rgba(187, 187, 187, 0.3);
+            }
+        }
+    }
+
+    span {
+        width: 90%;
+        float: left;
+        background-color: #999;
+        height: 1px;
+        overflow: hidden;
+        margin-left: 10px;
+        margin-top: 10px;
+        margin-bottom: 10px;
+    }
+
+    p {
+        float: left;
+        font-family: "latoregular";
+        font-size: 14px;
+        color: #666666;
+        width: 100%;
+        display: block;
+        text-align: center;
+        margin-bottom: 10px;
+    }
+}
+
+.container_selectTarjeta {
+    width: 200px;
+    float: left;
+    margin-left: 0px;
+    margin-bottom: 5px;
+    margin-right: 0px;
+
+    select {
+        height: 40px;
+        width: 130px;
+        padding-left: 5px;
+        padding-right: 5px;
+        font-size: 16px;
+    }
+}
+
+.select-wrapper {
+    span.caret {
+        border-top: 10px dashed #006DD9 !important;
+    }
+}
+
+.cabecera-detalle-tabs {
+    width: 100%;
+    padding: 10px 0px;
+
+    label {
+        margin-right: 10px;
+        color: $darkblue;
+        font-size: 14px;
+    }
+
+    .boton-detalle {
+        border: 1px solid $azul_menu_btn;
+        border-radius: 50px;
+        font-size: 16px;
+        color: $azul_menu_btn;
+        padding: 6px 16px;
+        cursor: pointer;
+        transition: 0.4s;
+
+        &:hover {
+            background-color: $azul_menu_btn;
+            color: $blanco;
+        }
+    }
+
+    .container_selectTarjeta-cuentas {
+        width: 100%;
+        margin-bottom: 10px;
+    }
+}
+
+.container_form-valores {
+    width: 30%;
+    float: left;
+    margin-right: 15px;
+
+    select {
+        width: 100%;
+        border: 1px solid #B3B3AE;
+        border-radius: 3px;
+        height: 37px;
+        float: left;
+        cursor: pointer;
+        padding-left: 10px;
+        padding-right: 10px;
+        font-size: 16px;
+    }
+
+    img {
+        top: 0px;
+        float: right;
+        margin-top: -23px;
+        margin-right: 5px;
+    }
+}
+
+.filtros_tarjetaCreditos {
+    width: 150px;
+}
+
+
+.input_filtros {
+    background-color: #FFF !important;
+    border: 1px solid #b3b3b3 !important;
+    padding: 0px 10px !important;
+    font-family: "latoregular" !important;
+    font-size: 15px !important;
+    width: 258px !important;
+    float: left;
+    display: block;
+    border-radius: 3px !important;
+    margin: 0px !important;
+    height: 34px !important;
+    margin-left: 10px !important;
+}
+
+.boton-foto-edit {
+    border: 1px solid #006DD9;
+    border-radius: 50px;
+    float: left;
+    font-size: 16px;
+    color: #006DD9;
+    padding: 8px 21px;
+    cursor: pointer;
+    transition: 0.4s;
+
+    &:hover {
+        background-color: #006DD9;
+        color: #FFF;
+    }
+}
+
+.boton_edit {
+    padding: 6px 16px !important;
+}
+
+.waves-effect {
+    position: relative;
+    cursor: pointer;
+    display: inline-block;
+    overflow: hidden;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+    -webkit-tap-highlight-color: transparent;
+    vertical-align: middle;
+    z-index: 1;
+    will-change: opacity, transform;
+    transition: all .3s ease-out;
+}
+
+.volver_click {
+    color: #FF4D4D;
+    font-size: 14px;
+    float: left;
+    margin-left: 20px;
+    text-decoration: underline;
+    padding-top: 10px;
+
+    &:hover, &:focus {
+        color: #FF4D4D;
+    }
+}
+
+.estados_de_cuentas {
+    background-color: #FFF;
+    float: left;
+    width: 100%;
+    padding-bottom: 5px;
+    border-top: 1px solid #DDDDDD;
+    position: relative;
+    padding: 20px 10px;
+
+    .filtro_calendarios {
+        width: 110px !important;
+    }
+}
+
+/** -- FIN DE  TAB DE SIDEBAR DETALLE DE PRODUCTOS -- **/
+
+
+/** Tablas **/
+
+.tabla-act-height {
+    min-height: 500px;
+}
+
+.columna-oculta-movil {
+    display: none;
+}
+
+.tabla-actividad {
+    width: 100%;
+    background-color: $blanco;
+
+    thead tr {
+        th {
+            padding: 5px 4px 5px 0px;
+            border-radius: 0px;
+            color: $darkblue;
+            font-size: 12px;
+            border-bottom: 3px solid $gris;
+            font-weight: bold;
+        }
+    }
+
+    tbody tr {
+        transition: 0.3s;
+
+        td {
+            font-size: 12px;
+            color: #646472;
+            border-bottom: 1px solid $gris;
+            padding: 10px 4px 10px 0px;
+
+            b {
+                font-weight: 400;
+            }
+
+            span {
+                float: left;
+            }
+        }
+    }
+}
+
+.tabla-actividad-cuentas {
+    width: 100%;
+    background-color: $blanco;
+    margin-bottom: 5px;
+
+    thead tr {
+        th {
+            font-family: $gothammedium;
+            padding: 5px 10px;
+            border-radius: 0px;
+            font-size: 14px;
+            font-weight: bold;
+        }
+    }
+
+    tbody tr {
+        transition: 0.3s;
+
+        td {
+            font-size: 14px;
+            border-bottom: 1px solid $gris;
+            padding: 10px 10px;
+
+            strong {
+                font-weight: bold;
+            }
+        }
+    }
+
+    .footer-table {
+        background-color: $grisclaro;
+        font-family: $gothammedium;
+
+        td {
+            border-bottom: 1px solid $grisclaro !important;
+        }
+    }
+
+    .footer-table2 {
+
+        td {
+            border-bottom: none !important;
+
+            strong {
+                font-family: $gothammedium;
+                color: $darkblue;
+            }
+        }
+    }
+
+    .columna-titulo {
+        font-weight: bold;
+        color: $darkblue;
+    }
+
+    .label-rojo {
+        /*color: $rojo_oscuro;*/
+        color: $naranja;
+    }
+
+    .label-naranja {
+        color: $naranja;
+        font-size: 14px;
+    }
+}
+
+ .label-rojo {
+        color: $naranja;
+    }
+ .label-naranja {
+        color: $naranja;
+        font-size: 14px;
+    }
+ .label-verde {
+        color: $verde;
+    }
+.tabla__columna-monto {
+    width: 160px;
+}
+
+.tabla__millas_tamanio {
+    width: 100%;
+}
+
+.tabla__col-min1 {
+    min-width: 200px;
+}
+/**Paginador**/
+
+.container_paginador {
+    width: 100%;
+    margin: 0px auto;
+    overflow: hidden;
+    display: block;
+    padding-top: 20px;
+
+    .contador_pagina {
+        width: 200px;
+
+        p {
+            color: #999999;
+            font-size: 14px;
+            float: left;
+        }
+    }
+
+    .container_paginador_contador ul {
+        float: left;
+        width: auto;
+
+        li {
+            float: left;
+            width: auto;
+            padding: 0px 4px;
+
+            a {
+                width: 22px;
+                height: 22px;
+                padding-left: 7px;
+                font-size: 13px;
+                padding-top: 1px;
+                font-size: 14px;
+                color: $textblue;
+                float: left;
+
+                &:hover {
+                    background-color: $backgroundblue;
+                    color: $blanco;
+                    width: 22px;
+                    height: 22px;
+                    padding-left: 7px;
+                    font-size: 14px;
+                    padding-top: 1px;
+                }
+            }
+
+            .disabled_paginador {
+                color: $dinersclubblue !important;
+            }
+
+            .numeros_paginador {
+                background-color: $darkblue;
+                width: 22px;
+                height: 22px;
+                color: #FFF;
+                padding-left: 9px;
+                font-size: 13px;
+                padding-top: 1px;
+            }
+
+            .text_paginador {
+                background-color: transparent !important;
+                width: 60px;
+                color: $textblue;
+
+                &:hover {
+                    color: $darkblue;
+                    background-color: transparent !important;
+                    width: 60px;
+                }
+            }
+
+            .separador_paginador {
+                background-color: transparent !important;
+
+                &:hover {
+                    color: #0062AE !important;
+                }
+            }
+        }
+    }
+}
+
+@media only screen and (min-width : 992px) {
+
+    .container_selectTarjeta-cuentas {
+        width: 260px !important;
+        display: inline-block;
+        margin-bottom: 0px;
+    }
+
+    .container_container_select {
+        margin-right: 5px;
+    }
+
+    .container_selectTarjeta {
+        margin-right: 5px;
+    }
+}
+
+/** Desktop **/
+@media only screen and (min-width : 1200px) {
+
+    .container_container_select {
+        margin-right: 0px;
+    }
+
+    .container_paginador {
+        width: 80%;
+        margin: 0px auto;
+        overflow: hidden;
+        display: block;
+        padding-top: 20px;
+
+        .contador_pagina {
+            width: 200px;
+
+            p {
+                color: #999999;
+                font-size: 14px;
+                float: left;
+            }
+        }
+
+        .container_paginador_contador ul {
+            float: left;
+            width: auto;
+
+            li {
+                float: left;
+                width: auto;
+                padding: 0px 4px;
+
+                a {
+                    width: 22px;
+                    height: 22px;
+                    padding-left: 7px;
+                    font-size: 13px;
+                    padding-top: 1px;
+                    font-size: 14px;
+                    color: $textblue;
+                    float: left;
+
+                    &:hover {
+                        background-color: $backgroundblue;
+                        color: $blanco;
+                        width: 22px;
+                        height: 22px;
+                        padding-left: 7px;
+                        font-size: 14px;
+                        padding-top: 1px;
+                    }
+                }
+
+                .disabled_paginador {
+                    color: $dinersclubblue !important;
+                }
+
+                .text_paginador {
+                    background-color: transparent !important;
+                    width: 60px;
+                    color: $textblue;
+
+                    &:hover {
+                        color: $darkblue;
+                        background-color: transparent !important;
+                        width: 60px;
+                    }
+                }
+
+                .separador_paginador {
+                    background-color: transparent !important;
+
+                    &:hover {
+                        color: #0062AE !important;
+                    }
+                }
+            }
+        }
+    }
+
+    .cabecera-detalle-tabs {
+        width: 100%;
+        padding: 10px 0px;
+
+        label {
+            margin-right: 10px;
+            color: $darkblue;
+            font-size: 16px;
+        }
+
+        .boton-detalle {
+            border: 1px solid $azul_menu_btn;
+            border-radius: 50px;
+            font-size: 16px;
+            color: $azul_menu_btn;
+            padding: 6px 16px;
+            cursor: pointer;
+            transition: 0.4s;
+
+            &:hover {
+                background-color: $azul_menu_btn;
+                color: $blanco;
+            }
+        }
+
+        .container_selectTarjeta-cuentas {
+            width: 260px;
+            display: inline-block;
+            margin-bottom: 0px;
+        }
+    }
+
+    .tabla__millas_tamanio {
+        width: 50%;
+    }
+
+    .container_detalle_tabs {
+        width: 100%;
+        float: left;
+
+        .head_tabla {
+            width: 50%;
+            float: right;
+            padding: 20px 10px;
+        }
+    }
+
+    .container_filtros {
+        float: left;
+        width: 100%;
+
+        ul {
+            float: left;
+            width: 100%;
+            padding-top: 5px;
+
+            li {
+                float: right;
+                color: $textblue;
+
+                a {
+                    color: $textblue;
+                    font-size: 14px;
+                    font-family: "latoregular";
+                    float: left;
+                    padding: 0px 10px;
+
+                    &:hover {
+                        font-weight: bold;
+                    }
+                }
+            }
+        }
+    }
+
+    .boton_edit {
+        margin-left: 10px;
+    }
+
+    .tarjetaCreditoSelect {
+        padding: 20px 10px;
+    }
+
+    .container_selectTarjeta {
+        margin-left: 15px;
+        margin-right: 0px;
+        float: left;
+
+        select {
+            height: 40px;
+            width: 130px;
+            padding-left: 5px;
+            padding-right: 5px;
+            font-size: 16px;
+        }
+    }
+
+    .container_detalle_tabs-top {
+        padding-top: 30px;
+    }
+
+    .columna-oculta-movil {
+        display: table-cell;
+    }
+
+    .tabla-actividad {
+        width: 100%;
+        background-color: $blanco;
+
+        thead tr {
+            th {
+                padding: 10px 10px 10px 10px;
+                border-radius: 0px;
+                color: $darkblue;
+                font-size: 14px;
+                border-bottom: 3px solid $gris;
+                font-weight: bold;
+            }
+        }
+
+        tbody tr {
+            transition: 0.3s;
+
+            td {
+                font-size: 14px;
+                color: #646472;
+                border-bottom: 1px solid $gris;
+                padding: 10px 10px 10px 10px;
+
+                b {
+                    font-weight: bold;
+                }
+
+                span {
+                    float: left;
+                }
+            }
+        }
+    }
+
+    .container_tabs_header {
+        .tabs {
+
+            li {
+
+                a {
+                    color: $textblue;
+                    font-size: 18px;
+                }
+            }
+        }
+    }
+}
+
+.enlace-mov{
+    position: relative;
+    &:before {
+        content: "";
+        position: absolute;
+        top: 20px;
+        right: 50%;
+        width: 0;
+        height: 0;
+        border-left: 10px solid transparent;
+        border-right: 10px solid transparent;
+        border-bottom: 10px solid $gris;
+        margin-right: -10px;
+    }
+
+    &:after {
+        content: "";
+        position: absolute;
+        top: 22px;
+        right: 50%;
+        width: 0;
+        height: 0;
+        border-left: 10px solid transparent;
+        border-right: 10px solid transparent;
+        border-bottom: 10px solid $blanco;
+        margin-right: -10px;
+        z-index: 1;
+
+    }
+
+}
+
+@media(min-width: 1200px){
+    .enlace-mov{
+        &:before {
+            top: 30px;
+        }
+
+        &:after {
+            top: 32px;
+        }
+
+    }
+}

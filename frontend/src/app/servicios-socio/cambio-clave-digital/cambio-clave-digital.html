@@ -1,0 +1,11 @@
+<div ng-controller="CambioClaveDigital as cambioClaveDigitalCtrl">
+    <div ng-show="cambioClaveDigitalCtrl.menuSeleccionado('tab-1')">
+        <cambio-clave-digital-ingresar></cambio-clave-digital-ingresar>
+    </div>
+    <div ng-show="cambioClaveDigitalCtrl.menuSeleccionado('tab-2')">
+        <solicitud-confirmacion content="cambioClaveDigitalCtrl.content"></solicitud-confirmacion>
+    </div>
+    <div ng-show="cambioClaveDigitalCtrl.menuSeleccionado('tab-3')">
+        <constancia-solicitud content="cambioClaveDigitalCtrl.content"></constancia-solicitud>
+    </div>
+</div>

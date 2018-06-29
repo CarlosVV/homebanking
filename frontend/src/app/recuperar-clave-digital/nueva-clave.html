@@ -1,0 +1,298 @@
+<header-externo></header-externo>
+<div id="recuperarClaveDigital" class="estilos-login" ng-controller="RecuperarClaveDigitalNuevaClave as nuevaClaveCtrl" data-ng-init="nuevaClaveCtrl.init()">
+	<div class="container container__menu">
+		<div class="row">
+
+			<div class="col-md-7 frace__ingreso">
+				<p>Olvidé Mi Clave Digital</p>
+				<span>Aquí podrás volver a generar tu clave digital o recuperar tu usuario  <strong>para ingresar a tu Diners Online</strong></span>
+			</div>
+			<div class="col-md-5 pasos">
+				<div class="container__pasos">
+
+					<div class="container__segundo-paso check-pasos">
+						<div class="container__icon-paso check--pasos">
+							<i class="icon-check"></i>
+							<span>1</span>
+						</div>
+					</div>
+					<div class="container__primer-paso">
+						<div class="container__icon-paso">
+							<small>PASO</small>
+							<span>2</span>
+						</div>
+						<p>Crear Mi Clave Digital</p>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<div class="container">
+		<div class="row">
+			<div class="col-md-12 titulo-bienvenida">
+				<p><span>¡Bienvenido, {{nuevaClaveCtrl.nombreSocio}}!</span> Estás a un paso de ingresar a tu Diners Online!</p>
+			</div>
+			<div class="col-md-12">
+				<div class="container-formulario clear-flow formulario-mobile">
+
+					<div class="container-campos margen-campos">
+						<div class="container-text">
+							<p>Crea tu Clave Digital<small>*</small></p>
+							<span>Entre 6 a 10 dígitos alfanuméricos con el teclado seguro</span>
+						</div>
+						<div class="container-campos-ingreso">
+							<div class="container-ver-clave">
+								<div class="input-campo">
+									<input type="password" id="txtClaveDigital" tabindex="1" placeholder="······" minlength="6" maxlength="10" class="write teclado"
+										readonly ng-model="nuevaClaveCtrl.claveDigital" ng-paste="$event.preventDefault();" ondrop="return false;">
+									<i class="icon-clave-ojo ojo-action2 eye1"></i>
+									<i class="icon-clave-ojo2 eye2"></i>
+								</div>
+							</div>
+							<div class="teclado-visible-input2"></div>
+							<a href="javascript:;" data-toggle="tooltip" data-placement="bottom" title="lorem ipsum texto de prueba" class="tooltip_nelace">¿Qué es y para que sirve esta clave?</a>
+							<div class="container-teclado">
+								<ul id="keyboard" class="teclado-numerico">
+									<li class="symbol" data-number><span class="off">1</span><span class="on">!</span></li>
+									<li class="symbol" data-number><span class="off">2</span><span class="on">@</span></li>
+									<li class="symbol" data-number><span class="off">3</span><span class="on">#</span></li>
+									<li class="symbol" data-number><span class="off">4</span><span class="on">$</span></li>
+									<li class="symbol" data-number><span class="off">5</span><span class="on">%</span></li>
+									<li class="symbol" data-number><span class="off">6</span><span class="on">^</span></li>
+									<li class="symbol" data-number><span class="off">7</span><span class="on">&amp;</span></li>
+									<li class="symbol" data-number><span class="off">8</span><span class="on">*</span></li>
+									<li class="symbol" data-number><span class="off">9</span><span class="on">(</span></li>
+									<li class="symbol" data-number><span class="off">0</span><span class="on">)</span></li>
+									<li class="letter">q</li>
+									<li class="letter">w</li>
+									<li class="letter">e</li>
+									<li class="letter">r</li>
+									<li class="letter">t</li>
+									<li class="letter">y</li>
+									<li class="letter">u</li>
+									<li class="letter">i</li>
+									<li class="letter">o</li>
+									<li class="letter">p</li>
+									<li class="letter">a</li>
+									<li class="letter">s</li>
+									<li class="letter">d</li>
+									<li class="letter">f</li>
+									<li class="letter">g</li>
+									<li class="letter">h</li>
+									<li class="letter">j</li>
+									<li class="letter">k</li>
+									<li class="letter">l</li>
+									<li class="letter">z</li>
+									<li class="letter">x</li>
+									<li class="letter">c</li>
+									<li class="letter">v</li>
+									<li class="letter">b</li>
+									<li class="letter">n</li>
+									<li class="letter">m</li>
+									<li class="delete lastitem border-borrar"><i class="icon-borrar"></i>
+										<p>BORRAR</p>
+									</li>
+								</ul>
+								<div class="container-detalle-teclado">
+									<!-- <i class="icon-cruz cerrar-teclado"></i> -->
+									<a href="javascript:;" class="ayuda-teclado modal-ayuda">Ayuda</a>
+									<i class="icon-teclado"></i>
+									<p>Usa este <br> <a href="javascript:;" class="teclado_seguro" data-toggle="tooltip" data-placement="bottom" data-original-title="lorem ipsum texto de prueba"><span>teclado seguro </span></a><br>para
+										digitar tu clave</p>
+								</div>
+							</div>
+							<i class="icon-check campo_valido campo-check-pass"></i>
+						</div>
+					</div>
+
+					<div class="container-campos clear-flow">
+						<div class="container-text">
+							<p>Vuelve a ingresarla<small>*</small></p>
+							<span>La clave que usas para hacer tus compras o retiros de dinero. </span>
+						</div>
+						<div class="container-campos-ingreso clave-input">
+							<div class="teclado-visible-input"></div>
+							<div class="container-ver-clave">
+								<div class="input-campo">
+									<input type="password" id="txtClaveDigitalReingreso" tabindex="2" placeholder="······" minlength="6" maxlength="10" class="write2 teclado"
+										readonly ng-paste="$event.preventDefault();" on-drop="return false;">
+									<i class="icon-clave-ojo eye3 ojo-action"></i>
+									<i class="icon-clave-ojo2 eye4"></i>
+								</div>
+							</div>
+							<span class="clave-incorrecta"></span>
+
+							<div class="container-teclado2">
+								<ul id="keyboard2" class="teclado-numerico">
+									<li class="symbol" data-number><span class="off">1</span><span class="on">!</span></li>
+									<li class="symbol" data-number><span class="off">2</span><span class="on">@</span></li>
+									<li class="symbol" data-number><span class="off">3</span><span class="on">#</span></li>
+									<li class="symbol" data-number><span class="off">4</span><span class="on">$</span></li>
+									<li class="symbol" data-number><span class="off">5</span><span class="on">%</span></li>
+									<li class="symbol" data-number><span class="off">6</span><span class="on">^</span></li>
+									<li class="symbol" data-number><span class="off">7</span><span class="on">&amp;</span></li>
+									<li class="symbol" data-number><span class="off">8</span><span class="on">*</span></li>
+									<li class="symbol" data-number><span class="off">9</span><span class="on">(</span></li>
+									<li class="symbol" data-number><span class="off">0</span><span class="on">)</span></li>
+									<li class="letter">q</li>
+									<li class="letter">w</li>
+									<li class="letter">e</li>
+									<li class="letter">r</li>
+									<li class="letter">t</li>
+									<li class="letter">y</li>
+									<li class="letter">u</li>
+									<li class="letter">i</li>
+									<li class="letter">o</li>
+									<li class="letter">p</li>
+									<li class="letter">a</li>
+									<li class="letter">s</li>
+									<li class="letter">d</li>
+									<li class="letter">f</li>
+									<li class="letter">g</li>
+									<li class="letter">h</li>
+									<li class="letter">j</li>
+									<li class="letter">k</li>
+									<li class="letter">l</li>
+									<li class="letter">z</li>
+									<li class="letter">x</li>
+									<li class="letter">c</li>
+									<li class="letter">v</li>
+									<li class="letter">b</li>
+									<li class="letter">n</li>
+									<li class="letter">m</li>
+									<li class="delete lastitem border-borrar"><i class="icon-borrar"></i>
+										<p>BORRAR</p>
+									</li>
+								</ul>
+								<div class="container-detalle-teclado">
+									<!-- <i class="icon-cruz cerrar-teclado2"></i> -->
+									<a href="javascript:;" class="ayuda-teclado modal-ayuda">Ayuda</a>
+									<i class="icon-teclado"></i>
+									<p>Usa este <br> <a href="javascript:;" class="teclado_seguro tooltip_nelace" data-toggle="tooltip" data-placement="bottom"
+											data-original-title="lorem ipsum texto de prueba"><span>teclado seguro </span></a><br>para digitar tu clave</p>
+								</div>
+							</div>
+							<i class="icon-check campo_valido campo-check-pass"></i>
+						</div>
+					</div>
+					<div class="container-campos campos-afiliacion">
+						<div class="container-text">
+							<p>Contrato de afiliación<br> al servicio de Diners Online</p>
+							<span>Lee las condiciones del contrato para crear tu clave</span>
+						</div>
+						<div class="container-campos-ingreso container__terminos">
+							<p>Al ingresar a tu Diners Online estás declarando haber leído y aceptar los <a href="javascript:;" class="terminos-modal">términos y condiciones del contrato </a><strong> de afiliación al servicio de operaciones en línea, a través de la Clave Anterior Digital.</strong></p>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="col-md-12">
+				<div class="container-boton-siguiente">
+					<a href="javascript:;" class="btn-sgt disabled-btn btn-aceptar-terminos">aceptar las condiciones e ingresar</a>
+					<a class="btn-sgt disabled-btn paso-siguiente" ng-click="nuevaClaveCtrl.cambiarClave()">aceptar las condiciones e ingresar</a>
+					<span>Paso <strong>2</strong> de 2</span>
+				</div>
+			</div>
+			<div class="col-md-12 col-sm-12 datos-includ">
+				<div class="container-datos-seguros">
+					<i class="icon-login"></i>
+					<p>(<span>*</span>) Datos obligatorios. Serán tratados de forma confidencial y segura</p>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<div class="modal fade" tabindex="-1" role="dialog" id="modal-terminos">
+		<div class="modal-dialog modal-terminos-contenidos">
+			<div class="modal-content">
+				<div class="modal-body">
+					<p>Términos y condiciones del contrato de afiliación de la tarjeta a la clave de seis dígitos</p>
+					<span>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</span>
+
+					<span>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</span>
+				</div>
+				<div class="modal-footer download-terminos">
+					<div class="col-md-5 col-sm-5 col-xs-12">
+						<i class="icon-exportar"></i>
+						<a href="javascript:;">Descargar términos y condiciones</a>
+						<span>Formato PDF, 150 Kb</span>
+					</div>
+					<div class="col-md-7 col-sm-5 col-xs-12">
+						<a href="javascript:;" class="btn-sgt boton-entendido-action" data-dismiss="modal">entendido</a>
+					</div>
+				</div>
+			</div>
+			<!-- /.modal-content -->
+		</div>
+		<!-- /.modal-dialog -->
+	</div>
+	<!-- /.modal -->
+	<!-- Cambiar textos Inicio-->
+	<div class="modal fade" tabindex="-1" role="dialog" id="modal-recupera-clave">
+		<div class="modal-dialog modal-terminos-contenidos">
+			<div class="modal-content">
+				<div class="modal-body">
+					<p>Recupera tu Usuario</p>
+					<span></span>
+
+					<span>Te hemos enviado tu usuario al correo *******AZO@GMAIL.COM. Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</span>
+				</div>
+				<div class="modal-footer download-terminos">
+					<div class="col-md-5 col-sm-5 col-xs-12">
+						<!--<i class="icon-exportar"></i>
+                        <a href="javascript:;">Descargar términos y condiciones</a>
+                        <span>Formato PDF, 150 Kb</span>-->
+					</div>
+					<div class="col-md-7 col-sm-5 col-xs-12">
+						<a href="javascript:;" class="btn-sgt boton-entendido-action" data-dismiss="modal">entendido</a>
+					</div>
+				</div>
+			</div>
+			<!-- /.modal-content -->
+		</div>
+		<!-- /.modal-dialog -->
+	</div>
+	<!-- /.modal -->
+	<!-- Cambiar textos Fin-->
+	<div class="modal fade" tabindex="-1" role="dialog" id="modal-ayuda">
+		<div class="modal-dialog modal-terminos-contenidos">
+			<div class="modal-content">
+				<div class="modal-body">
+					<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit.</p>
+					<span>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</span>
+
+					<span>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</span>
+				</div>
+				<div class="modal-footer download-terminos">
+					<div class="col-md-12 col-sm-5 col-xs-12 boton-ayuda-entendido">
+						<a href="javascript:;" class="btn-sgt boton-entendido-action" data-dismiss="modal">entendido</a>
+					</div>
+				</div>
+			</div>
+			<!-- /.modal-content -->
+		</div>
+		<!-- /.modal-dialog -->
+	</div>
+	<!-- /.modal -->
+	<div class="modal fade" tabindex="-1" role="dialog" id="modal-teclado-seguro">
+		<div class="modal-dialog modal-terminos-contenidos">
+			<div class="modal-content">
+				<div class="modal-body">
+					<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit.</p>
+					<span>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</span>
+
+					<span>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</span>
+				</div>
+				<div class="modal-footer download-terminos">
+					<div class="col-md-12 col-sm-5 col-xs-12 boton-ayuda-entendido">
+						<a href="javascript:;" class="btn-sgt boton-entendido-action" data-dismiss="modal">entendido</a>
+					</div>
+				</div>
+			</div>
+			<!-- /.modal-content -->
+		</div>
+		<!-- /.modal-dialog -->
+	</div>
+	<!-- /.modal -->
+</div>

@@ -1,0 +1,121 @@
+<!-- MIS DATOS - TAB 1 -->
+
+<div class="container_detalle_tabs-overflow">
+    <div class="container-fluid" ng-init="model.init()">
+        <div class="row">
+            <div class="col-xs-12 col-md-12 row titulo_tabpage-diners">
+                <h2>Solicitud de Cargo Automático Diners</h2>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-sm-6 row subtitulo_tabpage-diners">
+                <p><b>Paso 1:</b> Selección de tarjeta e ingreso de datos</p>
+            </div>
+
+            <!-- PASOS -->
+            <div class="col-sm-6 pasos_tabpage-diners">
+                <div class="row container_step">
+                    <div class="container_pasos">
+                        <span class="active">1</span>
+                        <span>2</span>
+                        <span class="borrar-margin-right">3</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- TARJETA TITULAR -->
+            <section class="mis-datos__section">
+                <p class="mis-datos__section-title">Tarjeta titular</p>
+                <table class="mis-datos__section-table">
+                    <tr>
+                        <td>Tarjeta</td>
+                        <td>
+                            <div class="input-field">
+                                <select ng-disabled="model.tarjetas.length === 1" ng-options="tarjeta as  tarjeta.numeroTarjeta for tarjeta in model.tarjetas track by tarjeta.idTarjeta"
+                                    ng-model="model.tarjetaActual"></select>
+                            </div>
+                        </td>
+                    </tr>
+                </table>
+            </section>
+
+            <!-- Datos del adicional -->
+            <section class="mis-datos__section">
+                <p class="mis-datos__section-title">Datos de la empresa</p>
+                <table class="mis-datos__section-table">
+                    <tr>
+                        <td>Categoría</td>
+                        <td>
+                            <div class="input-field">
+                                <select ng-options="categoria as categoria.nombreCategoria for categoria in model.categorias track by categoria.idCategoria"
+                                    ng-model="model.categoriaActual" ng-change="model.obtenerEmpresas(model.categoriaActual.idCategoria)">
+                                                                    <option value="">Seleccionar</option>
+                                                                </select>
+                                <span ng-show="!model.categoriaCorrecta" class="warning">Debe seleccionar categoría.</span>
+                            </div>
+                        </td>
+                    </tr>
+
+                    <tr>
+                        <td>Empresa</td>
+                        <td>
+                            <div class="input-field">
+                                <select ng-options="empresa as empresa.nombreEmpresa for empresa in model.empresas track by empresa.idEmpresa" ng-model="model.empresaActual"
+                                    ng-change="model.obtenerServicios(model.empresaActual.idEmpresa)">
+                                                                    <option value="">Seleccionar</option>
+                                                                </select>
+                                <span ng-show="!model.empresaCorrecta" class="warning">Debe seleccionar empresa.</span>
+                            </div>
+                        </td>
+                    </tr>
+
+                    <tr>
+                        <td>Servicio</td>
+                        <td>
+                            <div class="input-field">
+                                <select ng-options="servicio as servicio.nombreServicio for servicio in model.servicios track by servicio.idServicio" ng-model="model.servicioActual"
+                                >
+                                                                    <option value="">Seleccionar</option>
+                                                                </select>
+                                <span ng-show="!model.servicioCorrecto" class="warning">Debe seleccionar servicio.</span>
+                            </div>
+                        </td>
+                    </tr>
+                </table>
+            </section>
+
+            <!-- Datos del servicio -->
+            <section class="mis-datos__section">
+                <p class="mis-datos__section-title">Datos del servicio</p>
+                <table class="mis-datos__section-table">
+                    <tr>
+                        <td>{{model.servicioActual.parametroServicio}}</td>
+                        <td>
+                            <input class="mis-datos__section-input inputits" type="text" required name="servicio" value="Dato Simulado" ng-model="model.datoServicio"
+                                ng-maxlength="12">
+                            <span ng-show="!model.datoServicioCorrecto" class="warning">Debe ingresar dato valido de servicio.</span>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>Monto consumo tope (S/)</td>
+                        <td>
+                            <input name="montoTope" class="mis-datos__section-input inputits" type="text" required ng-model="model.montoTope" ng-pattern="/^[0-9]{1,7}(\.[0-9]+)?$/">
+                            <span ng-show="!model.montoCorrecto" class="warning">Debe ingresar monto tope valido.</span>
+                        </td>
+                    </tr>
+
+                    <tr>
+                        <td></td>
+                        <td>
+                            <button type="submit" class="btn-azul continuar" ng-click="model.enviarSolicititud()">CONTINUAR</button>
+                            <p class="pasos"><strong>Paso 1</strong> de 3</p>
+                            <!-- <p class="datos-obligatorios"><i class="icon1-tick"></i> <span>(*)</span> Datos obligatorios. Serán tratados de  forma confidencial y segura</p>-->
+                        </td>
+                    </tr>
+
+                </table>
+            </section>
+
+        </div>
+    </div>
+</div>

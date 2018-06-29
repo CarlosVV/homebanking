@@ -1,0 +1,117 @@
+<div class="container_detalle_tabs-overflow" ng-init="estadoCuentaCtrl.load()" ng-show="estadoCuentaCtrl.tieneEstadoCuentaDisponible">
+    <div class="cabecera-detalle-tabs">
+        <label>Descargar estado de cuenta</label>
+        <div class="container_selectTarjeta-cuentas">
+            <div class="input-field container_form-valores-cuentas">
+                <select ng-model="estadoCuentaCtrl.linkSeleccionado" value="estadoCuentaCtrl.linkSeleccionado" ng-options="link.linkDescarga as link.periodoDescarga for link in estadoCuentaCtrl.linksDescargaEstadoCuenta">
+                <!--<option value="" selected>Último estado de cuenta</option>-->
+                </select>
+                <!--<img src="Content/Images/arrow_select_down.png" alt="">-->
+            </div>
+        </div>
+        <a href="javascript:;" class="boton-detalle" ng-click="estadoCuentaCtrl.descargarEstadoCuenta()">Descargar</a>
+    </div>
+
+    <div class="container_detalle_tabs">
+        <div class="head_table-cuentas">
+            <strong>Resumen del mes</strong><small>{{estadoCuentaCtrl.estadoCuenta.fechaInicioPeriodo | date: 'dd/MM/yyyy'}} al  {{estadoCuentaCtrl.estadoCuenta.fechaFinPeriodo | date: 'dd/MM/yyyy'}}</small>
+        </div>
+        <table class="tabla-actividad-cuentas">
+            <thead>
+                <tr>
+                    <th>&nbsp;</th>
+                    <th class="text-right tabla__columna-monto">Soles (S/)</th>
+                    <th class="text-right tabla__columna-monto">Dólares (US$)</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td class="columna-titulo">Deuda anterior</td>
+                    <td class="text-right">{{estadoCuentaCtrl.estadoCuenta.deudaAnteriorSoles | currency:"":2}} </td>
+                    <td class="text-right">{{estadoCuentaCtrl.estadoCuenta.deudaTotalDolares | currency:"":2}}</td>
+                </tr>
+                <tr>
+                    <td class="columna-titulo">Pagos/Abonos</td>
+                    <td class="text-right label-rojo">{{estadoCuentaCtrl.estadoCuenta.abonoSoles | currency:"":2}}</td>
+                    <td class="text-right label-rojo">{{estadoCuentaCtrl.estadoCuenta.abonoDolares | currency:"":2}}</td>
+                </tr>
+                <tr>
+                    <td class="columna-titulo">Nuevos consumos</td>
+                    <td class="text-right">{{estadoCuentaCtrl.estadoCuenta.consumosSoles | currency:"":2}} </td>
+                    <td class="text-right">{{estadoCuentaCtrl.estadoCuenta.consumosDolares | currency:"":2}}</td>
+                </tr>
+                <tr>
+                    <td class="columna-titulo">Comisiones/Intereses/Penalidades/Gastos</td>
+                    <td class="text-right">{{estadoCuentaCtrl.estadoCuenta.comisionesInteresesPenalidadesGastosSoles | currency:"":2}} </td>
+                    <td class="text-right">{{estadoCuentaCtrl.estadoCuenta.comisionesInteresesPenalidadesGastosDolares | currency:"":2}}</td>
+                </tr>
+                <tr class="footer-table">
+                    <td><b>Deuda total al {{estadoCuentaCtrl.fechaActual | date: 'dd MMMM yyyy'}}</b></td>
+                     <td class="text-right">{{estadoCuentaCtrl.estadoCuenta.deudaTotalSoles | currency:"":2}} </td>
+                    <td class="text-right">{{estadoCuentaCtrl.estadoCuenta.deudaTotalDolares | currency:"":2}}</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+    <div class="container_detalle_tabs container_detalle_tabs-top">
+        <div class="head_table-cuentas">
+            <strong>Montos a pagar el </strong><strong class="label-{{estadoCuentaCtrl.colorFechaPago}}">{{estadoCuentaCtrl.estadoCuenta.fechaVencimiento}}</strong>
+        </div>
+        <table class="tabla-actividad-cuentas">
+            <thead>
+                <tr>
+                    <th>&nbsp;</th>
+                    <th class="text-right tabla__columna-monto">Soles (S/)</th>
+                    <th class="text-right tabla__columna-monto">Dólares (US$)</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td class="columna-titulo">Pago mínimo del mes</td>
+                    <td class="text-right">{{estadoCuentaCtrl.estadoCuenta.montoAPagarMinimoSoles | currency:"":2}} </td>
+                    <td class="text-right">{{estadoCuentaCtrl.estadoCuenta.montoAPagarMinimoDolares | currency:"":2}}</td>
+                </tr>
+                <tr>
+                    <td class="columna-titulo">Pago del mes</td>
+                    <td class="text-right">{{estadoCuentaCtrl.estadoCuenta.montoAPagarTotalSoles | currency:"":2}} </td>
+                    <td class="text-right">{{estadoCuentaCtrl.estadoCuenta.montoAPagarTotalDolares | currency:"":2}}</td>
+                </tr>
+                <tr class="footer-table2">
+                    <td colspan="3"></td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <div class="container_detalle_tabs container_detalle_tabs-top" ng-show="estadoCuentaCtrl.tarjetaConMillas">
+        <div class="head_table-cuentas">
+            <strong>Programa de millas</strong>
+        </div>
+        <table class="tabla-actividad-cuentas tabla__millas_tamanio">
+            <tbody>
+                <tr>
+                    <td class="columna-titulo">Saldo millas anteriores</td>
+                    <td class="text-right">{{estadoCuentaCtrl.estadoCuenta.millasSaldoAnterior | number:0}} </td>
+                </tr>
+                <tr>
+                    <td class="columna-titulo">Millas ganadas en el mes</td>
+                    <td class="text-right">{{estadoCuentaCtrl.estadoCuenta.millasGanadas | number:0}} </td>
+                </tr>
+                <tr>
+                    <td class="columna-titulo">Millas vencidas</td>
+                    <td class="text-right">{{estadoCuentaCtrl.estadoCuenta.millasVencidas | number:0}} </td>
+                </tr>
+                <tr class="footer-table">
+                    <td>Total de millas</td>
+                    <td class="text-right">{{estadoCuentaCtrl.estadoCuenta.millasDisponibles | number:0}} </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+</div>
+<div class="container_detalle_tabs-overflow" ng-show="!estadoCuentaCtrl.tieneEstadoCuentaDisponible">
+    <div class="cabecera-detalle-tabs">
+        <label>{{estadoCuentaCtrl.mensajesEstadoCuenta}}</label>
+    </div>
+</div>

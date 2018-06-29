@@ -1,0 +1,37 @@
+<div header></div>
+<div ng-controller="MiPerfil as perfilCtrl" ng-init="perfilCtrl.inicializar()">
+    <header class="col-xs-12 col-sm-12 col-md-12 col-lg-12 {{ perfilCtrl.bannerByCountry }}">
+        <div class="container">
+            <div class="row">
+                <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 titulo__banner-perfil">
+                    <h1>Mi Perfil</h1>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <section class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+        <div class="container container__section-principal-perfil">
+            <div class="row">
+                <article class="col-xs-12 col-sm-12 col-md-12 col-lg-12 container__section-body-movimiento">
+                    <div class="text-left">
+                        <div class="container_tabs_header">
+                            <ul class="tabs">
+                                <li class="tab not_width" data-tab="tab-1" ng-class="{indicator:perfilCtrl.menuSeleccionado('tab-1')}"><a ng-click="perfilCtrl.activarMenu('tab-1')">Mis datos</a></li>
+                                <li class="tab not_width" data-tab="tab-2" ng-class="{indicator:perfilCtrl.menuSeleccionado('tab-2')}"><a ng-click="perfilCtrl.activarMenu('tab-2')">Cambiar mi Imagen</a></li>
+                            </ul>
+                        </div>
+                        <div id="tab-1" class="container_detalle_tabs tab-content" ng-class="{current:perfilCtrl.menuSeleccionado('tab-1')}">
+                            <mis-datos-gestor></mis-datos-gestor>
+                        </div>
+                        <div id="tab-2" class="container_detalle_tabs tab-content " ng-class="{current:perfilCtrl.menuSeleccionado('tab-2')}">
+                            <cambiar-imagen></cambiar-imagen>
+                        </div>
+                    </div>
+                </article>
+            </div>
+        </div>
+    </section>
+</div>
+</section>
+</div>

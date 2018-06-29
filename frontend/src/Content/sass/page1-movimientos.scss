@@ -1,0 +1,297 @@
+﻿.enviar-title{
+    display:inline-block;
+    color: white;
+    margin-left:15px;
+}
+
+.enviar-title-error{
+    display:inline-block;
+    color: red;
+    margin-left:15px;
+}
+
+.enviar-correo-input{
+    display: inline-block;
+    width: 250px;
+    height: 37px;
+    padding-left: 5px;
+    padding-right: 5px;
+    outline: 0;
+    background: white;
+    margin-left:40px;
+}
+.enviar-correo-radio{
+    display: inline-block;
+    color: white;
+}
+
+.enviar-correo-label{
+    display: inline-block;
+    color: white;
+    margin-left:30px;
+}
+
+.enviar-btn{
+    display: inline-block;
+    background: $azul_oscuro;
+    border: 1px solid white;
+    height: 37px;
+    margin-left: 10px;
+    color: $blanco;
+    padding: 10px 15px;
+    font-size: 12px;
+    font-family: "GothamMedium";
+}
+
+.enviar-anular{
+    display: inline-block;
+    color: $celeste_oscuro;
+    font-weight:bold;
+    padding-right: 20px;
+    text-decoration: underline;
+    font-size: 12px;
+    margin-left:10px;
+}
+
+.overlay-diners{
+    display: none;
+    position: fixed;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    background: rgba(0,0,0,.3);
+    z-index: 1;
+}
+
+
+
+.section__banner-estilo1-editar{
+    color: $blanco;
+    font-size: 24px;
+    position: relative;
+    top: 3px;
+    margin-left: 7px;
+}
+
+.alertas-table__adicional-email, .alertas-table__adicional-telefono{
+    display: inline;
+    position: relative;
+    top: -3px
+}
+
+.calendarios{
+    padding-left:5px;
+    padding-top:5px;
+}
+
+.container_enviar_tabs {
+    background-color: $azul_oscuro;
+    float: left;
+    width: 100%;
+    border-top: 1px solid $azul_oscuro;
+    position: relative;
+    padding: 20px 80px;
+    display: none;
+    border-radius: 5px;
+
+    &:before {
+        content: "";
+        position: absolute;
+        top: -7px;
+        right: 192px;
+        width: 0;
+        height: 0;
+        border-left: 7px solid transparent;
+        border-right: 7px solid transparent;
+        border-bottom: 7px solid $azul_oscuro;
+    }
+
+    &:after {
+        content: "";
+        position: absolute;
+        top: -5px;
+        right: 192px;
+        width: 0;
+        height: 0;
+        border-left: 7px solid transparent;
+        border-right: 7px solid transparent;
+        border-bottom: 7px solid $azul_oscuro;
+    }
+}
+
+.enviarDivs {
+    padding: 20px 0px;
+}
+.imagen-cortada{
+    visibility: hidden;
+    padding-top:20px; 
+        float:right; 
+        width:0px;
+}
+/*@media(min-width:769px){
+    .imagen-cortada{
+        visibility: visible;
+        padding-top:75px; 
+        float:right; 
+        width:130px;
+    }
+}*/
+@media(min-width:1200px){
+    .imagen-cortada{
+        visibility: visible;
+        padding-top:20px; 
+        float:right; 
+        width:213px;
+    }
+}
+.nombre-tarjeta-corto{
+    visibility: hidden;
+    position: absolute; 
+    padding-top:50px; 
+    font-size:30px; 
+    font-family:GothamLight;
+    width:0px;
+    display: none;
+
+}
+@media(min-width:1200px){
+    .nombre-tarjeta-corto{
+        visibility: visible;
+        position: absolute; 
+        padding-top:50px; 
+        font-size:30px; 
+        font-family:GothamLight;
+        width:100%;
+        text-align:left;
+        display: block;
+
+    }
+}
+.editar-tarjeta-container{
+    position: absolute;
+    top: 120px;
+    left: 0px;
+    width: 100%;
+}
+@media(min-width:769px){
+    .editar-tarjeta-container{
+        position: absolute;
+        top: 160px;
+        left: 90px;
+        width: 50%;
+    }
+}
+
+
+.editar-tarjeta-modal{
+    background: $azul_oscuro;
+    display: none;
+    padding: 20px;
+    position: absolute;
+    z-index: 2;
+    top: -3px;
+
+}
+.editar-tarjeta-title{
+    color: white;
+    text-align:left;
+    margin-bottom:10px;
+}
+.editar-tarjeta-mensaje{
+    color: white;
+    text-align:left;
+    margin-top: 10px;
+    position:absolute;
+}
+
+.editar-tarjeta-input{
+    display: inline-block;
+    width: 200px;
+    height: 37px;
+    padding-left: 5px;
+    padding-right: 5px;
+    outline: 0;
+    border: none;
+    background: white;
+    vertical-align: top;
+}
+
+.editar-tarjeta-btn{
+    display: inline-block;
+    background: #039be5;
+    font-size: 1rem;
+    color: $azul_oscuro;
+    padding: 10px 15px;
+    font-size: 12px;
+    font-family: "GothamMedium";
+    overflow: hidden;
+    margin-left: -5px;
+}
+
+.editar-tarjeta-anular{
+    float:right;
+    color: red;
+    font-weight:bold;
+    padding-right: 20px;
+    text-decoration: underline;
+    font-size: 12px;
+    margin-top: 10px;
+}
+
+.overlay-diners{
+    display: none;
+    position: fixed;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    background: rgba(0,0,0,.3);
+    z-index: 1;
+}
+
+
+
+.section__banner-estilo1-editar{
+    color: $blanco;
+    font-size: 24px;
+    position: relative;
+    top: 3px;
+    margin-left: 7px;
+}
+
+.enviarDivs, .descargarDivs{
+    padding: 20px 0px;
+    text-align: left;
+    .boton-foto-edit{
+        float: none;
+    }
+}
+
+.enviar-title{
+    display:inline-block;
+    color: #777;
+}
+
+.enviar-title-error{
+    display:inline-block;
+    color: red;
+}
+
+@media(min-width: 768px){
+    .enviar-title{
+        margin-left:15px;
+    }
+}
+
+.enviar-correo-radio{
+    display: inline-block;
+    color: white;
+}
+
+.enviar-correo-label{
+    display: inline-block;
+    color: #777;
+    margin-left: 5px;
+    padding-left: 27px !important;
+}

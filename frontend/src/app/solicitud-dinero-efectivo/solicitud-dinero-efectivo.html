@@ -1,0 +1,171 @@
+<div header></div>
+<div ng-controller="solicitudDineroEfectivo as dineroEfectivoCtrl" ng-init="dineroEfectivoCtrl.inicializar()">
+    <section class="container-fluid">
+        <div class="row">
+            <!-- inicio cabecera cuerpo-->
+            <header class="col-xs-12 col-sm-12 col-md-12 col-lg-12 {{ dineroEfectivoCtrl.bannerByCountry }}">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 titulo__banner-perfil">
+                            <h1>Solicitud de Dinero en Efectivo</h1>
+                        </div>
+                    </div>
+                </div>
+            </header>
+            <!-- fin cabecera cuerpo-->
+            <section class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                <div class="container container__section-principal-perfil">
+                    <div ng-class="{'ng-hide':!dineroEfectivoCtrl.menuSeleccionado('tab-1')}">
+                        <div class="row">
+                            <article class="col-xs-12 col-sm-12 col-md-12 col-lg-12 container__section-body-movimiento">
+                                <div class="text-left">
+                                    <!-- MIS DATOS - TAB 1 -->
+                                    <div id="tab-1" class="container_detalle_tabs tab-content current">
+                                        <div class="container_detalle_tabs-overflow">
+                                            <div class="container-fluid">
+                                                <div class="row">
+                                                    <div class="col-xs-12 col-md-12 row titulo_tabpage-diners">
+                                                        <h2>Solicitud de Dinero en Efectivo</h2>
+                                                    </div>
+                                                </div>
+                                                <div class="row">
+                                                    <div class="col-sm-6 row subtitulo_tabpage-diners">
+                                                        <p><b>Paso 1:</b> Selección de tarjeta y montos</p>
+                                                    </div>
+                                                    <!-- PASOS -->
+                                                    <div class="col-sm-6 pasos_tabpage-diners">
+                                                        <div class="row container_step">
+                                                            <div class="container_pasos">
+                                                                <span class="active">1</span>
+                                                                <span>2</span>
+                                                                <span class="borrar-margin-right">3</span>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <!-- TARJETA TITULAR -->
+                                                    <section class="mis-datos__section" ng-if="dineroEfectivoCtrl.socioMultiproducto">
+                                                        <p class="mis-datos__section-title">Tarjeta {{dineroEfectivoCtrl.tarjetaAplicante.esTitular ? 'titular' : 'adicional'}}</p>
+                                                        <table class="mis-datos__section-table">
+                                                            <tr>
+                                                                <td>Tarjeta</td>
+                                                                <td>
+                                                                    <div class="input-field">
+                                                                        <select>
+                                                                    <option value="">                                                                           
+                                                                        {{
+                                                                            dineroEfectivoCtrl.mostrarAlias_o_NombreProducto(dineroEfectivoCtrl.tarjetaAplicante.alias, dineroEfectivoCtrl.tarjetaAplicante.nombreProducto) +
+                                                                            ' ' +
+                                                                            dineroEfectivoCtrl.formatearNumeroTarjeta(dineroEfectivoCtrl.tarjetaAplicante.numeroTarjeta) 
+                                                                        }}
+                                                                    </option>
+                                                                </select>
+                                                                    </div>
+                                                                </td>
+                                                            </tr>
+                                                        </table>
+                                                    </section>
+                                                    <!-- Monto y Cuota -->
+                                                    <section class="mis-datos__section">
+                                                        <p class="mis-datos__section-title">Monto y cuota</p>
+                                                        <form class="formValido" name="dineroEfectivoForm" id="dineroEfectivoForm" ng-submit="dineroEfectivoForm.$valid && dineroEfectivoCtrl.IrAConfirmacion()"
+                                                            novalidate>
+                                                            <table class="mis-datos__section-table">
+                                                                <tr>
+                                                                    <td>Monto (soles) <span>*</span></td>
+                                                                    <td>
+                                                                        <input class="mis-datos__section-input inputits" id="montoPrestamo" name="montoPrestamo" ng-model="dineroEfectivoCtrl.solicitudDineroEfectivo.montoPrestamo"
+                                                                            numbers-only maxlength="6" required>
+                                                                        <span class="has-error" ng-show="submitted && dineroEfectivoForm.montoPrestamo.$invalid">Debe ingresar monto</span>
+                                                                        <span class="has-error ng-hide error-monto-menor">Monto debe ser mayor o igual a S/ 1500.00</span>
+                                                                        <span class="has-error ng-hide error-monto-mayor">Monto debe ser menor o igual al ofertado</span>
+                                                                        <input type="hidden" id="montoOferta" value="{{ dineroEfectivoCtrl.solicitudDineroEfectivo.montoOferta }}">
+                                                                    </td>
+                                                                </tr>
+                                                                <tr>
+                                                                    <td>Plazo<span>*</span></td>
+                                                                    <td>
+                                                                        <div class="input-field operator">
+                                                                            <select ng-change="dineroEfectivoCtrl.calcularMontoMensual()" ng-options="plazo.plazo as plazo.plazo for plazo in dineroEfectivoCtrl.listaPlazos"
+                                                                                ng-model="dineroEfectivoCtrl.solicitudDineroEfectivo.cuotas"></select>
+                                                                        </div>
+                                                                    </td>
+                                                                </tr>
+                                                                <tr>
+                                                                    <td>TCEA</td>
+                                                                    <td><strong>{{ dineroEfectivoCtrl.solicitudDineroEfectivo.tcea | currency:"":2 }}%</strong></td>
+                                                                </tr>
+                                                                <tr>
+                                                                    <td>Monto cuota (referencial)</td>
+                                                                    <td><strong>{{ dineroEfectivoCtrl.solicitudDineroEfectivo.montoCuota | currency:" ":2 }}</strong></td>
+                                                                </tr>
+                                                                <tr>
+                                                                    <td>Nombre Banco <span>*</span></td>
+                                                                    <td>
+                                                                        <div class="input-field">
+                                                                            <select ng-model="dineroEfectivoCtrl.solicitudDineroEfectivo.idBanco" ng-options="banco.id as banco.nombre for banco in dineroEfectivoCtrl.listaBancos"></select>
+                                                                        </div>
+                                                                    </td>
+                                                                </tr>
+                                                                <tr>
+                                                                    <td>Tipo de cuenta<span>*</span></td>
+                                                                    <td>
+                                                                        <input class="with-gap" name="tipo" type="radio" id="rbTipoCuentaAhorros" ng-model="dineroEfectivoCtrl.solicitudDineroEfectivo.tipoCuenta"
+                                                                            checked value="ahorros" />
+                                                                        <label class="radio-mat" for="rbTipoCuentaAhorros">Ahorros</label>
+                                                                        <input class="with-gap" name="tipo" type="radio" id="rbTipoCuentaCuentaCorriente" ng-model="dineroEfectivoCtrl.solicitudDineroEfectivo.tipoCuenta"
+                                                                            value="cuentacorriente" />
+                                                                        <label class="radio-mat" for="rbTipoCuentaCuentaCorriente">Cuenta Corriente</label>
+                                                                    </td>
+                                                                </tr>
+                                                                <tr>
+                                                                    <td>Nº de cuenta<span>*</span></td>
+                                                                    <td>
+                                                                        <input class="mis-datos__section-input inputits" name="numerocuenta" ng-model="dineroEfectivoCtrl.solicitudDineroEfectivo.numeroCuentaDestino"
+                                                                            numbers-only maxlength="20" required>
+                                                                        <span class="has-error" ng-show="submitted && dineroEfectivoForm.numerocuenta.$invalid">Debe ingresar n° de cuenta</span>
+                                                                    </td>
+                                                                </tr>
+                                                                <tr>
+                                                                    <td>Moneda de la cuenta<span>*</span></td>
+                                                                    <td>
+                                                                        <input class="with-gap" name="moneda" type="radio" id="rbSoles" ng-model="dineroEfectivoCtrl.solicitudDineroEfectivo.tipoMoneda"
+                                                                            checked value="soles" />
+                                                                        <label class="radio-mat" for="rbSoles">Soles</label>
+                                                                        <input class="with-gap" name="moneda" type="radio" id="rbDolares" ng-model="dineroEfectivoCtrl.solicitudDineroEfectivo.tipoMoneda"
+                                                                            value="dolares" />
+                                                                        <label class="radio-mat" for="rbDolares">Dólares</label>
+                                                                    </td>
+                                                                </tr>
+                                                                <tr>
+                                                                    <td></td>
+                                                                    <td>
+                                                                        <button type="submit" class="btn-azul continuar" ng-click="submitted=true">CONTINUAR</button>
+                                                                        <p class="pasos"><strong>Paso 1</strong> de 3</p>
+                                                                        <p class="datos-obligatorios">
+                                                                            <!-- <i class="icon1-tick"></i> --><span>(*)</span> Datos obligatorios. Serán tratados
+                                                                            de forma confidencial y segura</p>
+                                                                    </td>
+                                                                </tr>
+                                                            </table>
+                                                            <input type="button" id="btnCalcularMontoCuota" value="calcular monto cuota" class="ng-hide" ng-click="dineroEfectivoCtrl.calcularMontoMensual()">
+                                                        </form>
+                                                    </section>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </article>
+                        </div>
+                    </div>
+                    <div ng-class="{'ng-hide':!dineroEfectivoCtrl.menuSeleccionado('tab-2')}">
+                        <solicitud-confirmacion content="dineroEfectivoCtrl.content"></solicitud-confirmacion>
+                    </div>
+                    <div ng-class="{'ng-hide':!dineroEfectivoCtrl.menuSeleccionado('tab-3')}">
+                        <constancia-solicitud content="dineroEfectivoCtrl.content"></constancia-solicitud>
+                    </div>
+                </div>
+            </section>
+        </div>
+    </section>
+</div>

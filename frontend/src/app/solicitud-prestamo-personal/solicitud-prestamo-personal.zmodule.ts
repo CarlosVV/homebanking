@@ -1,0 +1,2 @@
+angular.module('appDinersClubOnline.solicitudPrestamoPersonal', [])
+    .controller('solicitudPrestamoPersonal', ['tarjetasApi', '$location', 'bancoFactory', 'sessionFactory', '$filter', '$routeParams', '$scope', Solicitud.PrestamoPersonalController]);

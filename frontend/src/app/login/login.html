@@ -1,0 +1,93 @@
+<div id="login" class="ingresoOnline estilos-login" ng-controller="Login as loginCtrl">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="container-formulario clear-flow formulario-mobile">
+                    <div class="container-campos margen-campos">
+                        <div class="container-campos-ingreso ">
+                            <div class="container-ver-clave">
+                                <div class="input-campo input-campoUsuario">
+                                    <div class="col-md-12 frace__ingreso">
+                                        <p>{{'general.diners.titulo' | translate}}</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <form name="loginForm" id="loginForm" ng-submit="loginForm.$valid && loginCtrl.login()" novalidate>
+                        <div class="container-campos margen-campos">
+                            <div class="container-text">
+                                <p class="loginEtiquetas">{{'general.campos.label.numero-documento' | translate}}</p>
+                            </div>
+                            <div class="container-campos-ingreso ">
+                                <div class="container-ver-clave">
+                                    <div class="input-campo input-campoUsuario">
+                                        <input type="text" id="txtUsuario" name="usuario" ng-model="loginCtrl.usuarioLogin" ng-minlength="6" ng-maxlength="12" minlength="6" maxlength="12" ng-paste="$event.preventDefault();" class="campo-dni inputUsuario" placeholder="{{'general.campos.label.numero-documento' | translate}}" ng-class="{'error-campos-login-publico': loginForm.usuario.$dirty && loginForm.usuario.$invalid}" ng-required="true" ondrop="return false;" alfanumerico-only />
+                                        <span class="has-error usuario-error" ng-show="loginForm.usuario.$dirty && loginForm.usuario.$invalid">{{'general.mensajes-validacion.error.datos-invalidos' | translate}}</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="container-campos margen-campos">
+                            <div class="container-text">
+                                <p class="loginEtiquetas">{{'general.campos.label.clave-digital' | translate}}</p>
+                            </div>
+                            <div class="container-campos-ingreso ">
+                                <div class="container-ver-clave">
+                                    <div class="input-campo input-campoUsuario">
+                                        <input type="password" id="txtLoginClaveDigital" name="password" ng-model="loginCtrl.claveDigital" ng-keyup="loginCtrl.validarInputPassword($event);" ng-minlength="6" ng-maxlength="10" minlength="6" maxlength="10" ng-paste="$event.preventDefault();" class="campo-dni inputUsuario clave-login write teclado" placeholder="{{'general.campos.label.clave-digital' | translate}}" ng-class="{'error-campos-login-publico': loginForm.password.$dirty && loginForm.password.$invalid}" ng-required="true" ondrop="return false;" alfanumerico-only />
+                                        <span class="has-error password-error" ng-show="loginForm.password.$dirty && loginForm.password.$invalid">{{'general.mensajes-validacion.error.datos-invalidos' | translate}}</span>
+                                    </div>
+                                </div>
+                                <div class="teclado-visible-input"></div>
+                                <div class="container-teclado">
+                                    <div class="container-detalle-teclado">
+                                        <i class="icon-cruz cerrar-teclado"></i>
+                                        <i class="icon-teclado"></i>
+                                        <p>{{'general.mensajes.teclado-seguro' | translate}}</p>
+                                    </div>
+                                    <teclado-numerico></teclado-numerico>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="container-campos margen-campos">
+                            <div class="container-campos-ingreso ingresoUsuario">
+                                <div class="container-ver-clave">
+                                    <input type="submit" id="loginSubmit" name="loginSubmit" class="input-campo ingresar-login-publico submit-button" value="{{'general.botones.ingresar' | translate}}" />
+                                </div>
+                            </div>
+                        </div>
+                        <div class="container-campos margen-campos">
+                            <div class="container-campos-ingreso ingresoUsuario">
+                                <div class="container-ver-clave">
+                                    <span class="has-error message-bad-request" ng-class="{'ng-hide': loginCtrl.responseValidation.isValid }">{{ loginCtrl.responseValidation.message }}</span>
+                                    <span class="has-error message-inputs-empty ng-hide">{{'general.mensajes-validacion.error.credenciales-invalidas' | translate}}</span>
+                                </div>
+                                <div class="container-ver-clave">
+                                    <span class="has-error message-repeated-consecutive-characters ng-hide" ng-model="loginCtrl.request.isValid">{{'general.mensajes-validacion.error.caracteres-repetidos' | translate}}</span>
+                                    <span class="has-error message-repeated-ascending-consecutive-characters ng-hide" ng-model="loginCtrl.request.isValid">{{'general.mensajes-validacion.error.caracteres-repetidos-ascendentes' | translate}}</span>
+                                    <span class="has-error message-repeated-descending-consecutive-characters ng-hide" ng-model="loginCtrl.request.isValid">{{'general.mensajes-validacion.error.caracteres-repetidos-descendentes' | translate}}</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="container-campos margen-campos">
+                            <div class="container-campos-ingreso ingresoUsuario">
+                                <div class="container-ver-clave">
+                                    <div class="input-campo input-campoUsuario">
+                                        <div class="row">
+                                            <a ng-href="#/generar-clave-digital/identificacion" class="linkGenerarClave"><span>{{'login.botones.generar-clave' | translate}}</span></a>
+                                        </div>
+                                        <div class="row">
+                                            <a ng-href="#/recuperar-clave-digital/identificacion" class="linkGenerarClave"><span>{{'login.botones.olvido-clave' | translate}}</span></a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <input type="text" id="txtIsValid" ng-model="loginCtrl.request.isValid" style="display: none;" value="" />
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,74 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1">
+  <Class Name="DinersClubOnline.Model.Solicitudes.Solicitud">
+    <Position X="5.75" Y="1" Width="1.75" />
+    <TypeIdentifier>
+      <HashCode>AAEAAAAAIACAAAgAAAAAAAAAIAAAAAACAAAAAAAAAAA=</HashCode>
+      <FileName>Solicitud.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="DinersClubOnline.Model.Solicitudes.CargoAutomatico">
+    <Position X="2.25" Y="5" Width="2" />
+    <TypeIdentifier>
+      <HashCode>BgEAAQAAACABAAACQAQAAAAEEBAABAAAIEAAEAAAIQA=</HashCode>
+      <FileName>CargoAutomatico.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="DinersClubOnline.Model.Solicitudes.DebitoAutomatico">
+    <Position X="4.75" Y="5" Width="2" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAACAAAEAAQAAACAAAABEABAECAIIgAAAAIAg=</HashCode>
+      <FileName>DebitoAutomatico.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="DinersClubOnline.Model.Solicitudes.DineroEfectivo">
+    <Position X="7.25" Y="5" Width="2" />
+    <TypeIdentifier>
+      <HashCode>IAAAAAAgAABAAAAAgAAEAAAAAAjAAACAAAAAAAAAIAA=</HashCode>
+      <FileName>DineroEfectivo.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="DinersClubOnline.Model.Solicitudes.PrestamoPersonal">
+    <Position X="9.75" Y="5" Width="2" />
+    <TypeIdentifier>
+      <HashCode>IAAAAAAgAABAAAAAgAAEAAAAAAjAAACAAAAAAAAAIAA=</HashCode>
+      <FileName>PrestamoPersonal.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="DinersClubOnline.Model.Solicitudes.SolicitudResult">
+    <Position X="5.5" Y="11.25" Width="2.5" />
+    <TypeIdentifier>
+      <HashCode>AAEAAAAAAACAAAABAAAAAAAAAAAAAAAAAAAQAAAIAAA=</HashCode>
+      <FileName>SolicitudResult.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Interface Name="DinersClubOnline.Model.Solicitudes.ICargoAutomaticoRepository">
+    <Position X="2.25" Y="9.75" Width="2.25" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAABAAAAAAAAAAAAEAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>ICargoAutomaticoRepository.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="DinersClubOnline.Model.Solicitudes.IDebitoAutomaticoRepository">
+    <Position X="4.75" Y="9.25" Width="2.25" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAABAAAAAAAAAAAAEAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>IDebitoAutomaticoRepository.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="DinersClubOnline.Model.Solicitudes.IPrestamoPersonalRepository">
+    <Position X="9.75" Y="8.25" Width="2.25" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAABAAAAAAAAAAAAEAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>IPrestamoPersonalRepository.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="DinersClubOnline.Model.Solicitudes.IDineroEfectivoRepository">
+    <Position X="7.25" Y="8.25" Width="2" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAABAAAAAAAAAAAAEAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>IDineroEfectivoRepository.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Font Name="Segoe UI" Size="9" />
+</ClassDiagram>

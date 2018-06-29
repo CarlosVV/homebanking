@@ -1,0 +1,127 @@
+<section class="col-xs-12 col-sm-12 col-md-12 col-lg-12" ng-controller="Constancia as constCtrl" ng-init="constCtrl.inicializar()">
+	<div class="container_detalle_tabs-perfil">
+		<div class="container-fluid">
+			<div class="row">
+				<div class="col-xs-12 col-md-12 row titulo_tabpage-diners">
+					<h2>{{constCtrl.datosSolicitud.titulo}}</h2>
+				</div>
+			</div>
+			<div class="row">
+				<div class="col-sm-6 row subtitulo_tabpage-diners">
+					<p><b>Paso 3:</b> Comprobante</p>
+				</div>
+
+				<!-- PASOS -->
+				<div class="col-sm-6 pasos_tabpage-diners">
+					<div class="row container_step">
+						<div class="container_pasos">
+							<span class="span-chk"><i class="icon1-tick"></i></span>
+							<span class="span-chk"><i class="icon1-tick"></i></span>
+							<span class="span-chk borrar-margin-right"><i class="icon1-tick"></i></span>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<!-- Datos de contacto -->
+		<section class="container-fluid bloque__padding-top10">
+
+			<div class="row container__section--row-abajo">
+				<div class="ComprobanteHeader-comprobante">
+					<img src="Content/images/check-comprobante.png" alt="">
+					<p ng-show="!constCtrl.esBloqueoTarjeta">
+						<strong>Solicitud realizada con éxito. En un plazo de 48 horas se estará respondiendo a su solicitud.</strong>
+					</p>
+					<p ng-show="constCtrl.esBloqueoTarjeta">
+						<strong>Solicitud realizada con éxito.</strong>
+					</p>
+				</div>
+			</div>
+
+			<div class="row container__bloque_verificacion container__movimiento-margin">
+				<div class="imagen__sello-comprobante visible-md visible-lg">
+					<img src="Content/images/Sello-Operacion.png" class="img-responsive" alt="" />
+				</div>
+
+
+				<table class="mis-datos__section-table">
+					<tr ng-repeat="datoSolicitud in constCtrl.datosSolicitud.valores">
+						<td ng-bind-html="constCtrl.trustedValue(datoSolicitud.key)">{{datoSolicitud.key}}</td>
+						<td ng-bind-html="constCtrl.trustedValue(datoSolicitud.value)">{{datoSolicitud.value}}</td>
+					</tr>
+					<tr>
+						<td></td>
+						<td class="ComprobanteDetalado-titulo-operacion">
+							<a href="javascript:;" ng-click="constCtrl.descargarComprobante()">Descargar comprobante &nbsp;· </a>
+							<!--<a href="javascript:;">Imprimir</a>-->
+						</td>
+					</tr>
+
+				</table>
+			</div>
+
+			<div class="row container__movimiento-margin">
+				<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 text-center">
+					<br /><br />
+					<a ng-href="#/posicion-consolidad" class="boton_pasos-tabs2">IR A MIS PRODUCTOS</a>
+				</div>
+			</div>
+		</section>
+
+		<div class="row" ng-show="constCtrl.mostrarOfertas">
+			<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 text-center container__section-body-confirma">
+				<label>{{constCtrl.nombreUsuario}}, revisa estas ofertas especiales que tenemos para
+                                                ti
+                                            </label>
+			</div>
+		</div>
+<!-- Mostrar ofertas -->
+		<section class="container-fluid" ng-show="constCtrl.mostrarOfertas">
+			<div class="row" ng-controller="Oferta as ofertaCtrl" ng-init="ofertaCtrl.obtenerOfertas()">
+				<article class="col-xs-12 col-sm-2 col-md-2 col-lg-2">
+					&nbsp;
+				</article>
+
+				<article class="col-xs-12 col-md-4" ng-repeat="ofertaItem in ofertaCtrl.ofertasPrincipales">
+					<div class="container__bloque-oferta2">
+						<div class="bloque__oferta-diners">
+							<ul>
+								<li class="lista__margin-abajo">
+									<label>{{ofertaItem.TextoOferta.titulo}}</label>
+								</li>
+								<li class="lista__margin-abajo">
+									<div>
+										<strong ng-show="ofertaItem.idTipoOferta == 1">{{ofertaItem.montoLineaNueva | currency:"S/ ":2}}</strong>
+										<strong ng-show="ofertaItem.idTipoOferta != 1">{{ofertaItem.montoOferta | currency:"S/ ":2}}</strong>
+									</div>
+									<div class="margin__top"><span>&nbsp;</span></div>
+									<div class="margin__top"><span ng-bind-html="ofertaItem.TextoOferta.descripcion">{{ofertaItem.TextoOferta.descripcion}}</span></div>
+								</li>
+							</ul>
+                        </div>
+						<div class="footer__bloque-oferta" ng-click="ofertaCtrl.iraSolicitudDesdeConstancia(ofertaItem.TextoOferta.rutaSolicitud,ofertaItem.idTipoOferta)">
+								{{ofertaItem.TextoOferta.botonTexto}}
+								<!--<a ng-show="$index == 0" ng-href="#/{{ofertaItem.TextoOferta.rutaSolicitud}}{{ofertaItem.idTipoOferta}}">MÁS INFORMACIÓN</a>
+                                                                <a ng-show="$index != 0" ng-href="#/{{ofertaItem.TextoOferta.rutaSolicitud}}{{ofertaItem.idTipoOferta}}">ME INTERESA</a>-->
+						</div>
+					</div>
+				</article>
+
+				<article class="col-xs-12 col-sm-2 col-md-2 col-lg-2">
+					&nbsp;
+				</article>
+			</div>
+		</section>
+
+		<div class="container-fluid" ng-show="constCtrl.mostrarOfertas">
+			<div class="row container__movimiento-margin">
+				<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 text-center">
+					<br />
+					<a ng-href="#/ofertas" class="btn-ver-ofertas">VER TODAS MIS OFERTAS</a>
+				</div>
+			</div>
+		</div>
+
+
+	</div>
+</section>

@@ -1,0 +1,148 @@
+﻿<header-externo></header-externo>
+<div class="estilos-login">
+	<div class="container container__menu">
+		<div class="row">
+
+			<div class="col-md-6 col-sm-12 col-xs-12 frace__ingreso">
+				<p>Primer Ingreso a Diners Online</p>
+			</div>
+			<div class="col-md-6 col-sm-12 col-xs-12 pasos">
+				<div class="container__pasos">
+					<div class="container__primer-paso">
+						<div class="container__icon-paso">
+							<small>PASO</small>
+							<span>1</span>
+						</div>
+						<p>Identificación del Socio</p>
+					</div>
+					<div class="container__segundo-paso">
+						<div class="container__icon-paso disabled--pasos">
+							<small>PASO</small>
+							<span>2</span>
+						</div>
+					</div>
+				</div>
+			</div>
+
+			<div class="col-md-12 alertas-form">
+				<div class="container-alerta">
+					<small>i</small>
+					<p><b>Confirmación de identidad</b> es la única vez que te solicitaremos ésta información. No se realizará nigún tipo de
+						transacción o cargo</p>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<div class="container siguiente-paso1">
+		<form action="javascript:;" class="validateForm" method="POST" ng-controller="GenerarClaveDigitalIdentificacion as identificacionCtrl">
+			<div class="row">
+				<div class="col-md-12 col-sm-12 col-xs-12">
+
+					<div class="container-formulario clear-flow">
+
+						<div class="container-campos numero-tarjeta">
+							<div class="container-text">
+								<p>Ingresa los últimos 4 dígitos de la tarjeta</p>
+								<span>Ingresa con cualquiera de tus tarjetas, y podrás consultar todos tus productos</span>
+							</div>
+							<div class="container-campos-ingreso">
+								<div class="container-campos-login">
+									<span>****<i> - </i>******<i> - </i></span>
+									<input type="text" placeholder="****" minlength="4" maxlength="4" size="4" class="numero-tarjeta3 numeros inputs" name="n-three"
+										required="" ng-model="identificacionCtrl.tarjeta.ultimos4digitos" ng-paste="$event.preventDefault();" ondrop="return false;"
+										tabindex="1">
+								</div>
+
+							</div>
+							<a href="javascript:;" class="modal-tarjetaNumero">¿Dónde veo el número de mi tarjeta?</a>
+							<i class="icon-check campo_valido"></i>
+						</div>
+
+						<div class="container-campos numero-tarjeta">
+							<div class="container-text">
+								<p>Ingresar CVV2 de la tarjeta</p>
+							</div>
+							<div class="container-campos-ingreso">
+								<div class="container-input-add">
+									<input type="password" placeholder=" *** " minlength="3 " maxlength="3 " class="cod-cvv2 numeros inputs " name="cvv2
+										" required=" " ng-model="identificacionCtrl.tarjeta.cvv2 " ng-paste="$event.preventDefault(); " ondrop="return false;"
+										tabindex="2">
+								</div>
+								<a href="javascript:; " class="modal-tarjetaCVV2 ">¿Dónde veo el CVV2 de mi tarjeta?</a>
+							</div>
+						</div>
+						<div class="container-campos numero-tarjeta ">
+							<div class="container-text ">
+								<p>Ingresar Número de Documento de identidad</p>
+							</div>
+							<div class="container-campos-ingreso ">
+								<div class="container-input-add ">
+									<input type="text " placeholder="******** " minlength="8 " maxlength="8 " class="numeros inputs " required="
+										" ng-model="identificacionCtrl.tarjeta.numeroDocumentoIdentidad " ng-paste="$event.preventDefault(); " ondrop="return false;"
+										tabindex="3">
+								</div>
+							</div>
+						</div>
+						<div class="container-campos numero-tarjeta">
+							<div class="container-text">
+							</div>
+							<div class="container-campos-ingreso">
+								<div>
+									<span ng-if="identificacionCtrl.tarjetaIncorrecta" class="clave-incorrecta">Los datos ingresados son incorrectos. Por favor vuelva a intentarlo.</span>
+									<span ng-if="identificacionCtrl.usuarioTieneClaveDigital" class="clave-incorrecta">Usted ya cuenta con Clave Digital.</span>
+									<span ng-if="identificacionCtrl.errorSistema" class="clave-incorrecta" ng-model="identificacionCtrl.mensajeError"></span>
+								</div>
+							</div>
+						</div>
+					</div>
+
+				</div>
+				<div class="col-md-12 col-sm-12 col-xs-12 boton-continuar-paso-uno ">
+					<div class="container-boton-siguiente siguiente-paso-uno ">
+						<a href="javascript:; " type="submit " class="btn-sgt boton-continuar-login disabled-btn disabled-btn-continuar ">continuar</a>
+						<a class="btn-sgt boton-continuar-login disabled-btn exito-pass " ng-click="identificacionCtrl.validarTarjeta() ">continuar</a>
+						<span>Paso <strong>1</strong> de 2</span>
+					</div>
+				</div>
+			</div>
+		</form>
+	</div>
+
+	<div class="modal fade" tabindex="-1" role="dialog" id="modal-tarjeta-numero">
+		<div class="modal-dialog modal-tarjeta-numero">
+			<div class="modal-content">
+				<div class="modal-body">
+					<div class="col-md-5">
+						<img src="content/images/tarjeta.png" alt="">
+					</div>
+					<div class="col-md-7 detalle-tarjeta">
+						<p>Acá encuentras el número de tu tarjeta</p>
+						<span>El número de tu tarjeta se encuentra en la parte frontal de la misma, son <strong>16 los dígitos</strong> destacados en la imagen</span>
+						<a href="javascript:;" class="btn-sgt boton-entendido" data-dismiss="modal">entendido</a>
+					</div>
+				</div>
+			</div>
+			<!-- /.modal-content -->
+		</div>
+		<!-- /.modal-dialog -->
+	</div>
+	<!-- /.modal -->
+
+	<div class="modal fade" tabindex="-1" role="dialog" id="modal-tarjetaCVV2-numero">
+		<div class="modal-dialog modal-tarjeta-cvv2">
+			<div class="modal-content">
+				<div class="modal-body">
+					<div class="col-md-5">
+						<img src="content/images/tarjeta.png" alt="">
+					</div>
+					<div class="col-md-7 detalle-tarjeta">
+						<p>Acá encuentras el número de tu tarjeta CVV2</p>
+						<span>El número de tu tarjeta se encuentra en la parte posterior de la misma, son <strong>3 los dígitos</strong> destacados en la imagen</span>
+						<a href="javascript:;" class="btn-sgt boton-entendido" data-dismiss="modal">entendido</a>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>

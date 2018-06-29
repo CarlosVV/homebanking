@@ -1,0 +1,57 @@
+﻿@media (min-width: 768px) {
+.titulo_tabpage-diners {
+    .divs{
+        margin-left: -250px;
+        }
+        
+    
+  span{
+          color:$azul;
+          font-weight:bold;
+          font-size:20px;
+      }
+  
+  a{
+      text-align:left;
+      color: $azul;
+      font-weight:bold;
+          font-size:16px;
+  }
+}
+}
+.row{
+
+    .container__movimiento-avisos-debito {
+      height: 5%;
+      /*width: 100%;*/
+      width: 50%;
+      border: 1px solid #0155A0;
+      border-radius: 5px;
+      -moz-border-radius: 5px;
+      -webkit-border-radius: 5px;
+      padding: 10px 20px;
+      text-align: left;
+    }
+
+    .container__movimiento-avisos-debito span {
+      display: inline-block;
+      font-size: 30px;
+      width: 30px;
+      margin-right: 20px;
+      color: #0155A0 !important;
+    }
+
+    .container__movimiento-avisos-debito p {
+      display: inline-block;
+      margin: 0 auto !important;
+    }
+
+    .container__movimiento-avisos-debito p b {
+      color: #00AEEF !important;
+    }
+
+    .container__movimiento-avisos-debito p small {
+      display: block;
+      color: #0155A0 !important;
+    }
+}

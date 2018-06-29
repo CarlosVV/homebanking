@@ -1,0 +1,48 @@
+<div header></div>
+<section class="container-fluid">
+    <div class="row" ng-controller="Movimientos as movimientosCtrl">
+        <header class="col-xs-12 col-sm-12 col-md-12 col-lg-12 {{ movimientosCtrl.bannerByCountry }}">
+            <tarjetas-carrusel></tarjetas-carrusel>
+        </header>
+        <section class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+            <div class="container">
+                <div class="row">
+                    <!-- Movimientos -->
+                    <article class="col-xs-12 col-sm-9 col-md-9 col-lg-9">
+                        <div class="text-left">
+                            <!--Inicio Tabs-->
+                            <!-- CONTAINER TABS QUE CONTIENEN TABS QUE CONTIENE UNA TABLA CON ACCORDION -->
+                            <div class="container_tabs_header">
+                                <ul class="tabs">
+                                    <li class="tab" data-tab="tab-1" ng-class="{indicator:movimientosCtrl.menuSeleccionado('tab-1')}"><a ng-click="movimientosCtrl.activarMenu('tab-1')">Mis Últimos Movimientos</a></li>
+                                    <li class="tab" data-tab="tab-2" ng-class="{indicator:movimientosCtrl.menuSeleccionado('tab-2')}"><a ng-click="movimientosCtrl.activarMenu('tab-2')">Movimientos Históricos</a></li>
+                                    <li class="tab" data-tab="tab-3" ng-class="{indicator:movimientosCtrl.menuSeleccionado('tab-3')}"><a ng-click="movimientosCtrl.activarMenu('tab-3')">Estado de Cuenta</a></li>
+                                </ul>
+                            </div>
+                            <!-- TBAS ONE -->
+                            <!-- Ultimos movimientos -->
+                            <div id="tab-1" class="container_detalle_tabs tab-content" ng-class="{current:movimientosCtrl.menuSeleccionado('tab-1')}">
+                                <ultimos-movimientos></ultimos-movimientos>
+                            </div>
+                            <!-- FIN DE TBAS ONE -->
+                            <!-- TBAS TWO -->
+                            <div id="tab-2" class="container_detalle_tabs tab-content " ng-class="{current:movimientosCtrl.menuSeleccionado('tab-2')}">
+                                <movimientos-historicos></movimientos-historicos>
+                            </div>
+                            <!-- FIN DE TBAS TWO -->
+                            <!-- Estado de cuenta -->
+                            <div id="tab-3" class="container_detalle_tabs tab-content " ng-class="{current:movimientosCtrl.menuSeleccionado('tab-3')}">
+                                <resumen-estadocuenta></resumen-estadocuenta>
+                            </div>
+                            <!-- FIN DE CONTAINER TABS QUE CONTIENEN TABS QUE CONTIENE UNA TABLA CON ACCORDION -->
+                            <!--Fin Tabs-->
+                        </div>
+                    </article>
+                    <article class="col-xs-12 col-sm-3 col-md-3 col-lg-3 container__section-body-movimiento">
+                        <menu-lateral></menu-lateral>
+                    </article>
+                </div>
+            </div>
+        </section>
+    </div>
+</section>

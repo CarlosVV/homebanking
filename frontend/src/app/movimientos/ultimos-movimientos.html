@@ -1,0 +1,54 @@
+<div class="container_detalle_tabs-top" data-ng-init="movimientosCtrl.init()" ng-show="movimientosCtrl.tieneUltimosMovimientosDisponible">
+    <table class="tabla-actividad">
+        <thead>
+            <tr>
+                <th class="text-center">&nbsp;</th>
+                <th class="text-center">Fecha</th>
+                <th class="text-center" ng-show="movimientosCtrl.tieneAdicionales">Usuario</th>
+                <th class="text-center">Descripción</th>
+                <th class="text-center">Lugar</th>
+                <th class="text-center">Cuotas</th>
+                <th class="text-center">Importe US$</th>
+                <th class="text-center">Importe S/</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr ng-repeat="model in movimientosCtrl.ultimosmovimientosTarjeta">
+                <td class="text-right"><span>{{ model.pendienteProcesamiento ? '(*)' : '' }}</span></td>
+                <td class="text-left">{{ movimientosCtrl.formatearFecha(model.fecha | date : 'dd MMMM') }}</td>
+                <td class="text-left" ng-show="movimientosCtrl.tieneAdicionales">
+                    <span title="{{ model.socio.nombre + ' ' + model.socio.segundoNombre + ' ' + model.socio.apellidoPaterno + ' ' + model.socio.apellidoMaterno }}">
+                        {{ movimientosCtrl.formatearNombre(model.socio.nombre, model.socio.segundoNombre, model.socio.apellidoPaterno, model.socio.apellidoMaterno) }}
+                    </span>
+                </td>
+                <td>
+                    <pan ng-show="model.descripcion.length >= 41" title="{{model.descripcion}}">
+                        {{movimientosCtrl.formatearDescripcionMovimiento(model.descripcion)}}
+                    </pan>
+                    <pan ng-show="!(model.descripcion.length >= 41)">
+                        {{model.descripcion}}
+                    </pan>
+                </td>
+                <td>
+                    <pan ng-show="model.lugar.length >= 31" title="{{model.lugar}}">
+                        {{movimientosCtrl.formatearLugarMovimiento(model.lugar)}}
+                    </pan>
+                    <pan ng-show="!(model.lugar.length >= 31)">
+                        {{model.lugar}}
+                    </pan>
+                </td>
+                <td class="text-center"><div ng-show="model.cuotas > 0">{{ model.cuotas }}</div></td>
+                <td class="text-right"><div ng-show="model.importeDolares > 0">{{ model.importeDolares | currency:" ":2 }}</div></td>
+                <td class="text-right"><div ng-show="model.importeSoles > 0">{{ model.importeSoles | currency:" ":2 }}</div></td>
+            </tr>
+        </tbody>
+    </table>
+    <div>
+        (*) Pendiente de procesar
+    </div>
+</div>
+<div class="container_detalle_tabs-overflow" ng-show="!movimientosCtrl.tieneUltimosMovimientosDisponible">
+    <div class="cabecera-detalle-tabs">
+        <label>{{movimientosCtrl.mensajesUltimosMovimientos}}</label>
+    </div>
+</div>

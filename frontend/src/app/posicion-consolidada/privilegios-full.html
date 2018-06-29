@@ -1,0 +1,36 @@
+<div ng-controller="Privilegios as privilegiosCtrl" ng-init="privilegiosCtrl.init()" ng-show="privilegiosCtrl.resultado.totalPrivilegios">
+	<span><i class="icon1-star-qualify-1"></i></span>
+	<div class="section__body-estilo1">
+		<ul>
+			<li class="list_first"><small>{{privilegiosCtrl.resultado.totalPrivilegios}} privilegios cercanos</small></li>
+			<li>
+				<div class="label__titulo1"><small><b>Cuotas sin intereses</b></small></div>
+			</li>
+		</ul>
+	</div>
+	<div class="section__body-estilo6">
+		<a style="cursor: default" ng-repeat="privilegio in privilegiosCtrl.resultado.resultados">
+			<table>
+				<tbody>
+					<tr>
+						<td><b>{{privilegio.nombre | uppercase}}</b></td>
+					</tr>
+					<tr>
+						<td>
+							<p><strong>{{privilegio.numeroCuotasSinIntereses}} CUOTAS</strong> SIN INTERESES</p>
+						</td>
+					</tr>
+				</tbody>
+			</table>
+		</a>
+	</div>
+	<div class="section__body-estilo2">
+		<a>
+			<ul>
+				<li ng-click="privilegiosCtrl.irAPrivilegios()">
+					<small>Ver todos Mis Privilegios Favoritos</small><i class="icon1-flecha-right"></i>
+				</li>
+			</ul>
+		</a>
+	</div>
+</div>

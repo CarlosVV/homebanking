@@ -1,0 +1,172 @@
+<!--inicio menu diners-->
+<div class="container-fluid" ng-controller="Header as headerCtrl" ng-init="headerCtrl.inicializar()">
+	<div class="row">
+		<!--Inicio menu ayuda-->
+		<div ng-hide="true" class="container__menu-ayuda">
+
+			<div class="cerrar-menu-ayuda">
+				<div class="close__menu2">
+					<i class="glyphicon glyphicon-remove"></i>
+				</div>
+			</div>
+			<div class="col-xs-12">
+				<div class="contenido__menu-ayuda">
+					<div>
+						<p>
+							<small>Mi asesor comercial</small><br />
+							<b>Juan Carlos Rodriguez</b>
+						</p>
+					</div>
+				</div>
+			</div>
+
+			<div class="col-xs-12 margin-menumobile">
+				<div class="contenido__menu-ayuda">
+					<div>
+						<ul>
+							<li><a href="javascript:;">LLAMAMOS<span><i class="icon1-flecha-right"></i></span></a></li>
+							<li><a href="javascript:;">LLÁMAMOS AHORA<span><i class="icon1-flecha-right"></i></span></a></li>
+							<li><a href="javascript:;">ESCRIBIMOS<span><i class="icon1-flecha-right"></i></span></a></li>
+							<li><a href="javascript:;">CHAT<span><i class="icon1-flecha-right"></i></span></a></li>
+						</ul>
+					</div>
+
+				</div>
+			</div>
+		</div>
+		<!--Fin menu ayuda-->
+
+		<!--Inicio menu mobile-->
+		<div class="container__menu-mobile">
+
+			<div class="cerrar-menumobile">
+				<div class="close__menu1">
+
+					<i class="glyphicon glyphicon-remove"></i>
+				</div>
+				<p>
+					<small>BIENVENIDO</small><br />
+					<strong>ROBERTO</strong>
+				</p>
+			</div>
+			<div class="col-xs-12 text-center">
+				<img ng-src="{{headerCtrl.imagenSeguridad}}" alt="" width="150" style="border-radius: 50%"/>
+			</div>
+
+			<div class="col-xs-12 margin-menumobile">
+				<div class="panel-group" id="accordion" role="tablist" aria-multiselectable="true">
+					<div class="panel">
+						<a class="menu-mobile__cat" role="button" data-toggle="collapse" data-parent="#accordion" href="#perfiles" aria-expanded="true"
+							aria-controls="perfiles"><span class="mas-menos"></span>PERFIL</a>
+						<div id="perfiles" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingOne">
+							<a href="javascript:;">DATOS PERSONALES</a>
+							<a href="javascript:;">DATOS DOMICILIARIOS</a>
+							<a href="javascript:;">DATOS LABORALES</a>
+						</div>
+					</div>
+
+					<div class="panel">
+						<a class="menu-mobile__cat" role="button" data-toggle="collapse" data-parent="#accordion" href="#preferencias" aria-expanded="true"
+							aria-controls="preferencias"><span class="mas-menos"></span>PREFERENCIAS</a>
+						<div id="preferencias" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingOne">
+							<a href="javascript:;">PREF 1</a>
+							<a href="javascript:;">PREF 2</a>
+						</div>
+					</div>
+				</div>
+			</div>
+
+			<div class="cerrarsesion-mobile">
+				<button>CERRAR SESIÓN</button>
+			</div>
+
+		</div>
+		<!-- INICIO HEADER MOBILE -->
+		<div class="col-xs-12">
+			<header class="header__mobile">
+				<a ng-href="#/posicion-consolidada">
+					<img src="content/images/diners-logo.svg" alt="Diners Club" width="142" height="39" />
+				</a>
+				<div class="header__iconos">
+
+					<a href="javascript:;" class="header__mobileMenuAyudaContenedor"><i class="icon1-message"></i></a>
+
+					<a href="javascript:;" class="header__mobile-avatar"><img ng-src="{{headerCtrl.imagenSeguridad}}" alt="" style="border-radius: 50%"/></a>
+					<a href="javascript:;" class="header__mobileHamburgerMenuContenedor">
+						<i class="glyphicon glyphicon-menu-hamburger"></i>
+					</a>
+
+				</div>
+			</header>
+		</div>
+
+		<!-- FIN HEADER MOBILE -->
+		<!--Fin menu mobile-->
+
+		<div class="col-md-12 text-center">
+			<div class="container__menu">
+				<a ng-href="#/posicion-consolidada" style="float: left; ">
+					<img src="content/images/diners-logo.svg" alt="Diners Club"/>
+				</a>
+				<div class="container__menu-links">
+					<div class="row">
+						<ul class="menu__Open">
+							<li class="productos-header" ng-class="{active__classMenu:headerCtrl.menuHeaderSeleccionado('tab-1')}" ng-click="headerCtrl.redireccionar('/posicion-consolidada')">
+								<a>MIS PRODUCTOS</a>
+							</li>
+							<li class="soluciones-header" ng-class="{active__classMenu:headerCtrl.menuHeaderSeleccionado('tab-2')}" ng-click="headerCtrl.redireccionar('/soluciones-financieras')">
+								<a>SOLUCIONES FINANCIERAS</a>
+							</li>
+							<li class="servicios-header" ng-class="{active__classMenu:headerCtrl.menuHeaderSeleccionado('tab-3')}" ng-click="headerCtrl.redireccionar('/servicios-socio')">
+								<a>SERVICIOS AL SOCIO</a>
+							</li>
+							<!--<li>
+                                <a href="javascript:;">TIPS DE VIAJE</a>
+                            </li>-->
+						</ul>
+					</div>
+				</div>
+				<div class="container__user" ng-controller="logout as logoutCtrl" class="btnCloseSession">
+					<a href="#/mi-perfil"><img  ng-src="{{headerCtrl.imagenSeguridad}}" style="border-radius: 50%"/></a><a><i class="icon1-arrow"></i></a>
+					<a href="javascript:;" ng-if="logoutCtrl.isAuthenticated()" ng-click="logoutCtrl.cerrarSesion()">cerrar</a>
+					<div ng-controller="timer as timerCtrl">
+						<div ng-show="false">
+							<span>{{ timerCtrl.tiempoRestante }}</span>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+<!--fin menu diners-->
+
+<script>
+     //Funcion menu activo
+    $(document).on("click", ".header__mobileHamburgerMenuContenedor", function () {
+        $(".container__menu-mobile").toggleClass("menu-mobile--apear");
+        $(".container_overlight").fadeIn();
+        $("body").toggleClass("no-scroll");
+    });
+
+    $(document).on("click", ".cerrar-menumobile", function () {
+        $(".container__menu-mobile").toggleClass("menu-mobile--apear");
+        $(".container_overlight").fadeOut();
+        $("body").removeClass("no-scroll");
+    });
+
+
+    //Animación icono masMenos en menú mobile
+    $(document).on("click", ".menu-mobile__cat", function () {
+        $(this)
+            .find(".mas-menos")
+            .toggleClass("sinAfter");
+
+        $(this)
+            .parent()
+            .siblings()
+            .find(".mas-menos")
+            .removeClass("sinAfter");
+    });
+
+</script>

@@ -1,0 +1,181 @@
+<div class="container_detalle_tabs-overflow" ng-controller="tarjetaAdicional as tarjetaAdicionalCtrl" ng-init="tarjetaAdicionalCtrl.inicializar()">
+    <div id="tab-1" class="bloquear-paso-1" ng-class="{'ng-hide':!tarjetaAdicionalCtrl.menuSeleccionado('tab-1')}">
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-xs-12 col-md-12 row titulo_tabpage-diners">
+                    <h2>Solicitud de Tarjeta Adicional</h2>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-sm-6 row subtitulo_tabpage-diners">
+                    <p><b>Paso 1:</b> Seleccion de tarjeta e ingreso de datos</p>
+                </div>
+                <!-- PASOS -->
+                <div class="col-sm-6 pasos_tabpage-diners">
+                    <div class="row container_step">
+                        <div class="container_pasos">
+                            <span class="active">1</span>
+                            <span>2</span>
+                            <span class="borrar-margin-right">3</span>
+                        </div>
+                    </div>
+                </div>
+                <!-- TARJETA TITULAR -->
+                <section class="mis-datos__section">
+                    <p class="mis-datos__section-title">Tarjeta titular</p>
+                    <table class="mis-datos__section-table">
+                        <tr>
+                            <td>Tarjeta</td>
+                            <td>
+                                <div class="input-field">
+                                    <select id="selectTarjeta" ng-options="tarjeta.idTarjeta as (tarjetaAdicionalCtrl.mostrarAlias_o_NombreProducto(tarjeta.alias, tarjeta.nombreProducto) + ' ' +
+                                            tarjetaAdicionalCtrl.formatearNumeroTarjeta(tarjeta.numeroTarjeta)) for tarjeta in tarjetaAdicionalCtrl.listaTarjetasTitulares"
+                                        ng-model="tarjetaAdicionalCtrl.tarjetaAdicional.idTarjeta" ng-change="tarjetaAdicionalCtrl.obtenerDatosTarjeta(tarjetaAdicionalCtrl.tarjetaAdicional.idTarjeta)">
+                                    </select>
+                                </div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>Línea de crédito actual (S/)</td>
+                            <td><strong>{{tarjetaAdicionalCtrl.tarjetaAplicante.lineaCreditoSoles | currency:"S/ ":2}}</strong></td>
+                        </tr>
+                    </table>
+                </section>
+                <div class="ComprobanteHeader-comprobante" ng-if="tarjetaAdicionalCtrl.cantidadDisponibleAdicionales <= 0">
+                    <p>
+                        <strong>Usted ya tiene 5 tarjetas adicionales a la tarjeta seleccionada</strong>
+                    </p>
+                </div>
+                <form class="formValido" id="formAdicionales" name="formAdicionales" ng-submit="formAdicionales.$valid && tarjetaAdicionalCtrl.irAConfirmacion()"
+                    novalidate ng-if="!tarjetaAdicionalCtrl.cantidadDisponibleAdicionales == 0">
+                    <!-- Datos del adicional -->
+                    <div id="entry1" class="clonedInput" ng-repeat="adicional in tarjetaAdicionalCtrl.tarjetaAdicional.tarjetasAdicionalesDetalle">
+                        <section class="mis-datos__section">
+                            <h2 class="mis-datos__section-title heading-reference">Datos del adicional {{ $index === 0 ? '' : ($index + 1)}}</h2>
+                            <fieldset>
+                                <table class="mis-datos__section-table">
+                                    <tr>
+                                        <td>Apellido paterno <span>*</span></td>
+                                        <td>
+                                            <input class="mis-datos__section-input inputits input-ap" type="text" id="apPaterno{{$index}}" name="apPaterno{{$index}}" required placeholder="Apellido paterno"
+                                                maxlength="40" ng-model="adicional.apellidoPaterno" letters-only>
+                                            <span class="has-error" ng-show="submitted && formAdicionales.apPaterno{{$index}}.$invalid">Debe ingresar apellido paterno</span>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>Apellido materno<span>*</span></td>
+                                        <td>
+                                            <input class="mis-datos__section-input inputits input-am" type="text" id="apMaterno{{$index}}" name="apMaterno{{$index}}" required placeholder="Apellido materno"
+                                                maxlength="40" ng-model="adicional.apellidoMaterno" letters-only>
+                                            <span class="has-error" ng-show="submitted && formAdicionales.apMaterno{{$index}}.$invalid">Debe ingresar apellido materno</span>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>Nombres<span>*</span></td>
+                                        <td>
+                                            <input class="mis-datos__section-input inputits input-nombre" type="text" id="nombres{{$index}}" name="nombres{{$index}}" required placeholder="Nombres"
+                                                maxlength="40" ng-model="adicional.nombre" letters-only>
+                                            <span class="has-error" ng-show="submitted && formAdicionales.nombres{{$index}}.$invalid">Debe ingresar nombres</span>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>Tipo de documento<span>*</span></td>
+                                        <td class="td_select">
+                                            <select id="selectTipoDocumento{{$index}}" name="selectTipoDocumento{{$index}}" ng-model="adicional.tipoDocumento">
+                                                <option value='-1'>SELECCIONAR</option>
+                                                <option ng-repeat="tipoDocumento in tarjetaAdicionalCtrl.listaTiposDocumentos" value="{{tipoDocumento.idTipoDocumento}}">{{tipoDocumento.nombreTipoDocumento}}
+                                            </select>
+                                            <span class="has-error" ng-show="submitted && adicional.tipoDocumento === '-1'">Debe selecionar tipo de documento</span>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>N° documento<span>*</span></td>
+                                        <td>
+                                            <input class="mis-datos__section-input-numero inputits input-nd" type="text" name="documento{{$index}}" required
+                                                placeholder="N° documento" maxlength="15" ng-model="adicional.numeroDocumento"
+                                                alfanumerico-only ng-blur="tarjetaAdicionalCtrl.validarNumeroDocumento($index)"><br><br>
+                                            <span class="has-error" ng-show="submitted && formAdicionales.documento{{$index}}.$invalid">Debe ingresar número de documento</span>
+                                            <span class="has-error" ng-show="adicional.mostrarMensajeNumeroDocumento">Número de documento ya existe en la solicitud y/o en las tarjetas existentes</span>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>Teléfono<span>*</span></td>
+                                        <td>
+                                            <input class="mis-datos__section-input-numero inputits input-tel" type="text" maxlength="9" name="telefono{{$index}}" required placeholder="Teléfono" maxlength="9" 
+                                                ng-model="adicional.numeroTelefono" numbers-only ng-blur="tarjetaAdicionalCtrl.validarNumeroCelular($index)"><br><br>
+                                            <span class="has-error" ng-show="submitted && formAdicionales.telefono{{$index}}.$invalid">Debe ingresar número de celular</span>
+                                            <span class="has-error" ng-show="adicional.mostrarMensajeNumeroTelefono">Celular ya existe en la solicitud y/o en las tarjetas existentes</span>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>Fecha de nacimiento<span>*</span></td>
+                                        <td>
+                                            <div class="input-group">
+                                                <input id="fecha_nac-dp" class="mis-datos__section-input fechas inputits input_fn" type="text" name="fechaNacimiento{{$index}}"
+                                                    maxlength="10" required placeholder="Fecha de nacimiento" ng-model="adicional.fechaNacimiento" date-picker
+                                                    ng-blur="tarjetaAdicionalCtrl.validarEdadAdicional($index)">
+                                                <span id="dp-fecha" class="input-group-addon dp-fecha input_sp"><img src="Content/Images/calendario.png" alt="" class="calendarios"></span>
+                                            </div>
+                                            <span class="has-error" ng-show="submitted && formAdicionales.fechaNacimiento{{$index}}.$invalid">Debe ingresar fecha de nacimiento</span><br>
+                                            <span class="has-error" ng-show="adicional.mostrarMensajeLimiteEdadAdicional">
+                                                No debe exceder los {{tarjetaAdicionalCtrl.edadLimiteAdicional}} años de edad</span>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>Correo electrónico<span>*</span></td>
+                                        <td>
+                                            <input class="mis-datos__section-input inputits input-em" type="email" name="email{{$index}}" required placeholder="Correo electrónico" maxlength="50" 
+                                                ng-model="adicional.correo" email-validacion ng-blur="tarjetaAdicionalCtrl.validarCorreo($index)">
+                                            <span class="has-error" ng-show="submitted && formAdicionales.email{{$index}}.$invalid">Debe ingresar correo</span>
+                                            <span class="has-error" ng-show="adicional.mostrarMensajeCorreo">Correo ya existe en la solicitud y/o en las tarjetas existentes</span>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>Nombre de tarjeta<span>*</span></td>
+                                        <td>
+                                            <input class="mis-datos__section-input inputits input-nt" type="text" id="nombreTarjeta{{$index}}" name="nombreTarjeta{{$index}}" required placeholder="Nombre de tarjeta"
+                                                maxlength="30" ng-model="adicional.nombreTarjeta" alfanumerico-only readonly="readonly">
+                                            <span class="has-error" ng-show="submitted && formAdicionales.nombreTarjeta{{$index}}.$invalid">Debe ingresar nombre del emboce</span>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>Tope consumo mensual<span>*</span></td>
+                                        <td>
+                                            <input class="mis-datos__section-input-numero inputits numeros input-tm" type="text" name="tope" placeholder="Tope consumo"
+                                                maxlength="6" ng-model="adicional.topeConsumoMensual" value="" ng-blur="tarjetaAdicionalCtrl.validarTopeConsumoMensual($index)"><br><br>
+                                            <span class="has-error" ng-show="adicional.mostrarMensajeTopeConsumoMensual">
+                                                No debe ser menor al monto mínimo ( {{tarjetaAdicionalCtrl.topeCosumoMinimo | currency:'S/ ':2}} )
+                                            </span>
+                                        </td>
+                                    </tr>
+                                </table>
+                            </fieldset>
+                            <button type="button" id="btnDel" class="btn-link volver btnDel" ng-click="tarjetaAdicionalCtrl.eliminarAdicional($index)"
+                                ng-if="tarjetaAdicionalCtrl.tarjetaAdicional.tarjetasAdicionalesDetalle.length > 1 ">Eliminar adicional</button>
+                        </section>
+                    </div>
+                    <div class="footer__verificacion strong">
+                        <img src="../../Content/Images/span-info.png" alt="">&nbsp;Si no ingresa el tope de consumo mensual,
+                        será tomando el total de la línea de crédito de la tarjeta seleccionada
+                    </div>
+                    <section>
+                        <div class="col-xs-3"></div>
+                        <div class="col-lg-9 contenedor">
+                            <button type="submit" class="btn-azul continuar" ng-click="submitted=true">CONTINUAR</button>
+                            <button type="button" id="btnAdd" class="btn-duplicar btnAdd" ng-click="tarjetaAdicionalCtrl.agregarAdicional()">Agregar otro adicional</button>
+                            <p class="pasos"><strong>Paso 1</strong> de 3</p>
+                            <p class="datos-obligatorios"><i class="icon1-tick"></i> <span>(*)</span> Datos obligatorios. Serán tratados de forma confidencial
+                                y segura</p>
+                        </div>
+                    </section>
+                </form>
+            </div>
+        </div>
+    </div>
+    <div id="tab-2" class="bloquear-paso-2" ng-class="{'ng-hide':!tarjetaAdicionalCtrl.menuSeleccionado('tab-2')}">
+        <solicitud-confirmacion content="tarjetaAdicionalCtrl.content"></solicitud-confirmacion>
+    </div>
+    <div id="tab-3" class="bloquear-paso-3" ng-class="{'ng-hide':!tarjetaAdicionalCtrl.menuSeleccionado('tab-3')}">
+        <constancia-solicitud content="tarjetaAdicionalCtrl.content"></constancia-solicitud>
+    </div>
+</div>

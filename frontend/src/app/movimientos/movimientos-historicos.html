@@ -1,0 +1,234 @@
+<div ng-init="movimientosHistoricoCtrl.loadHistoricos()">
+    <div class="head_tabla">
+        <div class="titulo_tabla">
+            <strong>&nbsp;</strong>
+        </div>
+        <div class="container_filtros">
+            <ul>
+                <li>
+                    <a href="javascript:;" class="descargar" >Descargar</a>
+                </li>
+                <li>
+                    ·
+                </li>
+                <li class="descargar_estados--cuenta">
+                    <a href="javascript:;" class="enviar__estado-cuenta">Enviar</a>
+                </li>
+                <li>
+                    ·
+                </li>
+                <li>
+                    <a href="javascript:;" class="buscar_movimientos">Buscar movimientos</a>
+                </li>
+            </ul>
+        </div>
+    </div>
+    <!--Inicio Contenidos de links-->
+    <div class="container_filtros_tabs_tabs tarjetaCreditoSelect">
+        <div class="container_container_select">
+            <p id="cabecera_select">{{movimientosHistoricoCtrl.movimientosFilter.opcion}}</p>
+            <img src="Content/Images/arrow_select_down.png" alt="">
+        </div>
+        <div class="container_listado_dropdown">
+            <ul>
+                <li>
+                    <a class="ocultarBtnAplicar" href="javascript:;" ng-click="movimientosHistoricoCtrl.setearFiltroMovimientoRangoTiempo(0)">Última semana</a>
+                </li>
+                <li>
+                    <a class="ocultarBtnAplicar" href="javascript:;" ng-click="movimientosHistoricoCtrl.setearFiltroMovimientoRangoTiempo(1)">Último mes</a>
+                </li>
+                <li>
+                    <a class="ocultarBtnAplicar" href="javascript:;" ng-click="movimientosHistoricoCtrl.setearFiltroMovimientoRangoTiempo(2)">Último 3 meses</a>
+                </li>
+                <li>
+                    <a class="ocultarBtnAplicar" href="javascript:;" ng-click="movimientosHistoricoCtrl.setearFiltroMovimientoRangoTiempo(3)">Último 6 meses</a>
+                </li>
+                <li>
+                    <a class="ocultarBtnAplicar" href="javascript:;" ng-click="movimientosHistoricoCtrl.setearFiltroMovimientoRangoTiempo(4)">Último año</a>
+                </li>
+            </ul>
+            <span></span>
+            <p>Definir rango de fechas</p>
+            <div class="container_calendario_select">
+                <div class="estados_de_cuentas">
+                    <input type="text" class="form-control input_filtros filtro_calendarios calendario__select" placeholder="Desde..." ng-model="movimientosHistoricoCtrl.rangoFechaInicio" date-picker />
+                    <img src="Content/Images/calendario.png" alt="" class="calendarios" >                    
+                    <br>
+                    <br>
+                    <input type="text" class="form-control input_filtros filtro_calendarios calendario__select" placeholder="Hasta..." ng-model="movimientosHistoricoCtrl.rangoFechaFin" date-picker />                    
+                    <img src="Content/Images/calendario.png" alt="" class="calendarios" >
+                    <br>
+                    <br>
+                    <a href="javascript:;" class="boton-foto-edit boton_edit waves-effect" id="btnAplicarFiltroFechas" ng-click="movimientosHistoricoCtrl.aplicarFiltroRangoFechas()">Aplicar</a>
+                </div>
+            </div>
+        </div>
+        <div class="container_selectTarjeta" ng-show="movimientosHistoricoCtrl.listaSocios.length > 1">
+            <select id="select" ng-model="movimientosHistoricoCtrl.movimientosFilter.idTarjetaConsulta" value="movimientosHistoricoCtrl.movimientosFilter.idTarjetaConsulta"
+                ng-options="socio.idTarjeta as socio.nombreSocio + ' ' + movimientosHistoricoCtrl.mostrarUltimosCuatroDigitosNumeroTarjeta(socio.numeroTarjeta) for socio in movimientosHistoricoCtrl.listaSocios">
+                <option value="" selected>Todos</option>
+            </select>
+        </div>
+
+        <a href="javascript:;" class="boton-foto-edit boton_edit waves-effect" ng-click="movimientosHistoricoCtrl.obtenerMovimientos(1)">Buscar</a>
+
+    </div>
+
+    <!--Enviar correo-->
+    <div class="container_filtros_tabs_tabs enviarDivs">
+        <div class="row">
+            <div class="enviar-title">Ingresa email a enviar</div>
+            <input id="txt_correo" class="enviar-correo-input" type="text" maxlength="50" name="edit_nombre" ng-model="movimientosHistoricoCtrl.correoDestino.correo" value="{{movimientosHistoricoCtrl.correoDestino.correo}}">
+            <a href="javascript:;" class="boton-foto-edit boton_edit waves-effect" ng-click="movimientosHistoricoCtrl.enviarCorreo()">Enviar</a>
+        </div>
+        <div class="row">
+            <span class="has-error enviar-title-error" ng-show="!movimientosHistoricoCtrl.correoDestino.esValido">Ingrese un correo válido</span>
+            <span class="has-error enviar-title-error" ng-show="movimientosHistoricoCtrl.correoDestino.enviado">Correo enviado</span>
+            <span class="has-error enviar-title-error" ng-show="!movimientosHistoricoCtrl.correoDestino.tieneDatos">El filtro seleccionado no contiene datos</span>
+        </div>
+    </div>
+
+    <!--Descargar-->
+    <div class="container_filtros_tabs_tabs descargarDivs">
+        <div class="enviar-title">Seleccionar formato</div>
+        <input class="with-gap enviar-correo-radio" name="tipo" type="radio" id="rbExcel" ng-model="movimientosHistoricoCtrl.tipoDescarga" value="excel" ng-checked="true" />
+        <label class="enviar-correo-label" for="rbExcel">Excel</label>
+        <input class="with-gap enviar-correo-radio" name="tipo" type="radio" id="rbPdf" ng-model="movimientosHistoricoCtrl.tipoDescarga" value="pdf"/>
+        <label class="enviar-correo-label" for="rbPdf">PDF</label>
+        <a href="javascript:;" class="boton-foto-edit boton_edit waves-effect" ng-click="movimientosHistoricoCtrl.procesarDescarga()">Descargar</a>
+    </div>
+
+    <!--Fin Contenidos de links-->
+    <div class="container_detalle_tabs-top tabla-act-height">
+        <div class="cabecera-detalle-tabs" ng-show="!movimientosHistoricoCtrl.tieneHistoricosDisponible">
+            <label>{{movimientosHistoricoCtrl.mensajesMovimientoHistoricos}}</label>
+        </div>
+        <table class="tabla-actividad" ng-show="movimientosHistoricoCtrl.tieneHistoricosDisponible">
+            <thead>
+                <tr>
+                    <th class="text-center">&nbsp;</th>
+                    <th class="text-center">Fecha</th>
+                    <th class="text-center" ng-show="movimientosHistoricoCtrl.tieneAdicionalesHistoricos">Usuario</th>
+                    <th class="text-center">Descripción</th>
+                    <th class="text-center">Lugar</th>
+                    <th class="text-center">Cuotas</th>
+                    <th class="text-center">Importe US$</th>
+                    <th class="text-center">Importe S/</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr ng-repeat="movimientoHistorico in movimientosHistoricoCtrl.movimientosHistoricos">
+                    <td class="text-right"><span>{{movimientoHistorico.pendienteProcesamiento ? '(*)' : ''}}</span></td>
+                    <td class="text-left">{{ movimientosCtrl.formatearFecha(movimientoHistorico.fecha | date : 'dd MMMM') }}</td>
+                    <td ng-show="movimientosHistoricoCtrl.tieneAdicionalesHistoricos">
+                        <span title="{{ movimientoHistorico.socio.nombre + ' ' + movimientoHistorico.socio.segundoNombre + ' ' + movimientoHistorico.socio.apellidoPaterno + ' ' + movimientoHistorico.socio.apellidoMaterno }}">                            
+                            {{ movimientosHistoricoCtrl.formatearNombre(movimientoHistorico.socio.nombre, movimientoHistorico.socio.segundoNombre, movimientoHistorico.socio.apellidoPaterno, movimientoHistorico.socio.apellidoMaterno) }}
+                        </span>
+                    </td>
+                    <td>
+                        <pan ng-show="movimientoHistorico.descripcion.length >= 41" title="{{movimientoHistorico.descripcion}}">
+                            {{movimientosHistoricoCtrl.formatearDescripcionMovimiento(movimientoHistorico.descripcion)}}
+                        </pan>
+                        <pan ng-show="!(movimientoHistorico.descripcion.length >= 41)">
+                            {{movimientoHistorico.descripcion}}
+                        </pan>                        
+                    </td>
+                    <td>
+                        <pan ng-show="movimientoHistorico.lugar.length >= 31" title="{{movimientoHistorico.lugar}}">
+                            {{movimientosHistoricoCtrl.formatearLugarMovimiento(movimientoHistorico.lugar)}}
+                        </pan>
+                        <pan ng-show="!(movimientoHistorico.lugar.length >= 31)">
+                            {{movimientoHistorico.lugar}}
+                        </pan>
+                    </td>
+                    <td class="text-center">
+                        <p ng-show="movimientoHistorico.cuotas > 0"> {{ movimientoHistorico.cuotas }} </p>
+                    </td>
+                    <td class="text-right"><div ng-show="movimientoHistorico.importeDolares > 0">{{movimientoHistorico.importeDolares | currency:'':2}}</div></td>
+                    <td class="text-right"><div ng-show="movimientoHistorico.importeSoles > 0">{{movimientoHistorico.importeSoles | currency:'':2}}</div></td>
+                </tr>
+            </tbody>
+        </table>
+        <div ng-show="movimientosHistoricoCtrl.tieneHistoricosDisponible">
+            (*) Pendiente de procesar
+        </div>
+        <!-- PAGINADOR -->
+        <div class="container_paginador" ng-show="movimientosHistoricoCtrl.tieneHistoricosDisponible">
+            <div class="contador_pagina">
+                <p><strong>Página {{movimientosHistoricoCtrl.paginationParams.currentPage}}</strong> de {{movimientosHistoricoCtrl.paginationParams.totalPages}}</p>
+            </div>
+            <div class="container_paginador_contador">
+                <ul>
+                    <li>
+                        <a href="javascript:;" class="text_paginador" 
+                            ng-class="{'disabled_paginador':movimientosHistoricoCtrl.paginationParams.currentPage === 1}" ng-click="movimientosHistoricoCtrl.setPage(1)">primero</a>
+                    </li>
+                    <li>
+                        <a href="javascript:;" class="text_paginador" 
+                            ng-class="{'disabled_paginador':movimientosHistoricoCtrl.paginationParams.currentPage === 1}" ng-click="movimientosHistoricoCtrl.setPage(movimientosHistoricoCtrl.paginationParams.currentPage - 1)">anterior</a>
+                    </li>
+                    <li ng-repeat="page in movimientosHistoricoCtrl.paginationParams.pages">
+                        <a href="javascript:;" class="waves-effect" ng-class="{numeros_paginador:movimientosHistoricoCtrl.paginationParams.currentPage === page}"
+                            ng-click="movimientosHistoricoCtrl.setPage(page)">{{page}}</a>
+                        <a href="javascript:;" class="separador_paginador hidden-xs">·</a>
+                    </li>
+                    <!--<li>
+                        <a href="javascript:;" class="waves-effect hidden-xs">...</a>
+                    </li>-->
+                    <li>
+                        <a href="javascript:;" class="text_paginador" ng-class="{'disabled_paginador':movimientosHistoricoCtrl.paginationParams.currentPage === movimientosHistoricoCtrl.paginationParams.totalPages}"
+                            ng-click="movimientosHistoricoCtrl.setPage(movimientosHistoricoCtrl.paginationParams.currentPage + 1)">siguiente</a>
+                    </li>
+                    <li>
+                        <a href="javascript:;" class="text_paginador" ng-class="{'disabled_paginador':movimientosHistoricoCtrl.paginationParams.currentPage === movimientosHistoricoCtrl.paginationParams.totalPages}"
+                            ng-click="movimientosHistoricoCtrl.setPage(movimientosHistoricoCtrl.paginationParams.totalPages)">última</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+        <div ng-show="!movimientosHistoricoCtrl.tieneHistoricosDisponible">
+            <strong>No hay resultados de búsqueda</strong>
+        </div>
+        <!-- FIN DE PAGINADOR -->
+    </div>
+</div>
+<script type="text/javascript">
+    // Buscar movimientos
+    $('.buscar_movimientos').on('click', function () {
+        // $('.container_filtros_tabs_tabs').slideToggle();
+        $(this).toggleClass("enlace-mov");
+        $(".enviar__estado-cuenta, .descargar").removeClass("enlace-mov");
+        $(".tarjetaCreditoSelect").slideToggle();
+        $(".enviarDivs, .descargarDivs").hide();
+    });
+
+    // Enviar
+    $(".enviar__estado-cuenta").on("click", function () {
+        $(this).toggleClass("enlace-mov");
+        $(".buscar_movimientos, .descargar").removeClass("enlace-mov");
+        $(".enviarDivs").slideToggle();
+        $(".tarjetaCreditoSelect, .descargarDivs").hide();
+    });
+    
+    // Descargar
+    $(".descargar").on("click", function () {
+        $(this).toggleClass("enlace-mov");
+        $(".buscar_movimientos, .enviar__estado-cuenta").removeClass("enlace-mov");
+        $(".descargarDivs").slideToggle();
+        $(".tarjetaCreditoSelect, .enviarDivs").hide();
+    });
+
+    $('.container_container_select').on('click', function () {
+        $('.container_listado_dropdown').slideToggle();
+    });
+
+    $('#btnAplicarFiltroFechas').on('click', function () {
+        $('.container_listado_dropdown').slideToggle();
+    });
+
+     $('.ocultarBtnAplicar').on('click', function () {
+        $('.container_listado_dropdown').slideToggle();
+    });
+
+    $('.buscar_movimientos').trigger("click");
+</script>

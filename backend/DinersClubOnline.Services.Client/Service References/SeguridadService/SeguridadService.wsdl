@@ -1,0 +1,285 @@
+<?xml version="1.0" encoding="utf-8"?>
+<definitions xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:tns="http://ws.online.diners.pe/" name="SeguridadService" targetNamespace="http://ws.online.diners.pe/" xmlns="http://schemas.xmlsoap.org/wsdl/">
+  <types>
+    <xs:schema targetNamespace="http://ws.online.diners.pe/" version="1.0" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+      <xs:element name="CambiarClaveDigital" type="tns:CambiarClaveDigital" />
+      <xs:element name="CambiarClaveDigitalResponse" type="tns:CambiarClaveDigitalResponse" />
+      <xs:element name="login" type="tns:login" />
+      <xs:element name="loginResponse" type="tns:loginResponse" />
+      <xs:element name="pruebaws" type="tns:pruebaws" />
+      <xs:element name="pruebawsResponse" type="tns:pruebawsResponse" />
+      <xs:element name="registrarClaveDigital" type="tns:registrarClaveDigital" />
+      <xs:element name="registrarClaveDigitalResponse" type="tns:registrarClaveDigitalResponse" />
+      <xs:element name="validarTarjeta" type="tns:validarTarjeta" />
+      <xs:element name="validarTarjetaResponse" type="tns:validarTarjetaResponse" />
+      <xs:element name="validarTarjetaUsuario" type="tns:validarTarjetaUsuario" />
+      <xs:element name="validarTarjetaUsuarioResponse" type="tns:validarTarjetaUsuarioResponse" />
+      <xs:complexType name="login">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="arg0" type="tns:requestLogin" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="requestLogin">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="claveDigital" type="xs:string" />
+          <xs:element minOccurs="0" name="usuario" type="xs:string" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="loginResponse">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="return" type="tns:responseLogin" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="responseLogin">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="codigoMensaje" type="xs:string" />
+          <xs:element minOccurs="0" name="idUsuario" type="xs:string" />
+          <xs:element minOccurs="0" name="mensaje" type="xs:string" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="pruebaws">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="prueba_ws_request" type="tns:pruebaRequest" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="pruebaRequest">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="requestParam" type="xs:string" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="pruebawsResponse">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="prueba_ws_resultset" type="tns:pruebaResponse" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="pruebaResponse">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="responseParam" type="xs:string" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="validarTarjeta">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="arg0" type="tns:requestValidarTarjeta" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="requestValidarTarjeta">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="claveATM" type="xs:string" />
+          <xs:element minOccurs="0" name="numeroTarjeta" type="xs:string" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="validarTarjetaResponse">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="return" type="tns:responseValidarTarjeta" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="responseValidarTarjeta">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="codigoMensaje" type="xs:string" />
+          <xs:element minOccurs="0" name="contieneClaveDigital" type="xs:string" />
+          <xs:element minOccurs="0" name="idTarjeta" type="xs:string" />
+          <xs:element minOccurs="0" name="mensaje" type="xs:string" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="validarTarjetaUsuario">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="arg0" type="tns:requestValidarTarjetaUsuario" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="requestValidarTarjetaUsuario">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="claveATM" type="xs:string" />
+          <xs:element minOccurs="0" name="numeroTarjeta" type="xs:string" />
+          <xs:element minOccurs="0" name="usuario" type="xs:string" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="validarTarjetaUsuarioResponse">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="return" type="tns:responseValidarTarjetaUsuario" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="responseValidarTarjetaUsuario">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="claveDigitalRegistrada" type="xs:string" />
+          <xs:element minOccurs="0" name="codigoMensaje" type="xs:string" />
+          <xs:element minOccurs="0" name="idUsuario" type="xs:string" />
+          <xs:element minOccurs="0" name="mensaje" type="xs:string" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="CambiarClaveDigital">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="arg0" type="tns:requestCambiarClaveDigital" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="requestCambiarClaveDigital">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="claveDigital" type="xs:string" />
+          <xs:element minOccurs="0" name="idUsuario" type="xs:string" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="CambiarClaveDigitalResponse">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="return" type="tns:responseCambiarClaveDigital" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="responseCambiarClaveDigital">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="codigoMensaje" type="xs:string" />
+          <xs:element minOccurs="0" name="mensaje" type="xs:string" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="registrarClaveDigital">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="arg0" type="tns:requestRegistrarClaveDigital" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="requestRegistrarClaveDigital">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="claveDigital" type="xs:string" />
+          <xs:element minOccurs="0" name="email" type="xs:string" />
+          <xs:element minOccurs="0" name="idFacebook" type="xs:string" />
+          <xs:element minOccurs="0" name="idImagen" type="xs:string" />
+          <xs:element minOccurs="0" name="idTarjeta" type="xs:string" />
+          <xs:element minOccurs="0" name="numeroCelular" type="xs:string" />
+          <xs:element minOccurs="0" name="operadorTelefonico" type="xs:string" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="registrarClaveDigitalResponse">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="return" type="tns:responseRegistrarClaveDigital" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="responseRegistrarClaveDigital">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="codigoMensaje" type="xs:string" />
+          <xs:element minOccurs="0" name="idUsuario" type="xs:string" />
+          <xs:element minOccurs="0" name="mensaje" type="xs:string" />
+        </xs:sequence>
+      </xs:complexType>
+    </xs:schema>
+  </types>
+  <message name="Seguridad_registrarClaveDigital">
+    <part name="registrarClaveDigital" element="tns:registrarClaveDigital" />
+  </message>
+  <message name="Seguridad_CambiarClaveDigitalResponse">
+    <part name="CambiarClaveDigitalResponse" element="tns:CambiarClaveDigitalResponse" />
+  </message>
+  <message name="Seguridad_login">
+    <part name="login" element="tns:login" />
+  </message>
+  <message name="Seguridad_pruebawsResponse">
+    <part name="pruebawsResponse" element="tns:pruebawsResponse" />
+  </message>
+  <message name="Seguridad_validarTarjetaUsuarioResponse">
+    <part name="validarTarjetaUsuarioResponse" element="tns:validarTarjetaUsuarioResponse" />
+  </message>
+  <message name="Seguridad_validarTarjeta">
+    <part name="validarTarjeta" element="tns:validarTarjeta" />
+  </message>
+  <message name="Seguridad_pruebaws">
+    <part name="pruebaws" element="tns:pruebaws" />
+  </message>
+  <message name="Seguridad_registrarClaveDigitalResponse">
+    <part name="registrarClaveDigitalResponse" element="tns:registrarClaveDigitalResponse" />
+  </message>
+  <message name="Seguridad_loginResponse">
+    <part name="loginResponse" element="tns:loginResponse" />
+  </message>
+  <message name="Seguridad_CambiarClaveDigital">
+    <part name="CambiarClaveDigital" element="tns:CambiarClaveDigital" />
+  </message>
+  <message name="Seguridad_validarTarjetaResponse">
+    <part name="validarTarjetaResponse" element="tns:validarTarjetaResponse" />
+  </message>
+  <message name="Seguridad_validarTarjetaUsuario">
+    <part name="validarTarjetaUsuario" element="tns:validarTarjetaUsuario" />
+  </message>
+  <portType name="Seguridad">
+    <operation name="CambiarClaveDigital" parameterOrder="CambiarClaveDigital">
+      <input message="tns:Seguridad_CambiarClaveDigital" />
+      <output message="tns:Seguridad_CambiarClaveDigitalResponse" />
+    </operation>
+    <operation name="login" parameterOrder="login">
+      <input message="tns:Seguridad_login" />
+      <output message="tns:Seguridad_loginResponse" />
+    </operation>
+    <operation name="pruebaws" parameterOrder="pruebaws">
+      <input message="tns:Seguridad_pruebaws" />
+      <output message="tns:Seguridad_pruebawsResponse" />
+    </operation>
+    <operation name="registrarClaveDigital" parameterOrder="registrarClaveDigital">
+      <input message="tns:Seguridad_registrarClaveDigital" />
+      <output message="tns:Seguridad_registrarClaveDigitalResponse" />
+    </operation>
+    <operation name="validarTarjeta" parameterOrder="validarTarjeta">
+      <input message="tns:Seguridad_validarTarjeta" />
+      <output message="tns:Seguridad_validarTarjetaResponse" />
+    </operation>
+    <operation name="validarTarjetaUsuario" parameterOrder="validarTarjetaUsuario">
+      <input message="tns:Seguridad_validarTarjetaUsuario" />
+      <output message="tns:Seguridad_validarTarjetaUsuarioResponse" />
+    </operation>
+  </portType>
+  <binding name="SeguridadBinding" type="tns:Seguridad">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <operation name="CambiarClaveDigital">
+      <soap:operation soapAction="" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+    </operation>
+    <operation name="login">
+      <soap:operation soapAction="" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+    </operation>
+    <operation name="pruebaws">
+      <soap:operation soapAction="" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+    </operation>
+    <operation name="registrarClaveDigital">
+      <soap:operation soapAction="" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+    </operation>
+    <operation name="validarTarjeta">
+      <soap:operation soapAction="" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+    </operation>
+    <operation name="validarTarjetaUsuario">
+      <soap:operation soapAction="" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+    </operation>
+  </binding>
+  <service name="SeguridadService">
+    <port name="SeguridadPort" binding="tns:SeguridadBinding">
+      <soap:address location="http://200.62.220.246:8080/DinersClubOnlineWS/Seguridad" />
+    </port>
+  </service>
+</definitions>

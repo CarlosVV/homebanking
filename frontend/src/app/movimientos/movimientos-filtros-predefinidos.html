@@ -1,0 +1,70 @@
+<div class="ingresoOnline" ng-controller="Movimientos as moviemientosCtrl">
+    <div>
+        <div>
+            opciones  <select ng-model="moviemientosCtrl.movimientosFilter.opcion">
+                    <option value="option-1">Ultima semana</option>
+                    <option value="option-2">Ultima mes</option>
+                    <option value="option-3">Ultimos 3</option>
+                    <option value="option-4">Ultimos 6</option>
+                    <option value="option-5">Ultimo año (12 meses)</option>
+                    <option value="option-6">Fechas</option>
+                  </select>
+            </div>
+        <div>
+           Tarjeta <select ng-model="moviemientosCtrl.movimientosFilter.tarjetaId">
+                    <option value="CARD01234567">Titular</option>
+                    <option value="tarjeta-2">Adicional</option>
+                    <option value="tarjeta-3">ambos</option>
+                  </select>
+        </div>
+        fecha inicio: <input type="date" ng-model="moviemientosCtrl.movimientosFilter.fechaInicio" placeholder="yyyy-MM-dd" ng-show="{{moviemientosCtrl.movimientosFilter.opcion ==='option-6'}}" />
+        fecha fin:  <input type="date" ng-model="moviemientosCtrl.movimientosFilter.fechaFin" placeholder="yyyy-MM-dd" ng-show="{{moviemientosCtrl.movimientosFilter.opcion ==='option-6'}}"/>
+        
+        pagina: <input type="text" ng-model="moviemientosCtrl.movimientosFilter.pagina" />
+    </div>
+    <div>
+        <input type="button" name="" value="Filtrar " ng-click="moviemientosCtrl.obtenerMovimientos()" />
+    </div>
+    <div>
+        <table class="table table-striped">
+            <tr>
+                <td>Monto total de consumos en Soles(*)</td>
+                <td>S/ {{moviemientosCtrl.movimientosTarjeta.totalConsumidoSoles}}</td>
+            </tr>
+            <tr>
+                <td>Monto total de consumos en Dolares(*) </td>
+                <td>US$ {{moviemientosCtrl.movimientosTarjeta.totalConsumidoSoles}}</td>
+            </tr>
+            <tr>
+                <td>Monto total de abonos en Soles </td>
+                <td>S/ {{moviemientosCtrl.movimientosTarjeta.abonosSoles}}</td>
+            </tr>
+            <tr>
+                <td>Monto total de abonos en Dolares </td>
+                <td>US$ {{moviemientosCtrl.movimientosTarjeta.abonosDolares}}</td>
+            </tr>
+        </table>
+
+        <table class="table table-striped">
+            <thead>
+                <tr>
+                    <th></th>
+                    <th>Compra</th>
+                    <th>Descripcion</th>
+                    <th>Lugar</th>
+                    <th align="right">Importe</th>
+                </tr>
+            </thead>
+            <tr ng-repeat="model in moviemientosCtrl.movimientosTarjeta.movimientos">
+                <td>{{model.pendienteProcesamiento ? '(*)' : ''}}</td>
+                <td>{{model.fecha | date : 'dd MMM'}}</td>
+                <td>{{model.descripcion}}</td>
+                <td>{{model.lugar}}</td>
+                <td align="right">{{ moviemientosCtrl.getImporte(model.importeSoles, model.importeDolares) }}</td>
+            </tr>
+        </table>
+    </div>
+    <div>
+        <input type="button" name="" value="Descargar PDF o excel "/>
+    </div>
+</div>

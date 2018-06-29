@@ -1,0 +1,234 @@
+<!-- MIS DATOS - TAB 1 -->
+<div ng-controller="SolicitudDebito as solicitudDebitoCtrl" ng-init="solicitudDebitoCtrl.inicio()">
+    <div id="tab-1" class="container_detalle_tabs tab-content current" ng-class="{'ng-hide':!solicitudDebitoCtrl.menuSeleccionado('tab-1')}">
+        <div class="container_detalle_tabs-overflow">
+            <div class="container-fluid">
+                <div class="row">
+                    <div class="col-xs-12 col-md-12 row titulo_tabpage-diners">
+                        <h2>Solicitud de Débito Automático</h2>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-sm-6 row subtitulo_tabpage-diners">
+                        <p><b>Paso 1:</b> Selección de tarjeta e ingreso de datos</p>
+                    </div>
+
+                    <!-- PASOS -->
+                    <div class="col-sm-6 pasos_tabpage-diners">
+                        <div class="row container_step">
+                            <div class="container_pasos">
+                                <span class="active">1</span>
+                                <span>2</span>
+                                <span class="borrar-margin-right">3</span>
+                            </div>
+                        </div>
+                    </div>
+
+
+                    <!-- TARJETA TITULAR -->
+                    <section class="mis-datos__section">
+                        <p class="mis-datos__section-title">Tarjeta titular</p>
+                        <table class="mis-datos__section-table">
+                            <tr>
+                                <td>Tarjeta</td>
+                                <td>
+                                    <div class="input-field">
+                                        <select id="selectTarjeta" ng-disabled="solicitudDebitoCtrl.tarjetas.length === 1" ng-options="tarjeta.idTarjeta as tarjeta.numeroTarjeta for tarjeta in solicitudDebitoCtrl.tarjetas"
+                                            ng-model="solicitudDebitoCtrl.solicitud.idTarjeta">
+                                                                    </select>
+                                    </div>
+                                </td>
+                            </tr>
+                        </table>
+                    </section>
+
+
+
+                    <!-- FACTURACIÓN EN SOLES -->
+                    <section class="mis-datos__section">
+                        <p class="mis-datos__section-title">Facturación en Soles
+                            <!-- Switch -->
+                            <div class="switch">
+                                <label>
+                                                            <input checked type="checkbox" ng-model="solicitudDebitoCtrl.muestraFacturacionSoles">
+                                                            <span class="lever"></span>
+                                                          </label>
+                            </div>
+                        </p>
+                        <table class="mis-datos__section-table" ng-show="solicitudDebitoCtrl.muestraFacturacionSoles">
+                            <tr>
+                                <td>Nombre del Banco</td>
+                                <td>
+                                    <div class="input-field">
+                                        <select class="selectBanco" ng-model="solicitudDebitoCtrl.solicitud.facturacionSoles.idBanco" value="solicitudDebitoCtrl.solicitud.facturacionSoles.idBanco"
+                                            ng-options="banco.id as banco.nombre for banco in solicitudDebitoCtrl.listaBancos">
+                                            <option selected value="">Seleccionar</option>
+                                                                    </select>
+                                        <span ng-show="solicitudDebitoCtrl.bancoSolesError" class="warning">Debe seleccionar nombre del banco</span>                                                                        
+                                    </div>
+                                </td>
+                            </tr>
+
+                            <tr>
+                                <td>Tipo de cuenta</td>
+                                <td>
+
+                                    <input checked type="radio" class="with-gap" name="tipo" id="tipoAhorroSoles" value="Ahorros" ng-model="solicitudDebitoCtrl.solicitud.facturacionSoles.tipoCuenta"
+                                    />
+                                    <label class="radio-mat" for="tipoAhorroSoles">Ahorros</label>
+
+                                    <input class="with-gap" name="tipo" type="radio" id="tipoCuentaCorrienteSoles" value="Cuenta Corriente" ng-model="solicitudDebitoCtrl.solicitud.facturacionSoles.tipoCuenta"
+                                    />
+                                    <label class="radio-mat" for="tipoCuentaCorrienteSoles">Cuenta Corriente</label>
+                                </td>
+                            </tr>
+
+                            <tr>
+                                <td>Moneda de la cuenta</td>
+                                <td>
+
+                                    <input checked="checked" class="with-gap" name="moneda" type="radio" id="monedaSoles1" value="Soles" ng-model="solicitudDebitoCtrl.solicitud.facturacionSoles.monedaDelaCta"
+                                    />
+                                    <label class="radio-mat" for="monedaSoles1">Soles</label>
+
+
+                                    <input class="with-gap" name="moneda" type="radio" id="monedaDolares2" value="Dólares" ng-model="solicitudDebitoCtrl.solicitud.facturacionSoles.monedaDelaCta"
+                                    />
+                                    <label class="radio-mat" for="monedaDolares2">Dólares</label>
+
+                                </td>
+                            </tr>
+
+                            <tr>
+                                <td>Nº Cuenta</td>
+                                <td>
+                                    <input class="mis-datos__section-input" type="text" name="numero-cuenta" value="" ng-model="solicitudDebitoCtrl.solicitud.facturacionSoles.numeroCuenta"
+                                        numbers-only maxlength="20">
+                                    <span ng-show="solicitudDebitoCtrl.numeroCuentaSolesError" class="warning">Debe ingresar número de cuenta</span>      
+                                </td>
+                            </tr>
+
+                            <!--<tr>
+                                                            <td></td>
+                                                            <td class="ComprobanteDetallado-titulo-operacion">
+                                                                <a class="guardar-frecuente" href="javascript:;" ng-click="solicitudDebitoCtrl.guardarComoFrecuenteFacturacionSoles()">Guardar como Cuenta Frecuente</a>
+                                                                <p class="frecuente-exito frecuenteSoles">Solicitud realizada con éxito. Muchas gracias</p>
+                                                            </td>
+                                                        </tr>-->
+                        </table>
+                    </section>
+
+
+                    <!-- FACTURACIÓN EN DOLARES -->
+                    <section class="mis-datos__section">
+                        <p class="mis-datos__section-title">Facturación en Dólares
+                            <!-- Switch -->
+                            <div class="switch">
+                                <label>
+                                                            <input type="checkbox" ng-model="solicitudDebitoCtrl.muestraFacturacionDolares">
+                                                            <span class="lever"></span>
+                                                          </label>
+                            </div>
+                        </p>
+                        <table class="mis-datos__section-table" ng-show="solicitudDebitoCtrl.muestraFacturacionDolares">
+                            <tr>
+                                <td>Nombre del Banco</td>
+                                <td>
+                                    <div class="input-field">
+                                        <select id="selectBancoDolares" ng-model="solicitudDebitoCtrl.solicitud.facturacionDolares.idBanco" value="solicitudDebitoCtrl.solicitud.facturacionDolares.idBanco"
+                                            ng-options="banco.id as banco.nombre for banco in solicitudDebitoCtrl.listaBancos">
+                                            <option selected value="">Seleccionar</option>
+                                                                    </select>
+                                            <span ng-show="solicitudDebitoCtrl.bancoDolaresError" class="warning">Debe seleccionar nombre del banco</span>                            
+                                    </div>
+                                </td>
+                            </tr>
+
+                            <tr>
+                                <td>Tipo de cuenta</td>
+                                <td>
+
+                                    <input class="with-gap" name="tipoAhorroDolares" type="radio" id="tipo1" ng-model="solicitudDebitoCtrl.solicitud.facturacionDolares.tipoCuenta" checked value="Ahorros" />
+                                    <label class="radio-mat" for="tipo1">Ahorros</label>
+
+
+                                    <input class="with-gap" name="tipoAhorroDolares" type="radio" id="tipo2" ng-model="solicitudDebitoCtrl.solicitud.facturacionDolares.tipoCuenta" value="Cuenta Corriente"/>
+                                    <label class="radio-mat" for="tipo2">Cuenta Corriente</label>
+
+                                </td>
+                            </tr>
+
+                            <tr>
+                                <td>Moneda de la cuenta</td>
+                                <td>
+
+                                    <input class="with-gap" name="monedaDolares" id="moneda1" type="radio" ng-model="solicitudDebitoCtrl.solicitud.facturacionDolares.monedaDelaCta" checked value="Soles" />
+                                    <label class="radio-mat" for="moneda1">Soles</label>
+
+
+                                    <input class="with-gap" name="monedaDolares" id="moneda2" type="radio" ng-model="solicitudDebitoCtrl.solicitud.facturacionDolares.monedaDelaCta" value="Dólares" />
+                                    <label class="radio-mat" for="moneda2">Dólares</label>
+
+                                </td>
+                            </tr>
+
+                            <tr>
+                                <td>Nº Cuenta</td>
+                                <td>
+                                    <input class="mis-datos__section-input" type="text" name="numero-cuenta" value="" ng-model="solicitudDebitoCtrl.solicitud.facturacionDolares.numeroCuenta"
+                                        numbers-only maxlength="20">
+                                    <span ng-show="solicitudDebitoCtrl.numeroCuentaDolaresError" class="warning">Debe ingresar número de cuenta</span>   
+                                </td>
+                            </tr>
+
+                            <!--<tr>
+                                                            <td></td>
+                                                            <td class="ComprobanteDetallado-titulo-operacion">
+                                                                <a class="guardar-frecuenteDolares" href="javascript:;">Guardar como Cuenta Frecuente</a>
+                                                                <p class="frecuente-exito frecuenteDolares">Solicitud realizada con éxito. Muchas gracias</p>
+                                                            </td>
+                                                        </tr>-->
+                        </table>
+                    </section>
+
+
+
+                    <!-- Pago a cargar -->
+                    <section class="mis-datos__section">
+                        <p class="mis-datos__section-title">Pago a cargar</p>
+                        <table class="mis-datos__section-table">
+                            <tr>
+                                <td>Tipo de pago</td>
+                                <td>
+                                    <div class="input-field">
+                                        <select value="solicitudDebitoCtrl.solicitud.tipoPagoaCargar" ng-model="solicitudDebitoCtrl.solicitud.tipoPagoaCargar" ng-options="tipoPago.id as tipoPago.nombre for tipoPago in solicitudDebitoCtrl.listaTiposPago">
+                                            <option selected value="">Seleccionar</option>
+                                                                        </select>
+                                        <span ng-show="solicitudDebitoCtrl.tipoPagoaCargarError" class="warning">Debe seleccionar tipo de pago</span>                                
+                                    </div>
+                                </td>
+                            </tr>
+
+                            <tr>
+                                <td></td>
+                                <td>
+                                    <span class="has-error" ng-show="solicitudDebitoCtrl.muestraErrores">Debe seleccionar tipo de facturación</span>
+                                    <button type="submit" class="btn-azul continuar" ng-click="solicitudDebitoCtrl.enviarSolicitud()">CONTINUAR</button>
+                                    <p class="pasos"><strong>Paso 1</strong> de 3</p>
+                                </td>
+                            </tr>
+
+                        </table>
+                    </section>
+
+                </div>
+            </div>
+        </div>
+    </div>
+    <div id="tab-2" class="bloquear-paso-2" ng-class="{'ng-hide':!solicitudDebitoCtrl.menuSeleccionado('tab-2')}">
+        <solicitud-confirmacion content="solicitudDebitoCtrl.content"></solicitud-confirmacion>
+    </div>
+    <div id="tab-3" class="bloquear-paso-3" ng-class="{'ng-hide':!solicitudDebitoCtrl.menuSeleccionado('tab-3')}">
+        <constancia-solicitud content="solicitudDebitoCtrl.content"></constancia-solicitud>
+    </div>
+</div>
